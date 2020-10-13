@@ -1,0 +1,290 @@
+\documentclass[10pt]{yerbaformat}
+\title{应用数理统计 Notes\footnote{EEEEEErin~}}
+\date{}
+
+\begin{document}
+\author{}
+\maketitle
+\footnotesize
+\tableofcontents
+\section{抽样分布}
+\subsection{基本概念}
+
+\begin{definition}[统计量]
+    不含任何未知参数的样本函数称为统计量,设 $\left(\xi_{1}, \ldots, \xi_{n}\right)$ 为总体$\xi$的样本,$T\left(x_{1}, \ldots, x_{n}\right)$ 为样本空间上的实值(Borel可测)函数.如果 $T\left(\xi_{1}, \ldots, \xi_{n}\right)$ 中不包含任何未知参数,则称 $T\left(\xi_{1}, \ldots, \xi_{n}\right)$ 为一个统计量.
+\end{definition}
+
+\begin{definition}[矩]
+    设$\left(\xi_{1}, \ldots, \xi_{n}\right)$ 为总体$\xi$的样本,记$A_{r}=\frac{1}{n} \sum_{i=1}^{n} \xi_{i}^{r}$为$r$阶原点矩,$ B_{r}=\frac{1}{n} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{r}$为$r$阶中心矩.有$A_{1}=\bar{\xi}, B_{2}=S^{2}$
+\end{definition}
+
+\begin{definition}[相关系数]
+    设 $\left(\xi_{1}, \eta_{1}\right),\left(\xi_{2}, \eta_{2}\right), \cdots,\left(\xi_{n}, \eta_{n}\right)$为二维总体$(\xi, \eta)$ 的样本,记$\bar{\xi}=\frac{1}{n} \sum_{i=1}^{n} \xi_{i}, S_{1}^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{2}$
+    $\bar{\eta}=\frac{1}{n} \sum_{i=1}^{n} \eta_{i}, S_{2}^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\eta_{i}-\bar{\eta}\right)^{2}$
+    $S_{12}=\frac{1}{n} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)\left(\eta_{i}-\bar{\eta}\right)$
+    $R=\frac{S_{12}}{S_{1} S_{2}}$,称$S_{12}, R$分别为二维样本的协方差与二维样本的相关系数
+\end{definition}
+
+\par 协方差满足$S_{12}=\frac{1}{n} \Sigma_{i=1}^{n}\left(\xi_{i} \eta_{i}-\xi_{i} \bar{\eta}-\bar{\xi} \eta_{i}+\bar{\xi} \bar{\eta}\right)=\frac{1}{n} \sum_{i=1}^{n} \xi_{i} \eta_{i}-\bar{\xi} \bar{\eta}$
+
+\begin{definition}[特征函数]
+    设$\varphi_{\xi}(t)$ 为总体$\xi$的特征函数, $\xi_{1}, \ldots, \xi_{n}$ 为总体$\xi$的样本,则样本均值的特征函数为$\varphi_{\xi}(t)=E\left(e^{i t \bar{\xi}}\right)=E\left(e^{i \frac{t}{n}} \sum_{i=1}^{n} \xi_{i}\right)=\left\{\varphi_{\xi}\left(\frac{t}{n}\right)\right\}^{n}$,利用特征函数的唯一性定理,可以求得$\bar{\eta}$的分布.
+\end{definition}
+
+\begin{definition}[极差]
+    称 $R_{n}=\xi_{(n)}-\xi_{(1)}$ 为样本极差,它反映了样本观察值的离散程度.可以由顺序统计量的联合密度函数$$f_{1, n}(x, y)=\left\{\begin{array}{c}n(n-1) f(x) f(y)[F(y)-F(x)]^{n-2}, x<y \\ 0,\end{array}\right.$$得到
+\end{definition}
+
+\begin{definition}[经验分布函数]
+    若 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 为总体$\xi$的样本, $\xi_{(1)}, \xi_{(2)} \ldots, \xi_{(n)}$ 为样本 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 的顺序统计量.对任意实数 $x$, 记$$F_{n}(x)=\left\{\begin{array}{cc}0, & x \leq \xi_{(1)} \\ \frac{k}{n}, & \xi_{k}<x \leq \xi_{k+1} \\ 1, & x>\xi_{(n)}\end{array}\right.$$为总体$\xi$的经验分布函数,可用单位阶跃函数表示为$F_{n}(x)=\frac{1}{n} \sum_{k=1}^{n} \mu\left(x-\xi_{k}\right), x \in R$.($F_{n}(x)$ 单调不减,左连续, $0 \leq F_{n}(x) \leq 1, F_{n}(-\infty)=0, F_{n}(+\infty)=1$所以是分布函数)
+\end{definition}
+
+\par 事实上,$\mu\left(x-\xi_{k}\right) \sim B(1, F(x))$,从而有$$\begin{array}{c}
+        E\left[F_{n}(x)\right]=\frac{1}{n} E\left[n F_{n}(x)\right]=\frac{1}{n} n F(x)=F(x) \\
+        D\left[F_{n}(x)\right]=D\left[\frac{1}{n} n F_{n}(x)\right]=\frac{1}{n^{2}} D\left[n F_{n}(x)\right]=\frac{F(x)[1-F(x)]}{n}
+    \end{array}$$
+
+\par $ \Gamma $分布$f(x)=\left\{\begin{array}{cl}\frac{\lambda^{a} x^{\alpha-1}}{\Gamma(a)} e^{-\lambda x}, & x>0 \\ 0, & x \leqslant 0\end{array}, \alpha>0, \lambda>0\right.$,其中$\Gamma(\alpha)=\int_{0}^{\infty} x^{\alpha-1} e^{-x} d x$,有$E(\xi)=\frac{\alpha}{\lambda}$,$D(\xi)=\frac{\alpha}{{\lambda}^{2}}$
+\begin{theorem}
+    设 $\xi_{i} \sim \Gamma\left(\alpha_{i}, \lambda\right), i=1,2, \cdots, N,$ 且 $\xi_{1}, \xi_{2}, \cdots,$
+    $\xi_{N}$ 相互独立,则 $\sum_{i=1}^{N} \varepsilon_{i} \sim \Gamma\left(\sum_{i=1}^{N} \alpha_{i}, \lambda\right)$
+\end{theorem}
+
+\par $\chi^{2}$ 分布,$\chi^{2} \sim \chi^{2}(N)=\Gamma\left(\frac{N}{2}, \frac{1}{2}\right)$故$E\left(\chi^{2}\right)=N, D\left(\chi^{2}\right)=2 N$
+\begin{theorem}
+    设 $\xi_{i} \sim N(0,1), i=1,2, \cdots, N,$ 且 $\xi_{1}, \xi_{2}, \cdots, \xi_{N}$
+    相互独立, 记 $\chi^{2}=\sum_{i=1}^{N} \xi_{i}^{2},$ 则 $\chi^{2}$ 有密度函数
+    $$
+        f_{x^{2}}(x)=\left\{\begin{array}{cc}
+            \frac{1}{2^{\frac{N}{2}}} \Gamma\left(\frac{N}{2}\right)^{\frac{N}{2}-1} e^{-\frac{x}{2}}, & x>0           \\
+            0,                                                                                         & x \leqslant 0
+        \end{array}\right.
+    $$
+    并称 $\chi^{2}$ 服从自由度为 $N$ 的 $\chi^{2}$ 分布,记为 $\chi^{2} \sim \chi^{2}(N) .$
+\end{theorem}
+
+\par $t$分布,$E\left(T\right)=0, D\left(T\right)=\frac{n}{n-2}$,
+\begin{theorem}
+    设 $\xi \sim N(0,1), \eta \sim \chi^{2}(n),$ 且 $\xi$ 与 $\eta$ 独立,记 $T$ $=\frac{\xi}{\sqrt{\eta / n}},$ 则 $T$ 有密度函数:
+    $$
+        f_{T}(x)=\frac{\Gamma\left(\frac{n+1}{2}\right)}{\sqrt{n \pi} \Gamma\left(\frac{n}{2}\right)}\left(1+\frac{x^{2}}{n}\right)^{-\frac{n+1}{2}}, x \in R
+    $$
+    并称 $T$ 服从自由度为 $n$ 的 $t$ 分布,记为 $T \sim t(n)$
+\end{theorem}
+
+\par $F$ 分布,有$F \sim F(m, n),$ 则 $\frac{1}{F} \sim F(n, m)$
+\begin{theorem}
+    设 $\xi \sim \chi^{2}(m), \eta \sim \chi^{2}(n),$ 且 $\xi$ 与 $\eta$ 独立,记 $F$
+    $=\frac{\xi / m}{\eta / n},$ 则 $F$ 有密度函数 :
+    $$f_{F}(x)=\left\{\begin{array}{cc}\frac{\Gamma\left(\frac{m+n}{2}\right)}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right)} m^{m / 2} n^{n / 2} x^{\frac{m}{2}-1}(n+m x)^{-\frac{m+n}{2}}, x>0 \\ 0, & x \leqslant 0\end{array}\right.$$
+    并称 F 服从参数为 $m$ 与 $n$ 的 $F$ 分布,记为 $F \sim F(m, n)$
+\end{theorem}
+
+\subsection{多元正态分布与正态二次型}
+\begin{definition}
+    若随机向量有密度函数
+    $$
+        f_{\eta}\left(y_{1}, \cdots, y_{n}\right)=\frac{1}{(2 \pi)^{n / 2}\left|\Sigma_{j}\right|^{\frac{1}{2}}} \exp \left\{-\frac{1}{2}(y-\theta)^{\prime} \Sigma^{-1}(y-\theta)\right\}
+    $$,其中$\Sigma=\operatorname{var}(\eta) \triangleq E\left[(\eta-\theta)(\eta-\theta)^{\prime}\right]=\left[E\left(\eta_{i}-\theta_{i}\right)\left(\eta_{j}-\theta_{j}\right)\right]_{n \times n}$为$n$阶对称正定矩阵.则称$\eta$服从均值向量$\theta$协方差矩阵$\Sigma$的$n$元正态分布
+\end{definition}
+
+\begin{lemma}
+    将正交矩阵$T$作用在独立同正态分布的随机变量上,得到的$\zeta=T^{\prime} \eta$依旧是独立同分布的随机变量.
+\end{lemma}
+
+\begin{proposition}
+    $\eta-N_{m}\left(\theta, \sigma^{2} I_{n}\right)$,$T$是正交矩阵,则有$T\left(\frac{\eta-\theta}{\sigma}\right) \sim N_{n}\left(0, I_{n}\right)$
+\end{proposition}
+
+\begin{lemma}
+    $\eta \sim N_{n}(\theta, \Sigma)$则存在正交矩阵$T^{\prime} \Sigma T=\Lambda$使得$\zeta=T^{\prime}(\eta-\theta)\sim N_{n}(0, \Lambda)$,即通过正交变化将相关的随机变量转化成了独立随机变量.
+\end{lemma}
+
+\begin{lemma}
+    $\eta \sim N_{n}(\theta, \Sigma)$特征函数为$\varphi_{\eta}(t)=\exp \left\{j t^{\prime} \theta-\frac{1}{2} t^{\prime} \sum t\right\}$
+\end{lemma}
+
+\begin{lemma}
+    设 $\eta \sim N_{n}(\theta, \Sigma), A$ 为一个秩是 $m$ 的 $m \times n$ 阶常数矩阵,$a$是$m$维常数列向量,则$m$维随机向量$\xi=A \eta+a$满足
+    $\xi \sim N_{m}\left(A \theta+a, A \Sigma A^{\prime}\right)$(利用特征函数证明)
+\end{lemma}
+
+\begin{theorem}
+    设 $\eta \sim N_{n}\left(0, I_{n}\right), A$ 为 $n$ 阶对称幂等 $\left(\right.$ 即 $A^{2}=$
+        A )矩阵. 则$\eta^{\prime} A \eta \sim \chi^{2}(\operatorname{tr}(A))$,即 $\eta^{\prime} A \eta$ 服从自由度为 $\mathrm{tr}(A)$ 的卡方分布
+\end{theorem}
+
+\begin{theorem}
+    设 $\eta^{\prime}=\left(\eta_{1}, \cdots, \eta_{n}\right), E(\eta)=\theta, \theta^{\prime}=\left(\theta_{1}, \cdots, \theta_{n}\right)$
+    $\operatorname{Var}(\eta)=\sigma^{2} I_{n},$ 且 $A=\left[a_{i j}\right]$ 为 $n$ 阶对称矩阵,则
+    \begin{enumerate}
+        \item $E\left(\eta^{\prime} A \eta\right)=\sigma^{2} \operatorname{tr}(A)+\theta^{\prime} A \theta$
+        \item 如果 $\eta \sim N_{n}\left(0, \sigma^{2} I_{n}\right),$ 则 $\operatorname{Var}\left(\eta^{\prime} A \eta\right)=2 \sigma^{4} \operatorname{tr}\left(A^{2}\right)$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    设 $A$ 为 $n$ 阶对称矩阵, $B$ 为 $m \times n$ 阶矩阵,且 $B A=0, \eta \sim N_{n}\left(\theta, \sigma^{2} I_{n}\right),$ 则 $B \eta$ 与 $\eta^{\prime} A \eta$ 相互独立.
+\end{theorem}
+
+\begin{theorem}
+    $\quad$ 设 $A, B$ 均为 $n$ 坎对称矩阵 $, B A=0,$ 且 $\eta \sim N_{n}$ $\left(\theta, \sigma^{2} I_{n}\right),$ 则 $\eta^{\prime} B \eta$ 与 $\eta^{\prime} A \eta$ 相互独立.
+\end{theorem}
+
+
+\begin{theorem}
+    设 $Q_{i} \sim \chi^{2}\left(r_{i}\right), i=1,2, r_{1}>r_{2}$ 且 $Q_{1}-Q_{2}$ 与
+    $Q_{2}$ 独立,则
+    $$
+        Q_{1}-Q_{2} \sim \chi^{2}\left(r_{1}-r_{2}\right)
+    $$
+\end{theorem}
+
+\begin{theorem}
+    设 $\eta \sim N_{n}(\theta, \Sigma),$ 则 $(\eta-\theta)^{\prime} \Sigma^{-1}(\eta-\theta) \sim \chi^{2}(n)$
+\end{theorem}
+
+\subsection{抽样分布定理}
+\begin{theorem}
+    设总体 $\xi \sim N\left(a . \sigma^{2}\right) . \xi_{1}, \cdots, \xi_{n}$ 为总体 $\xi$ 的样本,则
+    \begin{enumerate}
+        \item $\bar{\xi} \sim N\left(a, \frac{\sigma^{2}}{n}\right)$,
+        \item $\bar{\xi}$ 与 $S^{2}$ 相互独立
+        \item $\frac{n S^{2}}{\sigma^{2}} \sim \chi^{2}(n-1)$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+    设总体 $\xi \sim N\left(a, \sigma^{2}\right), \xi_{1}, \cdots, \xi_{n}$ 为 $\xi$ 的样本,则
+    $T \triangleq \frac{\bar{\xi}-a}{S / \sqrt{n-1}} \sim t(n-1)$
+\end{proposition}
+
+\begin{proposition}
+    设 $\xi_{1}, \cdots, \xi_{k}$ 为 $k(k \geqslant 2)$ 个相互独立的随机变量,且 $\xi_{i} \sim N(0,1), i=1,2, \cdots, k .$ 今从这 $k$ 个相互独立的总体中分别抽取容量为 $n_{i}$ 的样本 $\xi_{i 1}, \cdots, \xi_{i n_{i}}, i=1,2, \cdots, k,$ 且这 $k$ 个样本相互独立,记$\bar{\xi}_{i}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}} \xi_{i j}, S_{i}^{2}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}_{i}\right)^{2}, i=1,2, \cdots, k$
+    $n=\sum_{i=1}^{k} n_{i}, \bar{\xi}=\frac{1}{n} \sum_{n=1}^{k} \sum_{j=1}^{m_{i}} \xi_{i j}$,则有离差平方和的分解式$$S_{总}^{2} \triangleq \sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}\right)^{2}=Q+U$$其中$\boldsymbol{Q}=\sum_{i=1}^{k} n_{i} S_{i}^{2}, U=\sum_{i=1}^{k} n_{i}\left(\bar{\xi}_{i}-\bar{\xi}\right)^{2}$,且有$\frac{U /(k-1)}{Q /(n-k)} \sim F(k-1, n-k)$
+\end{proposition}
+
+\begin{theorem}
+    设总体 $\xi \sim N\left(a_{1}, \sigma_{1}^{2}\right),$ 总体 $\eta \sim N\left(a_{2}, \sigma_{2}^{2}\right)$,记相互独立的样本$\bar{\xi}=\frac{1}{m} \sum_{i=1}^{m} \xi_{i}, S_{1}^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(\xi_{i}-\bar{\xi}\right)^{2}$
+    $\bar{\eta}=\frac{1}{n} \sum_{i=1}^{n} \eta_{i}, S_{2}^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\eta_{i}-\bar{\eta}\right)^{2}$有
+    \begin{enumerate}
+        \item $F \triangleq \frac{(n-1) m S_{1}^{2}}{(m-1) n S_{2}^{2}} \cdot \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}}-F(m-1, n-1)$
+        \item 当$\sigma_{1}=\sigma_{2}=\sigma$,有$T \triangleq \frac{\bar{\xi}-\bar{\eta}-\left(a_{1}-a_{2}\right)}{\sqrt{m S_{1}^{2}+n S_{2}^{2}}} \sqrt{\frac{m n(m+n-2)}{m+n}} \sim t(m+n-2)$
+    \end{enumerate}
+\end{theorem}
+
+
+\subsection{分位数}
+\begin{definition}
+    设 $\xi$ 为一个随机变量, $\alpha$ 为满足 $0<\alpha<1$ 的实数.如果 $x_{\alpha}$ 使得 $P\left\{\xi \leqslant x_{\alpha}\right\}=\alpha,$ 则称 $x_{a}$ 为 $\xi$ 的下侧 $a$ 分位数. 如果 $y_{\alpha}$ 使得 $P\left|\xi>y_{\alpha}\right|=\alpha,$ 则称 $y_{\alpha}$ 为 $\xi$ 的上侧 $\alpha$ 分位数,分位数也叫分位点或临界值,
+\end{definition}
+\par 分位数有如下性质
+\begin{enumerate}
+    \item $x_{a}=y_{1-a}, y_{a}=x_{1-\alpha}$
+    \item 对于正态分布 $N(0,1)$ 与 $t$ 分布 $t(n)$ 有$y_{1-\alpha}=-y_{\alpha}, x_{1-\alpha}=-x_{\alpha}
+          $即$y_{1-\alpha}=-y_{\alpha}=x_{a}=-x_{1-\alpha}$
+    \item 设 $F_{\alpha}(m, n)$ 为$F \sim F(m, n)$ 的下侧$\alpha$ 分位数,则$F_{a}(m, n)=\frac{1}{F_{1-a}(n, m)}$
+\end{enumerate}
+
+\section{参数估计}
+
+\subsection{点估计常用方法}
+
+\subsubsection{矩法}
+\par 由辛钦大数定律(Wiener-Khinchin Law)有$$\lim _{n \rightarrow \infty} P\left\{\left|\frac{1}{n} \sum_{i=1}^{n} X_{i}-\frac{1}{n} \sum_{i=1}^{n} E\left(X_{i}\right)\right|<\varepsilon\right\}=1$$由科尔莫格罗夫 强大数定律(Kolmogorov Strong Law)有$$P \lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^{n}\left(\xi_{k}-E \xi_{k}\right)=0=1$$
+\par 从而可以用样本的矩来估计样本参数,得 $\theta_{1}, \theta_{2}, \cdots, \theta_{t}$ 的解 $\hat{\theta}_{1}, \hat{\theta}_{2}, \cdots, \hat{\theta}_{t}$作为估计量.
+
+\subsubsection{极大似然法}
+\par 构造极大似然函数$L(\theta)=\prod_{i=1}^{n} p\left(\xi_{i} ; \theta\right)$,固定样本观察值选择使得$L(\theta)$达到最大的参数$\hat{\theta}$作为参数 $\theta$ 的估计值.
+
+\par 考虑到$L(\theta)$连乘的形式,可以将方程转换为$\frac{\partial \ln L(\theta)}{\partial \theta_{k}}=0, \quad k=1,2, \cdots, t$.对于方程无唯一解的情况,可以通过定义结合变量范围确定使得$L(\theta)$最大的取值.
+
+\par 极大似然法不要求原点矩存在,相对于矩法具有更好的性质,但是在求解方程时需要借助数值方法求近似解.
+
+\subsection{评估估计量好坏的标准}
+\subsubsection{无偏性和有效性}
+
+\begin{definition}[无偏估计量]
+    如果参数 $\theta$ 的估计量 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 对一切 $n$ 及 任意 $\theta \in \Theta$有$$E_{\theta}\left[T\left(\xi_{1}, \cdots, \xi_{n}\right)\right]=\theta$$
+    则称 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为 $\theta$ 的\textbf{无偏估计量},记$E_{\theta}\left[T\left(\xi_{1}, \cdots, \xi_{n}\right)\right]-\theta=b_{n}$为偏差,若$\lim _{n \rightarrow \infty} b_{n}=0$称为$T$为$\theta$的\textbf{渐进无偏估计量}.如果 $g(\theta)$ 的无偏估计量存在则称其为可估计函数.
+\end{definition}
+
+\par 例如,$S^{* 2} \triangleq \frac{1}{n-1} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)=\frac{n}{n-1} S^{2}$是总体方差的无偏估计量,又叫修正样本方差.
+
+\par 应注意的是,如果 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 是参数 $\theta$ 的无偏估计量,除了 $g$ 是线性函数外,推不出$g(T)$也是 $g(\theta)$ 的无偏估计量,例如不能用对均值估计量的平方作为对二阶矩原点的估计.
+
+\par 事实上,存在某一参数有多种无偏估计量的情况,为对之进行对比,引入无偏估计量的方差.
+
+\begin{definition}
+    若对于一切 $\theta \in \Theta$(即任意可能的参数范围,因为估计时不确定具体值)均有$D_{\theta}\left(\hat{\theta}_{1}\right) \leqslant D_{\theta}\left(\hat{\theta}_{2}\right),$ 则说估计量$\hat{\theta}_{1}$比估计量$\hat{\theta}_{2}$ 有效.
+\end{definition}
+
+\begin{theorem}[Rao-Cramer不等式]{\label{cr}}
+    设总体 $\xi$ 为具有密度函数 $f(x ; \theta)$ 的连续型随机变量 $, \theta$ 为未知參数, $\theta \in \Theta . \xi_{1}, \cdots, \xi_{n}$ 为 $\xi$ 的 样本, $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为可估计函数 $g(\theta)$ 的无偏估计量. 如果
+    \begin{enumerate}
+        \item $\Theta$ 为实数域 $R$ 中的开区间且集合 $\left\{x: f(x; \theta)>0 \right\}$ 与 $\theta$ 无关.
+        \item $\frac{\partial}{\partial \theta} f(x ; \theta)$ 存在,且 $I(\theta) \equiv E_{\theta}\left[\frac{\partial}{\partial \theta} \ln f(\xi ; \theta)\right]^{2}>0$, 此处 $I(\theta)$ 又叫 Fisher 信息量.
+        \item $g^{\prime}(\theta)$ 存在,且$$\begin{aligned}
+                      g^{\prime}(\theta)= & \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} T\left(x_{1}, x_{2}, \cdots, x_{n}\right) \frac{\partial}{\partial \theta}\left[\prod_{i=1}^{n} f\left(x_{i} ; \theta\right)\right]     \\
+                                          & d x_{1} \cdots d x_{n} \frac{\partial}{\partial \theta} \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty}\left[\prod_{i=1}^{n} f\left(x_{i} ; \theta\right)\right] d x_{1} \cdots d x_{n} \\
+                      =                   & \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \frac{\partial}{\partial \theta}\left[\prod_{i=1}^{n} f\left(x_{i} ; \theta\right)\right] d x_{1} \cdots d x_{n}
+                  \end{aligned}$$
+    \end{enumerate}
+    则有$$D_{\theta}(T) \geqslant \frac{\left[g^{\prime}(\theta)\right]^{2}}{n I(\theta)}$$ 对一切 $\theta \in \boldsymbol{\Theta}$成立,且等号成立的充要条件是$\frac{\partial}{\partial \theta}\left[\ln \prod_{i=1}^{n} f\left(\xi_{i} ; \theta\right)\right]=C(\theta)[T-g(\theta)]$几乎处处成立,其中 C( $\theta) \neq 0$ 是与样本无关的数. 特别, 当 $g(\theta)=\theta$ 时有$g(\theta)$ 的 $R-C$ 下界$$D_{\theta}(T) \geqslant \frac{1}{n I(\theta)}$$. 且当等号成立时称 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的有效估计量.
+\end{theorem}
+
+\par 事实上 $I(\theta)=-E_{\theta}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]$ 故等价有 $$D_{\theta}(T) \geqslant-\frac{\left(g^{\prime}(\theta)\right]^{2}}{n E_{\phi}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]}$$ 对一切 $\theta \in \boldsymbol{\theta}$, 对于离散型情况, 只要将求和换成积分则同样成立.
+
+\begin{proposition}
+    在定理 \ref{cr} 的条件下我们有
+    \begin{enumerate}
+        \item 可估计函数 $g(\theta)$ 的有效估计量存在且为 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$
+              的充繫条件是 $\frac{\partial}{\partial \theta} \ln L(\theta)$ 可化为形式 $C(\theta)[T-g(\theta)]$,即 $$\frac{\partial}{\partial \theta} \ln L(\theta)=C(\theta)[T-g(\theta)], \text { a. s. }$$ 其中 $C(\theta) \neq 0$ 甚与样本无关的函数,且 $E_{\theta}(T)=g(\theta)$
+        \item 若上一条中等式成立, 进一步有 $\frac{\left[g^{1}(\theta)\right]^{2}}{n I(\theta)}=\frac{g^{\prime}(\theta)}{C(\theta)}$ 从而 $I(\theta)=\frac{C(\theta) g^{\prime}(\theta)}{n}$ 特别当 $g(\theta)=\theta$ 时,有 $\frac{1}{n I(\theta)}=\frac{1}{C(\theta)}, \quad I(\theta)=\frac{C(\theta)}{n}$
+        \item 可估计函数的有效估计量是唯一的. 且一定是 $g(\theta)$ 的唯一极大似然估计量
+    \end{enumerate}
+\end{proposition}
+
+\subsubsection{一致最小方差无偏估计量}
+\begin{definition}\label{nobias}
+    设 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为可估计函数 $g(\theta)$ 的无偏估计量. 如果对 $g(\theta)$ 的任一无偏估计量 $T_{1}\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 均有
+    $$
+        D_{\theta}(T) \leqslant D_{\theta}\left(T_{1}\right), \quad \text { 对一切 } \theta \in \Theta
+    $$
+    则称 $T\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的一致最小方差无偏估计量, 记
+    $$
+        U=\mid T: E_{\theta}(T)=\theta, D_{\theta}(T)<\infty, \text { 对一切 } \left.\theta \in \Theta\right\}
+    $$
+    $$U_{0}=\left\{T_{0}: E_{\theta}\left(T_{0}\right)=0, D_{\theta}\left(T_{0}\right)<\infty,\right.$$ 对一切 $\left.\theta \in \Theta\right\}$, 即 $U$ 为未知参数 $\theta$ 的方差有限的无偏估计量集, $U_{0}$ 为 $\theta$ 的方差有限数学期望为零的估计量集
+\end{definition}
+
+
+\begin{theorem}
+    设 $U$ 非空, $T\left(\xi_{1}, \xi_{2}, \cdots, \xi_{\text {a }}\right) \in U,$ 则 $T_{\Delta} T$ $\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 为未知参数 $\theta$ 的最优无偏估计量的充要条件是对每个 $T_{0} \in U_{0}$ 有 $$E_{\theta}\left(T T_{0}\right)=0, \  \text { 对一切 } \theta \in \Theta$$
+\end{theorem}
+
+\begin{proposition}
+    设 $T_{1}$ 和 $T_{2}$ 分别为可估计函数 $g_{1}(\theta)$ 和 $g_{2}(\theta)$ 的 UMVUE, 则 $b_{1} T_{1}+b_{2} T_{2}$ 是 $b_{1} g_{1}(\theta)+b_{2} g_{2}(\theta)$ 的 UMVUE,
+    其中 $b_{1}, b_{2}$ 均为常数.
+\end{proposition}
+
+\begin{theorem}
+    设 $U$ 是 \ref{nobias} 定义的非空集, 则对未知参数 $\theta$  (在概率为 1 意义下)至多存在一个 UMVUE.
+\end{theorem}
+
+\par 常见的 Fisher 信息量 $I(\theta)$. $$\begin{array}{cc}
+        \xi \sim B(1, p)                           & I(p)=\frac{1}{p(1-p)}                           \\
+        \xi \sim P(\lambda)                        & I(\lambda)=\frac{1}{\lambda}                    \\
+        \xi \sim \Gamma(1, \lambda)=E x p(\lambda) & I(\lambda)=\frac{1}{\lambda^{2}}                \\
+        \xi \sim N\left(a, \sigma^{2}\right)       & I(a)=\frac{1}{\sigma^{2}}                       \\
+        \xi \sim N\left(0, \sigma^{2}\right)       & I\left(\sigma^{2}\right)=\frac{1}{2 \sigma^{4}}
+    \end{array}$$
+
+\subsubsection{一致性(相合性)}
+
+
+
+
+
+
+\end{document}

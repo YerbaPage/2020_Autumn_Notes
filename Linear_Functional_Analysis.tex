@@ -1,0 +1,237 @@
+\documentclass[10pt]{paper}
+% \usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{plain}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[a4paper,scale=0.9]{geometry}
+\usepackage{xcolor}
+\definecolor{winered}{rgb}{0.5,0,0}
+\hypersetup{
+  pdfborder={0 0 0},
+  colorlinks=true,
+  linkcolor={winered},
+  urlcolor={winered},
+  filecolor={winered},
+  citecolor={winered},
+  linktoc=all,
+}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Def}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Linear Functional Analysis Notes}
+\date{\today}
+\author{Yuling Shi}
+\begin{document}
+\maketitle
+\tableofcontents
+% \footnotesize
+\section{Preliminaries}
+
+\begin{theorem}
+Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
+\begin{enumerate}
+    \item if $A$ is complete then it is closed;
+    \item if $M$ is complete then $A$ is complete if and only if it is closed;
+    \item if $A$ is compact then it is closed and bounded;
+    \item (Bolzano-Weierstrass theorem) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}[counting measure]
+We define counting measure
+$$\mu(A)=\left\{\begin{array}{ll}
+n & \text{if} A \text { has exactly } n \text { elements } \\
+\infty & \text { otherwise }
+\end{array}\right.$$
+\end{definition}
+
+\begin{definition}[essential supremum]
+Suppose that $f$ is a measurable function and there exists a number $b$ such that $f(x) \leq b a.e.$ Then we can define the \textbf{essential supremum} of $f$ to be $$ess \ sup \  f=\inf \{b: f(x) \leq b \  a.e. \}$$
+\end{definition}
+
+\begin{definition}
+We define an equivalence relation $\equiv$ on $\mathcal{L}^{1}(X)$ by $$f \equiv g \Longleftrightarrow f(x)=g(x) \text { for a.e. } x \in X$$ This relation partitions the set $\mathcal{L}^{1}(X)$ into a space of equivalence classes, which we will denote by $L^{1}(X)$.
+\end{definition}
+
+\begin{definition}
+Define the spaces$$\begin{array}{l}
+\mathcal{L}^{p}(X)=\left\{f: f \text { is measurable and }\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}<\infty\right\}, \quad 1 \leq p<\infty \\
+\mathcal{L}^{\infty}(X)=\{f: f \text { is measurable and ess sup }|f|<\infty\}
+\end{array}$$
+We also define the corresponding sets $L^{P}(X)$ by identifying functions in $\mathcal{L}^{p}(X)$ which are $a.e.$ equal. In practice, we simply refer to such $\mathcal{L}$ rather than classes themselves.
+\end{definition}
+
+\begin{theorem}[Two useful inequalities]
+Minkowski's inequality $($ for $1 \leq p<\infty)$
+$$
+\begin{array}{c}
+\left(\int_{X}|f+g|^{p} d \mu\right)^{1 / p} \leq\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}+\left(\int_{X}|g|^{p} d \mu\right)^{1 / p} \\
+ess\  \sup |f+g| \leq ess\  \sup |f|+ess\  \sup |g|
+\end{array}
+$$
+Hölder's inequality (for $1<p<\infty$ and $p^{-1}+q^{-1}=1$ ):
+$$
+\begin{array}{l}
+\int_{X}|f g| d \mu \leq\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}\left(\int_{X}|g|^{q} d \mu\right)^{1 / q} \\
+\int_{X}|f g| d \mu \leq ess\  \sup |f| \int_{X}|g| d \mu
+\end{array}
+$$
+\end{theorem}
+
+
+\begin{theorem}
+Suppose that $1 \leq p \leq \infty .$ Then the metric space $L^{P}(X)$ is complete. In particular, the sequence space $\ell^{P}$ is complete.
+\end{theorem}
+
+\begin{theorem}
+Suppose that $[a, b]$ is a bounded interval and $1 \leq p<\infty .$ Then the set $C[a, b]$ is dense in $L^{p}[a, b]$
+\end{theorem}
+
+
+
+\section{Normed Spaces}
+\subsection{Examples of Normed Spaces}
+\begin{definition}[Norm]
+Let $X$ be a vector space over $\mathbb{F}$. A norm on $X$ is a function $\|\cdot\|: X \rightarrow \mathbb{R}$ such that for all $x, y, \in X$ and $\alpha \in \mathbb{F}$
+\begin{enumerate}
+    \item $\|x\| \geq 0$
+    \item $\|x\|=0$ if and only if $x=0$
+    \item $\|\alpha x\|=\|\alpha\|\|x\|$
+    \item $\|x+y\| \leq\|x\|+\|y\|$
+\end{enumerate} 
+A vector space X on which there is a norm is called a normed vector space or just a normed space. If $X$ is a normed space, a unit vector in $X$ is a vector $x$ such that $\|x\|=1$
+\end{definition}
+
+\begin{lemma}
+Let $X$ be a vector space with norm $\|\cdot\| .$ If $d: X \times X \rightarrow \mathbb{R}$ is defined by $d(x, y)=\|x-y\|$ then $(X, d)$ is a metric space.
+\end{lemma}
+
+\begin{definition}[Metric]
+If $X$ is a vector space with norm $\|\cdot\|$ and $d$ is the metric defined by $d(x, y)=$ $\|x-y\|$ then $d$ is called the metric associated with $\|\cdot\| \cdot$.
+\end{definition}
+
+\begin{definition}[Convergence]
+We are trying to define convergence in our normed space. We will have strong convergence as $\lim _{n \rightarrow \infty}\left\|x_{n} - x\right\|=0$ which is also written as $\lim _{n \rightarrow \infty}x_{n}=x$. And we also have weak convergence as $\lim _{n \rightarrow \infty}\left\|x_{n}\right\|=\|x\|$.
+\end{definition}
+
+\begin{theorem}
+Let $X$ be a vector space over $\mathbb{F}$ with norm $\|\cdot\| .$ Let $\left\{x_{n}\right\}$ and $\left\{y_{n}\right\}$ be sequences in $X$ which converge to $x, y$ in $X$ respectively and let $\left\{\alpha_{n}\right\}$ be a sequence in $\mathbb{F}$ which converges to $\alpha$ in $\mathbb{F}$. Then:
+\begin{enumerate}
+    \item $|\|x\|-\|y\|| \leq\|x-y\|$
+    \item $\lim _{n \rightarrow \infty}\left\|x_{n}\right\|=\|x\|$
+    \item $\lim _{n \rightarrow \infty}\left(x_{n}+y_{n}\right)=x+y$
+    \item $\lim _{n \rightarrow \infty} \alpha_{n} x_{n}=\alpha x$
+\end{enumerate}
+
+\end{theorem}
+
+\subsection{Finite-dimensional Normed Spaces}
+\begin{definition}[Equivalence]
+Let $X$ be a vector space and let $\|\cdot\|_{1}$ and $\|\cdot\|_{2}$ be two norms on $X .$ The norm $\|\cdot\|_{2}$ is equivalent to the norm $\|\cdot\|_{1}$ if there exists $M, m>0$ such that for all $x \in X$
+$$
+m\|x\|_{1} \leq\|x\|_{2} \leq M\|x\|_{1}
+$$
+\end{definition}
+
+\begin{lemma}
+Let $X$ be a vector space and let $\|\cdot\|_{1},\|\cdot\|_{2}$ and $\|\cdot\|_{3}$ be three norms on $X$. Let $\|\cdot\|_{2}$ be equivalent to $\|\cdot\|_{1}$ and let $\|\cdot\|_{3}$ be equivalent to $\|\cdot\|_{2}$
+\begin{enumerate}
+    \item $\|\cdot\|_{1}$ is equivalent to $\|\cdot\|_{2}$ (exchanging position)
+    \item $\|\cdot\|_{3}$ is equivalent to $\|\cdot\|_{1}$ (passing)
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+Let $X$ be a vector space and let $\|\cdot\|$ and $\|\cdot\|_{1}$ be norms on $X .$ Let $d$ and $d_{1}$ be the metrics defined by $d(x, y)=\|x-y\|$ and $d_{1}(x, y)=\|x-y\|_{1} .$ Suppose that there exists $K>0$ such that $\|x\| \leq K\|x\|_{1}$ for all $x \in X .$ Let $\left\{x_{n}\right\}$ be a sequence in $X$.
+\begin{enumerate}
+    \item If $\left\{x_{n}\right\}$ converges to $x$ in the metric space $\left(X, d_{1}\right)$ then $\left\{x_{n}\right\}$ converges to $x$ in the metric space $(X, d)$
+    \item If $\left\{x_{n}\right\}$ is Cauchy in the metric space $\left(X, d_{1}\right)$ then $\left\{x_{n}\right\}$ is Cauchy in the metric space $(X, d)$
+\end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+Let $X$ be a vector space and let $\|\cdot\|$ and $\|\cdot\|_{1}$ be equivalent norms on $X .$ Let $d$ and $d_{1}$ be the metrics defined by $d(x, y)=\|x-y\|$ and $d_{1}(x, y)=\|x-y\|_{1}$ Let $\left\{x_{n}\right\}$ be a sequence in $X$.
+\begin{enumerate}
+    \item $\left\{x_{n}\right\}$ converges to $x$ in the metric space $(X, d)$ $\iff$ $\left\{x_{n}\right\}$ converges to $x$ in the metric space $\left(X, d_{1}\right)$.
+    \item $\left\{x_{n}\right\}$ is Cauchy in the metric space $(X, d)$ $\iff$ $\left\{x_{n}\right\}$ is Cauchy in the metric space $\left(X, d_{1}\right)$.
+    \item $(X, d)$ is complete $\iff$ $\left(X, d_{1}\right)$ is complete.
+\end{enumerate}
+\end{corollary}
+
+\begin{theorem}
+Let $X$ be a finite-dimensional vector space with norm $\|\cdot\|$ and let $\left\{e_{1}, e_{2}, \ldots, e_{n}\right\}$ be a basis for $X .$ Another norm on $X$ was defined by
+$$
+\left\|\sum_{j=1}^{n} \lambda_{j} e_{j}\right\|_{1}=\left(\sum_{j=1}^{n}\left|\lambda_{j}\right|^{2}\right)^{\frac{1}{2}}
+$$
+The norms $\|\cdot\|$ and $\|\cdot\|_{1}$ are equivalent.
+\end{theorem}
+
+\begin{corollary}
+If $\|\cdot\|$ and $\|\cdot\|_{2}$ are any two norms on a finite-dimensional vector space $X$ then they are equivalent.
+\end{corollary}
+
+\begin{lemma}
+Let $X$ be a finite-dimensional vector space over $\mathbb{F}$ and let $\left\{e_{1}, e_{2}, \ldots, e_{n}\right\}$ be a basis for $X .$ If $\|\cdot\|_{1}: X \rightarrow \mathbb{R}$ is the norm on $X$ defined by $\left\|\sum_{j=1}^{n} \lambda_{j} e_{j}\right\|_{1}=\left(\sum_{j=1}^{n}\left|\lambda_{j}\right|^{2}\right)^{\frac{1}{2}}$ then $X$ is a complete metric space.
+\end{lemma}
+
+\begin{corollary}
+If $\|\cdot\|$ is any norm on a finite-dimensional space $X$ then $X$ is a complete metric
+space.
+\end{corollary}
+
+\begin{corollary}
+If $Y$ is a finite-dimensional subspace of a normed vector space $X,$ then $Y$ is closed.
+\end{corollary}
+
+\subsection{Banach Spaces}
+
+\par In infinite-dimensional vector space $X$, many methods we discussed in the last section will expire.
+
+\begin{lemma}
+If $X$ is a normed vector space and $S$ is a linear subspace of $X$ then $\bar{S}$ is a linear subspace of $X$.
+\end{lemma}
+
+
+\begin{definition}
+Let $X$ be a normed vector space and let $E$ be any non-empty subset of $X .$ The closed linear span of $E,$ denoted by $\overline{Sp} E,$ is the intersection of all the closed linear subspaces of $X$ which contain $E$.
+\end{definition}
+
+\begin{lemma}
+Let $X$ be a normed space and let $E$ be any non-empty subset of $X$.
+\begin{enumerate}
+    \item $\overline{\operatorname{Sp}} E$ is a closed linear subspace of $X$ which contains $E$.
+    \item $\overline{\mathrm{Sp}} E=\overline{\operatorname{Sp} E},$ that is, $\overline{\operatorname{Sp}} E$ is the closure of $\operatorname{Sp} E$
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Riesz’ Lemma]
+Suppose that $X$ is a normed vector space, $Y$ is a closed linear subspace of $X$ such that $Y \neq X$ and $\alpha$ is a real number such that $0<\alpha<1 .$ Then there exists $x_{\alpha} \in X$ such that $\left\|x_{\alpha}\right\|=1$ and $\left\|x_{\alpha}-y\right\|>\alpha$ for all $y \in Y$
+\end{theorem}
+
+\begin{theorem}
+If $X$ is an infinite-dimensional normed vector space then neither $D=\{x \in X:$ $\|x\| \leq 1\}$ nor $K=\{x \in X:\|x\|=1\}$ is compact.
+\end{theorem}
+
+\begin{definition}[Banach Space]
+A Banach space is a normed vector space which is complete under the metric
+associated with the norm.
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+\end{document}

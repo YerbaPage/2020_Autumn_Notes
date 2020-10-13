@@ -1,0 +1,328 @@
+\documentclass[10pt]{yerbaformat}
+\title{数值分析Notes}
+% \author{Yuling Shi}
+% \date{\today}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\footnotesize
+\section{数值分析与科学计算引论}
+\subsection{数值计算的误差}
+
+\begin{definition}[绝对误差]
+    设$x$为准确值,$x^{*}$为$x$的一个近似值,称$e^{*}=x^{*}-x$为近似值的\textbf{绝对误差},比值$e_{r}^{*}=\frac{e^{*}}{x}=\frac{x^{*}-x}{x}$称为\textbf{相对误差},由于真值$x$总是不知道的,所以通常使用$e_{r}^{*}=\frac{e^{*}}{x^{*}}=\frac{x^{*}-x}{x^{*}}$
+\end{definition}
+
+\begin{definition}[误差限]
+    $\left|e^{*}\right|=\left|x^{*}-x\right|\leq\varepsilon^{*}$叫近似值的误差限,恒正;相对误差可正可负,称他的绝对值上界为\textbf{相对误差限},记作$\varepsilon_{r}^{*}=\frac{e^{*}}{\left|x^{*}\right|}$
+\end{definition}
+
+\begin{theorem}[有效数字与相对误差]
+    设近似数$x^{*}$表示为$x^{*}=\pm10^{m}\times\left(a_{1}+a_{2}\times10^{-1}+\cdots+a_{l}\times10^{-(l-1)}\right)$,$m$是第一位有效数字的科学计数表示,若$x^{*}$具有n位有效数字，则其相对误差限为$\varepsilon_{r}^{*}\leq\frac{1}{2a_{1}}\times10^{-(n-1)}$反之,若$x^{*}$的相对误差限$\varepsilon_{r}^{*}\leq\frac{1}{2\left(a_{1}+1\right)}\times10^{-(n-1)}$
+    则$x^{*}$至少具有n位有效数字.
+\end{theorem}
+
+\par 对函数误差的估计,近似使用$$\varepsilon\left(f\left(x^{*}\right)\right) \approx\left|f^{\prime}\left(x^{*}\right)\right| \varepsilon\left(x^{*}\right)$$
+\par 对多元函数使用$$\begin{aligned}
+        e\left(A^{*}\right) & =A^{*}-A=f\left(x_{1}^{*}, \cdots, x_{n}^{*}\right)-f\left(x_{1}, \cdots, x_{n}\right)                                                    \\
+                            & \approx \sum_{k=1}^{n}\left(\frac{\partial f\left(x_{1}^{*}, \cdots, x_{n}^{*}\right)}{\partial x_{k}}\right)\left(x_{k}^{*}-x_{k}\right) \\
+                            & =\sum_{k=1}^{n}\left(\frac{\partial f}{\partial x_{k}}\right)^{*} e_{k}^{*}
+    \end{aligned}$$
+\par 从而有误差限$$\varepsilon\left(A^{*}\right) \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \varepsilon\left(x_{k}^{*}\right)$$
+\par 于是相对误差限$$\varepsilon_{r}^{*}=\varepsilon_{r}\left(A^{*}\right)=\frac{\varepsilon\left(A^{*}\right)}{\left|A^{*}\right|} \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \frac{\varepsilon\left(x_{k}^{*}\right)}{\left|A^{*}\right|}$$
+
+\subsection{误差定性分析与避免误差危害}
+\par 若初始数据误差传播中增长快,称之为\textbf{数值不稳定},如$I_{n}=\mathrm{e}^{-1} \int_{0}^{1} x^{n} \mathrm{e}^{x} d x$例子
+
+\begin{definition}[病态]
+    输入数据微小扰动引起输出数据的较大相对误差叫做\textbf{病态问题},定义相对误差的比值$\left|\frac{f(x)-f\left(x^{*}\right)}{f(x)}\right| /\left|\frac{\Delta x}{x}\right| \approx\left|\frac{x f^{\prime}(x)}{f(x)}\right|=C_{p}$为函数值问题的\textbf{条件数}.
+\end{definition}
+
+\par 避免误差危害,减少有效数字损失的若干原则:
+\begin{itemize}
+    \item 避免相近数相减:如$log$合并成相除,根式化成分式,泰勒展开.
+    \item 避免用绝对值很小的数做除数.
+    \item 注意运算顺序,如$A=52492+\sum_{i=1}^{1000} \delta_{i}$
+\end{itemize}
+
+\begin{algorithm}[多项式求值的秦九韶算法]
+    将多项式求值问题简化为$p(x)=\left(\cdots\left(a_{0} x+a_{1}\right) x+\cdots+a_{n-1}\right) x+a_{n}$从而可以如此迭代$\left\{\begin{array}{l}b_{0}=a_{0} \\ b_{i}=b_{i-1} x^{*}+a_{i} \quad i=1,2, \cdots, n\end{array}\right.$从而有$q(x)=b_{0} x^{n-1}+b_{1} x^{n-2}+\cdots+b_{n-2} x+b_{n-1}$对应$p^{\prime}\left(x^{*}\right)=q\left(x^{*}\right)$
+\end{algorithm}
+
+\begin{algorithm}[迭代法求根]
+    假设离最优解还有距离$\Delta x$,即$\left(x_{0}+\Delta x\right)^{2}=a$,略去平方项(暂时认为很小)有$\Delta x \approx \frac{1}{2}\left(\frac{a}{x_{0}}-x_{0}\right)$,于是可以开始逐步迭代,可以证明序列$\left\{x_{k}\right\}$ 对任何 $x_{0}>0$ 均收敛.
+\end{algorithm}
+
+\begin{algorithm}[松弛法]
+    利用松弛因子构造不同阶数间的近似$S_{1}=T_{2}+\omega\left(T_{2}-T_{1}\right) \approx(1+\omega) T_{2}-\omega T_{1}$,但选取因子需要较强的技巧,暂时是玄学,如辛普森公式$S_{1}=\frac{4}{3} T_{2}-\frac{1}{3} T_{1}=\frac{b-a}{6}[f(a)+4 f(c)+f(b)]$
+\end{algorithm}
+
+\section{插值方法}
+
+\subsection{多项式插值}
+\begin{theorem}
+    $y=f\left(x_{i}\right)$,求次数不超过$n$的多项式使$P\left(x_{i}\right)=y_{i}$,有唯一解(范德蒙德行列式,元素不同时不等于零)
+\end{theorem}
+
+\subsection{拉格朗日插值}\label{Lag}
+\par 选择线性插值基函数,每个节点搞一个,基函数$l_{j}\left(x_{k}\right)=\left\{\begin{array}{ll}1, & k=j \\ 0, & k \neq j\end{array}\right.$选择使得其他节点处为零,只在本节点为1,称此$n+1$个多项式为节点($n+1$个)上的$n$次插值函数,$$L_{n}(x)=\sum_{k=0}^{n} y_{k} l_{k}(x)$$而基函数具体表达式为:
+$$l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1}\right) \cdots\left(x-x_{n}\right)}{\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)}$$
+
+\par 若记$\omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$有$\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)$,从而$$L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}$$
+
+\par 利用插值点处误差为零的条件吗,结合罗尔定理可以得到误差估计$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$
+
+\subsection{牛顿插值}
+\par 拉格朗日插值虽然计算简便,但加入新点需要重新计算,能够逐次插值的牛顿插值法应运而生.
+
+\par 首先假设插值多项式符合形式$P_{n}(x)-a_{0}+a_{1}\left(x-x_{0}\right)+\cdots+a_{n}\left(x-x_{0}\right) \cdots\left(x-x_{n}\right)$,然后一步步求解得到各项系数的表达式.
+
+\begin{definition}
+    一阶均差(也叫差商)$f\left[x_{0}, x_{k}\right]=\frac{f\left(x_{k}\right)-f\left(x_{0}\right)}{x_{k}-x_{0}}$,二阶均差$f\left[x_{0}, x_{1}, x_{k}\right]=\frac{f\left[x_{0}, x_{k}\right]-f\left[x_{0}, x_{1}\right]}{x_{k}-x_{1}}$,$k$阶均差$$f\left[x_{0}, x_{1}, \cdots x_{k}\right]=\frac{f\left[x_{0}, \cdots, x_{k-2}, x_{k}\right]-f\left[x_{0}, x_{1} \cdots, x_{k-1}\right]}{x_{k}-x_{k-1}}$$
+\end{definition}
+
+\begin{property}
+    $k$ 阶均差可表示为 $f\left(x_{j}\right)(j=0,1, \cdots, k)$ 的线性组合
+    $$f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\sum_{j=0}^{k} \frac{f\left(x_{j}\right)}{\left(x_{j}-x_{0}\right) \cdots\left(x_{j}-x_{j-1}\right)\left(x_{j}-x_{j+1}\right) \cdots\left(x_{j}-x_{k}\right)}$$有递推公式$$f\left[x_{0}, x_{1}, \cdots, x_{k}\right]-\frac{\left.f[x_{1}, x_{2}, \cdots, x_{k}\right]-f\left[x_{0}, x_{1}, \cdots, x_{k-1}\right]}{x_{k}-x_{0}}$$且由罗尔定理有$f\left[x_{0}, x_{1}, \cdots, x_{n}\right]=\frac{f^{(n)}(\xi)}{n !}$
+\end{property}
+
+\par 从而有 $f(x)=P_{n}(x)+R_{n}(x)$, 其中 $$P_{n}(x)=f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right) +f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right) \cdots\left(x-x_{n-1}\right) $$余项$$R_{n}(x)=f(x)-P_{n}(x)=f\left[x, x_{0}, \cdots, x_{n}\right] \omega_{n+1}(x)$$其中$\omega_{n+1}(x)$同 \ref{Lag} 中定义.
+
+\par 与拉格朗日插值相比,两者实际上等价,但是牛顿插值计算更方便,余项形式中也可以没有导数,在离散情况下更适合.下面考虑对于离散点等距时的差分形式牛顿插值多项式.
+
+\begin{definition}
+    引入差分的概念,定义一阶(向前)差分$\Delta f_{k}=f_{k+1}-f_{k}$,有$n$阶差分$\Delta^{n} f_{b}=\Delta^{n-1} f_{k+1}-\Delta^{n-1} f_{k}$.
+\end{definition}
+
+\par 有差分和均差的关系$f\left[x_{k}, \cdots, x_{k+m}\right]=\frac{1}{m !} \frac{1}{h^{m}} \Delta^{m} f_{k}$差分与导数的关系$\Delta^{n} f_{k}=h^{n} f^{(n)}(\xi)$.
+
+\par 进一步使用差分替代均差,令$x=x_{0}+t h$,有牛顿前插公式$$P_{n}\left(x_{0}+th\right)=f_{0}+t \Delta f_{0}+\frac{t(i-1)}{2 !} \Delta^{2} f_{0}-\cdots+\frac{t(t-1) \cdots(t-n+1)}{n !} \Delta^{n} f_{0}$$其余项为$$R_{n}(x)=\frac{t(t-1) \cdots(t-n)}{(n+1) !} h^{n+1} f^{(n+1)}(\xi)$$
+
+\subsection{埃尔米特插值(Hermite Interpolation)}
+\par 对插值函数的导数进行了进一步的要求而得到埃尔米特插值方法.对于二次的情况, $f(x)$关于节点 $\left\{x_{i}\right\}_{i=0}^{n}$ 的二重Hermite插值多项式存在且唯一.
+
+\begin{theorem}
+    设 $f \in C^{n}[a, b]$ 为 $x_{0}, x_{1}, \cdots, x_{n}$ 上的相异节点则 $f\left[x_{0}, x_{1}, \cdots, x_{n}\right]$ 是其变量的连续函数.
+\end{theorem}
+
+\par 定义重节点均差$f\left[x_{0}, x_{0}, \cdots, x_{0}\right]=\lim _{x_{i} \rightarrow x_{0}} f\left[x_{0}, x_{1}, \cdots, x_{n}\right]=\frac{1}{n !} f^{(n)}\left(x_{0}\right)$,从而可以又牛顿插值多项式通过极限得到泰勒插值多项式$$P_{n}(x)=f\left(x_{0}\right)+f^{\prime}\left(x_{0}\right)\left(x-x_{0}\right)+\cdots+\frac{f^{(n)}\left(x_{0}\right)}{n !}\left(x-x_{0}\right)^{n}$$有余项$$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !}\left(x-x_{0}\right)^{n+1}, \quad \xi \in(a, b)$$
+
+\par 对于不同情况下有不同的求埃尔米特插值多项式的方案,例如
+
+\begin{enumerate}
+    \item 当有三点和一点导数信息时进行三次插值,可以假设形式为$$P(x)=f\left(x_{0}\right) +f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)
+              +f\left[x_{0}, x_{1}, x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)
+              +A\left(x-x_{0}\right)\left(x-x_{1}\right)\left(x-x_{2}\right)$$其中待定常数为$A=\frac{f^{\prime}\left(x_{1}\right)-f\left[x_{0}, x_{1}\right]-\left(x_{1}-x_{0}\right) f\left[x_{0}, x_{1}, x_{2}\right]}{\left(x_{1}-x_{0}\right)\left(x_{1}-x_{2}\right)}$并可以构造余项$R(x)=k(x)\left(x-x_{0}\right)\left(x-x_{1}\right)^{2}\left(x-x_{2}\right)$,利用罗尔定理球求得$k(x)=\frac{1}{4 !} f^{(4)}(\xi)$,最终有$$R(x)=\frac{1}{4 !} f^{(4)}(\xi)\left(x-x_{0}\right)\left(x-x_{1}\right)^{2}\left(x-x_{2}\right)$$
+    \item 对于有两点两导数情况的两点埃尔米特三次插值$$\begin{array}{ll}
+                  H_{3}\left(x_{k}\right)=y_{k},          & H_{3}\left(x_{k+1}\right)=y_{k+1}          \\
+                  H_{3}^{\prime}\left(x_{k}\right)=m_{k}, & H_{3}^{\prime}\left(x_{k+1}\right)=m_{k+1}
+              \end{array}$$构造基函数$H_{3}(x)=\alpha_{k}(x) y_{k}+\alpha_{k+1}(x) y_{k+1}+\beta_{k}(x) m_{k}+\beta_{k+1}(x) m_{k+1}$,通过构造$\alpha_{k}(x)=(a x+b)\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2}$和$\beta_{k}(x)=a\left(x-x_{k}\right)\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2}$最终完成求解.
+\end{enumerate}
+
+\subsection{分段低次插值}
+
+\par 考虑到高次插值的病态性,分段低次插值同样常用.有分段线性插值和分段三次埃尔米特插值的方法.
+
+\begin{theorem}
+    设 $f \in C^{4}[a, b], I_{h}(x)$为$f(x)$ 在节点
+    $a=x_{0}<x_{1}<\cdots<x_{n}=b$上的分段三次埃尔米特插值多项式,令$h=\max _{0 \leq k \leq n-1}\left(x_{k+1}-x_{k}\right)$则有$$\max _{a \leq x \leq b}\left|f(x)-I_{h}(x)\right| \leq \frac{h^{4}}{384} \max _{a \leq x \leq b}\left|f^{(4)}(x)\right| $$
+\end{theorem}
+
+\par 在分段线性插值导数不连续,分段三次埃尔米特插值则利用了每一段端点值和导数值的信息,达到了一阶导数连续的效果.接下来依旧使用三次多项式插值,但试图进一步追求二阶导数连续.
+
+\subsection{三次样条插值}
+\begin{definition}
+    若函数 $S(x) \in C^{2}[a, b],$ 且在每个小区间 $\left[x_{j}, x_{j+1}\right]$
+    上是三次多项式，其中 $a=x_{0}<x_{1}<\cdots<x_{n}=b$ 是给定节点
+    则称 $S(x)$ 是节点 $x_{0}, x_{1}, \cdots, x_{n}$ 上的三次样条函数.若在节点 $x_{j}$ 上给定函数值 $y_{j}=f\left(x_{j}\right)(j=0,1, \cdots, n)$
+    并成立$S\left(x_{j}\right)=y_{j} \quad(j=0,1, \cdots, n)$则称$S(x)$为三次样条插值函数.
+\end{definition}
+
+\par 在三次样条插值中要求插值函数满足函数值直至二阶导数连续$3n-3$个条件,插值点函数值$n+1$个条件,还需要两个补充条件,通常在边界点加上边界条件如一阶二阶导数信息,其中$S^{\prime \prime}\left(x_{0}\right)=S^{\prime \prime}\left(x_{n}\right)=0$称为自然边界条件.
+
+\par 根据二阶导数值信息$S^{\prime \prime}\left(x_{j}\right)=M_{j}$,可以构造$S^{\prime \prime}(x)=M_{j} \frac{x_{j+1}-x}{h_{j}}+M_{j+1} \frac{x-x_{j}}{h_{j}}$,进行积分并求解积分常数后有$$S(x) =M_{j} \frac{\left(x_{j+1}-x\right)^{3}}{6 h_{j}}+M_{j+1} \frac{\left(x-x_{j}\right)^{3}}{6 h_{j}}
+    +\left(y_{j}-\frac{M_{j} h_{j}^{2}}{6}\right) \frac{x_{j+1}-x}{h_{j}}+\left(y_{j+1}-\frac{M_{j+1} h_{j}^{2}}{6}\right) \frac{x-x_{j}}{h_{j}}$$利用一阶导数连续$S^{\prime}\left(x_{j}+0\right)=S^{\prime}\left(x_{j}-0\right)$,
+记$\mu_{j}=\frac{h_{j-1}}{h_{j-1}+h_{j}}, \lambda_{j}=\frac{h_{j}}{h_{j-1}+h_{j}}$,$d_{j}=6 \frac{f\left[x_{j}, x_{j+1}\right]-f\left[x_{j-1}, x_{j}\right]}{h_{j-1}+h_{j} \circ}=6 f\left[x_{j-1}, x_{j}, x_{j+1}\right]$可得$$\mu_{j} M_{j-1}+2 M_{j}+\lambda_{j} M_{j+1}=d_{j} \quad(j=1,2, \cdots, n-1)$$最后利用边界条件即可得到满足的方程组求解.
+
+\begin{theorem}
+    设 $f(x) \in C^{4}[a, b], \quad S(x)$ 为满足第一种或第二种边界条件的三次样条函数,令$h=\max _{0 \leq i \leq x-1} h_{i}, h_{i}=x_{i+1}-x_{i}(i=0,1, \cdots, n-1)$
+    则有估计式$$\max _{a \leq x \leq b}\left|f^{(k)}(x)-S^{(k)}(x)\right| \leq C_{k} \max _{a \leq x \leq b}\left|f^{(4)}(x)\right| h^{4-k}$$其中$C_{0}=\frac{5}{384}, C_{1}=\frac{1}{24}, C_{2}=\frac{3}{8}$,此估计式同时表明了函数值至二阶导数均一致收敛于原始$f(x)$的值至二阶导数.
+\end{theorem}
+
+\section{函数逼近与快速傅里叶变换}
+\subsection{函数逼近概念}
+
+\par 已经讨论的插值方法中通过简单函数逼近未知函数,属于函数逼近的一种,下面试图寻找一种函数类使得选择其中函数可以方便地逼近未知函数并在某种度量意义下误差最小.
+
+\begin{theorem}[Weierstrass-Theorem]
+    设 $f(x) \subset C [a, b],$则对任何$\varepsilon>0,$ 总存在一个代数多项式 $p(x),$ 使$\max _{a \leq x \leq b}|f(x)-p(x)|<\varepsilon$在$[a,b]$上一致成立.
+\end{theorem}
+
+\par Bernstein 给出构造性证明, 但构造的多项式收敛较慢, 所以并不常用.
+
+\begin{definition}[赋范线性空间]
+    设 $S$ 为线性空间, $x \in S$, 若存在唯一实数 $||\cdot||$, 满足条件:
+    \begin{enumerate}
+        \item  $\quad\|x\| \geq 0$ 当且仅当 $x=0$ 时 $,\|x\|=0$ (正定性)
+        \item  $\quad\|\alpha x\|=|\alpha|\|x\|, \quad \alpha \in \mathbb{R}$ (齐次性)
+        \item  $\quad\|x+y\| \leq\|x\|+\|y\|, \quad x, y \in S \quad$ (三角不等式)
+    \end{enumerate}
+    则称 $||\cdot||$ 为线性空间 $S$ 上的范数, $S$ 与 $||\cdot||$ 一起称为赋范线性空间, 记为 $X$.
+\end{definition}
+
+
+\begin{definition}[内积]
+    满足以下条件:
+    \begin{enumerate}
+        \item $(u, v)=\overline{(v, u)}, \quad \forall u, v \in \mathrm{X}$ (共轭)
+        \item $(\alpha u, v)=\alpha(u, v), \quad \alpha \in \mathrm{K}, u, v \in \mathrm{X}$
+        \item $(u+v, w)=(u, w)+(v, w), \quad \forall u, v, w \in X$
+        \item $(u, u) \geq 0, \text { 当且仅当 } u=0 \text { 时 } (u, u)=0$
+    \end{enumerate}
+    则称 $(u, v)$ 为 $X$ 上 $u$ 与 $v$ 的内积, 定义了内积的空间称为内积空间, $(u,v)=0$ 定义为正交.
+\end{definition}
+
+\begin{theorem}[Cauchy-Schwarz 不等式]
+    对 $\forall u, v \in X$ 有 $|(u, v)|^{2} \leq(u, u)(v, v)$
+\end{theorem}
+
+\begin{theorem}
+    Gram 矩阵 $G=\left[\begin{array}{cccc}
+                \left(u_{1}, u_{1}\right) & \left(u_{2}, u_{1}\right) & \cdots & \left(u_{n}, u_{1}\right) \\
+                \left(u_{1}, u_{2}\right) & \left(u_{2}, u_{2}\right) & \cdots & \left(u_{n}, u_{2}\right) \\
+                \vdots                    & \vdots                    &        & \vdots                    \\
+                \left(u_{1}, u_{n}\right) & \left(u_{2}, u_{n}\right) & \cdots & \left(u_{n}, u_{n}\right)
+            \end{array}\right]$ 非奇异的\textbf{充要条件}是$u_{1}, u_{2}, \cdots, u_{n}$ 线性无关
+\end{theorem}
+
+\begin{definition}[权函数]
+    定义非负函数 $\rho (x)$ 为 $[a,b]$ 上的权函数, 满足:
+    \begin{enumerate}
+        \item $\int_{a}^{b} x^{k} \rho(x) d x$ 存在且为有限值 $(k=0,1, \cdots)$
+        \item 对 [a, b] 上的非负连续函数 $g(x)$, 如果 $\int_{a}^{b} g(x) \rho(x) d x=0$ 能推出$g(x) \equiv 0$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[最佳逼近]
+    $$\left\|f(x)-P^{*}(x)\right\|=\min _{P \in H_{n}}\|f(x)-P(x)\|$$ 称 $P^{*}(x)$ 是 $f(x)$ 在 $[a, b]$ 上的\textbf{最佳逼近多项式}. 若此处取无穷范数则 $$\left\|f(x)-P^{*}(x)\right\|_{\infty} =\min _{P \in H_{n}}\|f(x)-P(x)\|_{\infty} =\min _{P \in H_{n}} \max _{a \leq x \leq b}|f(x)-P(x)|$$ 称为\textbf{最优一致逼近多项式}(无穷范数). 另外还有\textbf{最佳平方逼近多项式}(二范数), 即最小二乘拟合.
+\end{definition}
+
+\subsection{正交多项式}
+\begin{definition}
+    $(f, g)=\int_{a}^{b} \rho(x) f(x) g(x) d x=0$ 称 $f(x)$ 与 $g(x)$ 在 $[a, b]$ 上带权 $\rho(x)$ 正交. 满足 $\left(\varphi_{j}, \varphi_{k}\right)=\int_{a}^{b} \rho(x) \varphi_{j}(x) \varphi_{k}(x) d x=\left\{\begin{array}{l}0, \quad j \neq k \\ A_{k}>0, j=k\end{array}\right.$ 称 $\left\{\varphi_{k}(x)\right\}$ 在 $[a, b]$ 上带权 $\rho(x)$ 的\textbf{正交函数族}, 且当其中的积分值 $A_{k} \equiv 1$ 时称为\textbf{标准正交函数族}.
+\end{definition}
+
+\par 例如, 三角函数族 $1, \cos x, \sin x, \cos 2 x, \sin 2 x, \cdots$ 在区间 $[-\pi, \pi]$ 上正交.
+
+\par 事实上由于任何 $P(x) \in H_{n}$ 均可表示为 $\varphi_{0}(x), \varphi_{1}(x), \cdots, \varphi_{n}(x)$ 的线性组合, 即 $P(x)=\sum_{j=0}^{n} c_{j} \varphi_{j}(x)$ 可以得到 $\varphi_{n}(x)$ 与任一次数小于 $n$ 的多项式 $P(x) \in H_{n-1}$ 正交.
+
+\begin{theorem}
+    对于正交函数族, 存在能够简化计算的递推关系 $\varphi_{n+1}(x)=\left(x-\alpha_{n}\right) \varphi_{n}(x)-\beta_{n} \varphi_{n-1}(x)$ 其中 $\varphi_{0}(x)=1, \varphi_{-1}(x)=0$, $\alpha_{n}=\frac{\left(x \varphi_{n}(x), \varphi_{n}(x)\right)}{\left(\varphi_{n}(x), \varphi_{n}(x)\right)}$ $\beta_{n}=\frac{\left(\varphi_{n}(x) \varphi_{n}(x)\right)}{\left(\varphi_{n-1}(x), \varphi_{n-1}(x)\right)}$ (带权)
+\end{theorem}
+
+\begin{theorem}
+    $\varphi_{n}(x)(n \geq 1)$ 在区间 $(a, b)$ 内有 $n$ 个不同的零点, 即每个零点都是单重的.
+\end{theorem}
+
+\begin{definition}
+    当区间为 $[-1,1]$ 权函数 $\rho(x) \equiv 1$ 时, 由 $\left\{1, x, \cdots, x^{n}, \cdots\right\}$ 正交化得到的多项式就称为\textbf{勒让德(Legendre)多项式},
+    $$
+        P_{0}(x)=1, \quad P_{n}(x)=\frac{1}{2^{n} n !} \frac{d^{n}}{d x^{n}}\left\{\left(x^{2}-1\right)^{n}\right\}
+    $$
+    $p(x)$ 的首项系数为 $a_{n}=\frac{(2 n) !}{2^{n}(n !)^{2}}$, 勒让德多项式有以下性质:
+    \begin{enumerate}
+        \item 正交性 $\int_{-1}^{1} P_{n}(x) P_{m}(x) d x=\left\{\begin{array}{cl}0, & m \neq n \\ \frac{2}{2 n+1}, & m=n\end{array}\right.$
+        \item 奇偶性 $P_{n}(-x)=(-1)^{n} P_{n}(x)$
+        \item 递推关系 $(n+1) P_{n+1}(x)=(2 n+1) x P_{n}(x)-n P_{n-1}(x)$
+        \item $P_{n}(x)$ 在区间 $[-1,1]$ 内有 $n$ 个不同的实零点.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    当权函数 $\rho(x)=\frac{1}{\sqrt{1-x^{2}}}, \quad$ 区间为[ $\left.-1,1\right]$ 时， 由序
+    列 $\left\{1, x, \cdots, x^{n}, \cdots\right\}$ 正交化得到的正交多项式就是 \textbf{切比雪夫
+        (Chebyshev)多项式}. $T_{n}(x)=\cos (n \arccos x), \ |x| \leq 1$ 若令 $x=\cos \theta$ , 则 $T_{n}(x)=\cos n \theta$
+
+    \begin{enumerate}
+        \item 递推关系 $T_{n+1}(x)=2 x T_{n}(x)-T_{n-1}(x) \quad(n=1,2, \cdots)$
+              $T_{0}(x)=1, \quad T_{1}(x)=x$
+        \item $\int_{-1}^{1} \frac{T_{n}(x) T_{m}(x) d x}{\sqrt{1-x^{2}}}=\left\{\begin{array}{ll}0, & n \neq m \\ \frac{\pi}{2}, & n=m \neq 0 \\ \pi, & n=m=0\end{array}\right.$
+        \item $T_{2 k}(x)$ 只含 $x$ 的偶次幂 $, T_{2 k+1}(x)$ 只含 $x$ 的奇次幂. 这个性质由递推关系直接得到.
+        \item $T_{n}(x)$ 在区间 [-1,1] 上有 $n$ 个零点 $x_{k}=\cos \frac{2 k-1}{2 n} \pi $ $k=1,2, \cdots, n$
+        \item $T_{n}(x)$ 的首项 $x^{n}$ 的系数为 $2^{n-1}$
+              若令 $\widetilde{T}_{0}(x)=1, \widetilde{T}_{n}(x)=\frac{1}{2^{n-1}} T_{n}(x), n=1,2, \cdots,$
+              则 $\widetilde{T}_{n}(x)$ 是首项系数为1的切比雪夫多项式.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    设 $\widetilde{T}_{n}(x)$ 是首项系数为1的切比雪夫多项式，则
+    $$
+        \max _{-1 \leq x \leq 1}\left|\widetilde{T}_{n}(x)\right|=\max _{-1 \leq x \leq 1}|P(x)|, \quad \forall P(x) \in \widetilde{H}_{n}
+    $$
+    且
+    $$
+        \max _{-1 \leq x \leq 1}\left|\widetilde{T}_{n}(x)\right|=\frac{1}{2^{n-1}}
+    $$ 有 $\max _{-1 \leq x \leq 1}\left|\widetilde{T}_{n}(x)\right|={\max \min}_{p \in H_{n}-1 \leq x \leq 1}|P(x)|=\frac{1}{2^{n-1}}$
+\end{theorem}
+
+\begin{theorem}
+    设插值节点 $x_{0}, x_{1}, \cdots, x_{n}$ 为切比雪夫多项式 $T_{n+1}(x)$ 零点, 被插函数 $f \in C^{n+1}[-1,1], L_{n}(x)$ 为相应的插值多项式, 则
+    $$
+        \max _{-1 \leq x \leq 1}\left|f(x)-L_{n}(x)\right| \leq \frac{1}{2^{n}(n+1) !}\left\|f^{(n+1)}(x)\right\|_{\infty}
+    $$
+\end{theorem}
+
+\par 所以使用切比雪夫多项式零点插值可以避免龙格现象, 保证区间上的收敛性.
+
+\subsection{最佳平方逼近}
+
+\begin{definition}
+    定义最佳平方逼近函数 $S(x)$ 有 $\left\|f(x)-S^{*}(x)\right\|_{2}^{2} =\min _{S(x) \in \varphi}\|f(x)-S(x)\|_{2}^{2} =\min _{S(x) \in \varphi} \int_{a}^{b} \rho(x)[f(x)-S(x)]^{2} d x $
+    从而可以推导出 $\sum_{j=0}^{n}\left(\varphi_{k}(x), \varphi_{j}(x)\right) a_{j}=\left(f(x), \varphi_{k}(x)\right) \quad(k=0,1, \cdots, n)$ 称为法方程, 由于对应 Grammer 矩阵不为零, 方程有唯一解.
+\end{definition}
+
+\par 当使用正交函数族进行逼近时, 会给求解线性方程组带来很大的简便, 能够直接得到 $S^{*}(x)=\sum_{k=0}^{n} \frac{\left(f(x), \varphi_{k}(x)\right)}{\left\|\varphi_{k}(x)\right\|_{2}^{2}} \varphi_{k}(x)$. 由此可以得到贝塞尔不等式 $$ \sum_{k=1}^{n}\left(a_{k}^{*}\left\|\varphi_{k}(x)\right\|_{2}\right)^{2} \leq\|f(x)\|_{2}^{2} $$
+
+\begin{theorem}
+    设 $f(x) \in \mathrm{C}[a, b], S^{*}(x)$ 是 $f(x)$
+    的最佳平方逼近多项式, 其中 $\left\{\varphi_{k}(x), k=0,1,2, \cdots, n\right\}$
+    是正交多项式族则有
+    $$
+        \lim _{n \rightarrow \infty}\left\|f(x)-S_{n}^{*}(x)\right\|_{2}=0
+    $$
+\end{theorem}
+
+\begin{theorem}
+    当原函数具有较好的光滑性时, 可以得到一致收敛的结论, 设 $f(x) \in \mathrm{C}^{2}[-1,1], \quad S_{n}^{*}(x)$ 由(3.13)给出
+    则对 $\forall x \in[-1,1]$ 和 $\forall \varepsilon>0, \quad$ 当 $n$ 充分大时有
+    $$
+        \left|f(x)-S_{n}^{*}(x)\right| \leq \frac{\varepsilon}{\sqrt{n}}
+    $$
+\end{theorem}
+
+\begin{theorem}
+    在所有最高次项系数为 $1$ 的 $n$ 次多项式中, 勒让德多项式 $\widetilde{P}_{n}(x)$ 在 $[-1, 1]$ 上与零的平方误差最小
+\end{theorem}
+
+\begin{definition}
+    如果 $f(x) \in C[-1,1],$ 按 $\left\{T_{k}(x)\right\}_{0}^{\infty}$ 展成广义傅里叶级数,
+    可得级数 $\frac{C_{0}^{*}}{2}+\sum_{k=1}^{\infty} C_{k}^{*} T_{k}(x)$
+    其中系数 $C_{k}^{*}=\frac{2}{\pi} \int_{-1}^{1} \frac{f(x) T_{k}(x) d x}{\sqrt{1-x^{2}}}, \quad k=0,1, \cdots$ 这里 $ T_{k}(x)=\cos (k \arccos x), \quad|x| \leq 1$ 称为 $f(x)$ 在 $[-1,1]$ 上的切比雪夫级数.
+    若令 $x=\cos \theta, 0 \leq \theta \leq \pi,$ 则上式就是 $f(\cos \theta)$ 的傅里叶级数.
+\end{definition}
+
+\par 根据傅里叶级数理论, 只要 $f^{\prime \prime}(x)$在$[-1,1]$上分段连续, 则 $f(x)$ 在 $[-1,1]$ 上的切比雪夫级数一致收敛于 $f(x)$ 从而对于部分和 $C_{n}^{*}(x)=\frac{C_{0}^{*}}{2}+\sum_{k=1}^{n} C_{k}^{*} T_{k}(x)$ 有 $f(x)-C_{n}^{*}(x) \approx C_{n+1}^{*} T_{n+1}(x)$
+
+\subsection{曲线拟合的最小二乘法}
+
+
+
+
+
+
+
+
+\end{document}

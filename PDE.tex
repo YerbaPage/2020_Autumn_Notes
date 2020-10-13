@@ -1,0 +1,41 @@
+\documentclass[10pt]{yerbaformat}
+\title{数学物理方程 Notes\footnote{EEEEEErin~}}
+\date{\today}
+
+\begin{document}
+\author{}
+\maketitle
+\tableofcontents
+\footnotesize
+
+\section{\href{https://wenku.baidu.com/view/cf58eb62ed630b1c58eeb506.html}{波动方程}}
+\url{https://wenku.baidu.com/view/2a4ba23b76c66137ee0619e9.html#} 求解思路及 Cauchy 问题
+$$
+\left\{\begin{array}{l}
+\frac{\partial^{2} u}{\partial t^{2}}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} + f(x, t), \quad-\infty<x<+\infty, t>0 \\
+\left.u\right|_{t=0}=\varphi(x),\left.\frac{\partial u}{\partial t}\right|_{t=0}=\phi(x)
+\end{array}\right.
+$$
+\par 根据齐次化原理和变量变换的方法可以得到非齐次波动方程的解为\textbf{(达朗贝尔公式)}
+$$
+u(x, t)=\frac{1}{2}(\varphi(x-a t)+\varphi(x+a t))+\frac{1}{2 a} \int_{x-a t}^{x+a t} \psi(\xi) d \xi +\frac{1}{2 a} \int_{0}^{t} \int_{x-a(t-\tau)}^{x+a(t-\tau)} f(\xi, \tau) d \xi d \tau
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+\end{document}
