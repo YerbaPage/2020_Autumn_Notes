@@ -5,22 +5,56 @@
 \begin{document}
 \author{}
 \maketitle
-\tableofcontents
+% \tableofcontents
 \footnotesize
 
 \section{\href{https://wenku.baidu.com/view/cf58eb62ed630b1c58eeb506.html}{波动方程}}
+
+\subsection{达朗贝尔公式和波的传播}
+
+\par 端点值初始条件和初始时刻状态初始条件合称为定解条件. 方程对各阶导数线性称为线性方程, 对于高阶导数总体来说线性脚拟线性方程. 定解存在且稳定时称为问题适定.
 \url{https://wenku.baidu.com/view/2a4ba23b76c66137ee0619e9.html#} 求解思路及 Cauchy 问题
 $$
-\left\{\begin{array}{l}
-\frac{\partial^{2} u}{\partial t^{2}}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} + f(x, t), \quad-\infty<x<+\infty, t>0 \\
-\left.u\right|_{t=0}=\varphi(x),\left.\frac{\partial u}{\partial t}\right|_{t=0}=\phi(x)
-\end{array}\right.
+    \left\{\begin{array}{l}
+        \frac{\partial^{2} u}{\partial t^{2}}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} + f(x, t), \quad-\infty<x<+\infty, t>0 \\
+        \left.u\right|_{t=0}=\varphi(x),\left.\frac{\partial u}{\partial t}\right|_{t=0}=\phi(x)
+    \end{array}\right.
 $$
-\par 根据齐次化原理和变量变换的方法可以得到非齐次波动方程的解为\textbf{(达朗贝尔公式)}
+\par 首先由叠加原理, 可以将原方程组拆成两半(称为"传播波法"):
+
+齐次的 (I) $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}-a^{2} \frac{\partial^{2} u}{\partial x^{2}}=0 \\ t=0: u=\varphi(x), \frac{\partial u}{\partial t}=\psi(x)\end{array}\right.$
+和非齐次的 (II) $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}-a^{2} \frac{\partial^{2} u}{\partial x^{2}}=f(x, t), \\ t=0: u=0, \frac{\partial u}{\partial t}=0\end{array}\right.$
+
+\par 对于问题 (I), 由自由振动方程可以导出 $u(x, t)=F(x-a t)+G(x+a t)$, 再带入定解条件可以解得\textbf{达朗贝尔公式} 
 $$
-u(x, t)=\frac{1}{2}(\varphi(x-a t)+\varphi(x+a t))+\frac{1}{2 a} \int_{x-a t}^{x+a t} \psi(\xi) d \xi +\frac{1}{2 a} \int_{0}^{t} \int_{x-a(t-\tau)}^{x+a(t-\tau)} f(\xi, \tau) d \xi d \tau
+    u(x, t)=\frac{\varphi(x-a t)+\varphi(x+a t)}{2}+\frac{1}{2 a} \int_{x-a t}^{x+a t} \psi(\alpha) d \alpha
 $$
 
+\par 对于问题 (II), 引入\textbf{齐次化原理}, 转化为求齐次方程定解问题 $\left\{\begin{array}{l}\frac{\partial^{2} W}{\partial t^{2}}-a^{2} \frac{\partial^{2} W}{\partial x^{2}}=0 \quad(t>\tau) \\ t=\tau: W=0, \frac{\partial W}{\partial t}=f(x, \tau)\end{array}\right.$ 的解 $$u(x, t)=\int_{0}^{t} W(x, t ; \tau) d \tau \frac{1}{2 a} \int_{0}^{t} \int_{x-a(t-\tau)}^{x+a(t-r)} f(\xi, \tau) d \xi d \tau $$ 
+\par 最后将两个解叠加就成了.
+
+\subsection{初边值问题的分离变量法}
+\subsubsection{齐次边界条件}
+\par 对于波动方程的初值问题, 引入分离变量法.(上一节是自由边界) 首先原问题 $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}-a^{2} \frac{\partial^{2} u}{\partial x^{2}}=f(x, t) \\ t=0: u=\varphi(x), \frac{\partial u}{\partial t}=\psi(x), \\ x=0: u=0 \\ x=l: u=0\end{array}\right.$ 可以分解为两个初边值问题:
+
+(I) $\left\{\begin{array}{l}\frac{\partial^{2} u_{1}}{\partial t^{2}}-a^{2} \frac{\partial^{2} u_{1}}{\partial x^{2}}=0 \\ t=0: u_{1}=\varphi(x), \frac{\partial u_{1}}{\partial t}=\psi(x), \\ x=0 \text { 和 } x=l: u_{1}=0\end{array}\right.$ 
+和 (II) $\left\{\begin{array}{l}\frac{\partial^{2} u_{2}}{\partial t^{2}}-a^{2} \frac{\partial^{2} u_{2}}{\partial x^{2}}=f(x, t) \\ t=0: u_{2}=0, \frac{\partial u_{2}}{\partial t}=0 \\ x=0 \text { 和 } x=l: u_{2}=0\end{array}\right.$
+
+\par 对于问题 (I), 试图将震动分解成单音 $X(x) T(t)$ 的叠加, 带入振动方程可以得到本征值问题 $\frac{T^{\prime \prime}(t)}{a^{2} T(t)}=\frac{X^{N}(x)}{X(x)}=-\lambda$ 
+进一步有通解 $X(x)=C_{1} \cos \sqrt{\lambda} x+C_{2} \sin \sqrt{\lambda} x$ , 带入边界条件确定本征值 $\lambda$ 后进一步利用本征值和\textbf{初边值问题 $(t=0)$ }确定系数例如 $\left\{\begin{array}{l}A_{t}=\frac{2}{l} \int_{0}^{t} \varphi(\xi) \sin \frac{k \pi}{l} \xi d \xi \\ B_{k}=\frac{2}{k \pi a} \int_{0}^{t} \psi(\xi) \sin \frac{k \pi}{l} \xi d \xi\end{array}\right.$
+
+\par 补充傅里叶级数 $f(x) \sim \frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left(a_{n} \cos n x+b_{n} \sin n x\right)$ 对应 $\begin{aligned} a_{n} &=\frac{2}{\pi} \int_{0}^{\pi} f(x) \cos n x \mathrm{d} x \\ b_{n} &=\frac{2}{\pi} \int_{0}^{\pi} f(x) \sin n x \mathrm{d} x \end{aligned}$
+
+\par 对于问题 (II), 同样有齐次化原理得到 
+$$
+u(x, t)=\sum_{k=1}^{\infty} \int_{0}^{t} B_{k}(\tau) \sin \frac{k \pi a}{l}(t-\tau) d \tau \cdot \sin \frac{k \pi}{l} x
+$$
+其中 $B_{k}(\tau)=\frac{2}{k \pi a} \int_{0}^{t} f(\xi, \tau) \sin \frac{k \pi}{l} \xi d \xi$
+
+\subsubsection{非齐次边界条件}
+\par 对于一般化的问题 $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}-a^{2} \frac{\partial^{2} u}{\partial x^{2}}=f(x, t) \\ t=0: u=\varphi(x), \frac{\partial u}{\partial t}=\psi(x) \\ x=0: u=\mu_{1}(t) \\ x=l: u=\mu_{2}(t)\end{array}\right.$ 进行变换 $V=u(x,t)-(\mu_{1}(t)+\frac{x}{l}\left(\mu_{2}(t)-\mu_{1}(t)\right))$
+
+\subsection{高维波动方程的柯西问题}
 
 
 
@@ -33,9 +67,4 @@ $$
 
 
 
-
-
-
-
-  
 \end{document}
