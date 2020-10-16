@@ -230,20 +230,24 @@
                       =                   & \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \frac{\partial}{\partial \theta}\left[\prod_{i=1}^{n} f\left(x_{i} ; \theta\right)\right] d x_{1} \cdots d x_{n}
                   \end{aligned}$$
     \end{enumerate}
-    则有$$D_{\theta}(T) \geqslant \frac{\left[g^{\prime}(\theta)\right]^{2}}{n I(\theta)}$$ 对一切 $\theta \in \boldsymbol{\Theta}$成立,且等号成立的充要条件是$\frac{\partial}{\partial \theta}\left[\ln \prod_{i=1}^{n} f\left(\xi_{i} ; \theta\right)\right]=C(\theta)[T-g(\theta)]$几乎处处成立,其中 C( $\theta) \neq 0$ 是与样本无关的数. 特别, 当 $g(\theta)=\theta$ 时有$g(\theta)$ 的 $R-C$ 下界$$D_{\theta}(T) \geqslant \frac{1}{n I(\theta)}$$. 且当等号成立时称 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的有效估计量.
+    则有$$D_{\theta}(T) \geqslant \frac{\left[g^{\prime}(\theta)\right]^{2}}{n I(\theta)}$$ 对一切 $\theta \in \boldsymbol{\Theta}$成立,且等号成立的充要条件是$\frac{\partial}{\partial \theta}\left[\ln \prod_{i=1}^{n} f\left(\xi_{i} ; \theta\right)\right]=C(\theta)[T-g(\theta)]$几乎处处成立,其中 C( $\theta) \neq 0$ 是与样本无关的数. 特别, 当 $g(\theta)=\theta$ 时有$g(\theta)$ 的 $R-C$ 下界$$D_{\theta}(T) \geqslant \frac{1}{n I(\theta)}$$. 且当等号成立时称 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的\textbf{有效估计量}.
 \end{theorem}
 
-\par 事实上 $I(\theta)=-E_{\theta}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]$ 故等价有 $$D_{\theta}(T) \geqslant-\frac{\left(g^{\prime}(\theta)\right]^{2}}{n E_{\phi}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]}$$ 对一切 $\theta \in \boldsymbol{\theta}$, 对于离散型情况, 只要将求和换成积分则同样成立.
+\par 事实上 $I(\theta)=-E_{\theta}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]$ 故等价有 $$D_{\theta}(T) \geqslant-\frac{\left(g^{\prime}(\theta)\right)^{2}}{n E_{\phi}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]}$$ 对一切 $\theta \in \boldsymbol{\theta}$, 对于离散型情况, 只要将求和换成积分则同样成立.
 
 \begin{proposition}
     在定理 \ref{cr} 的条件下我们有
     \begin{enumerate}
-        \item 可估计函数 $g(\theta)$ 的有效估计量存在且为 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$
-              的充繫条件是 $\frac{\partial}{\partial \theta} \ln L(\theta)$ 可化为形式 $C(\theta)[T-g(\theta)]$,即 $$\frac{\partial}{\partial \theta} \ln L(\theta)=C(\theta)[T-g(\theta)], \text { a. s. }$$ 其中 $C(\theta) \neq 0$ 甚与样本无关的函数,且 $E_{\theta}(T)=g(\theta)$
-        \item 若上一条中等式成立, 进一步有 $\frac{\left[g^{1}(\theta)\right]^{2}}{n I(\theta)}=\frac{g^{\prime}(\theta)}{C(\theta)}$ 从而 $I(\theta)=\frac{C(\theta) g^{\prime}(\theta)}{n}$ 特别当 $g(\theta)=\theta$ 时,有 $\frac{1}{n I(\theta)}=\frac{1}{C(\theta)}, \quad I(\theta)=\frac{C(\theta)}{n}$
+        \item 可估计函数 $g(\theta)$ 的\textbf{有效估计量}存在且为 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$
+              的充要条件是 $\frac{\partial}{\partial \theta} \ln L(\theta)$ 可化为形式 $C(\theta)(T-g(\theta))$,即 $$\frac{\partial}{\partial \theta} \ln L(\theta)=C(\theta)[T-g(\theta)], \text { a.s. }$$ 其中 $C(\theta) \neq 0$ 是与样本无关的函数,且 $E_{\theta}(T)=g(\theta)$
+        \item 若上一条中等式成立, 进一步有 $\frac{\left[g'(\theta)\right]^{2}}{n I(\theta)}=\frac{g^{\prime}(\theta)}{C(\theta)}$ 从而 $I(\theta)=\frac{C(\theta) g^{\prime}(\theta)}{n}$ 特别当 $g(\theta)=\theta$ 时,有 $\frac{1}{n I(\theta)}=\frac{1}{C(\theta)}, \quad I(\theta)=\frac{C(\theta)}{n}$
         \item 可估计函数的有效估计量是唯一的. 且一定是 $g(\theta)$ 的唯一极大似然估计量
     \end{enumerate}
 \end{proposition}
+
+\begin{definition}
+    定义估计量的\textbf{效率}为 $e_{n}(T)=\frac{\left[g^{\prime}(\theta)\right]^{2}}{n I(\theta)} / D_{\theta}(T)$ 若此估计量对应的效率趋近于零, 称为渐进有效估计量.
+\end{definition}
 
 \subsubsection{一致最小方差无偏估计量}
 \begin{definition}\label{nobias}
@@ -251,13 +255,12 @@
     $$
         D_{\theta}(T) \leqslant D_{\theta}\left(T_{1}\right), \quad \text { 对一切 } \theta \in \Theta
     $$
-    则称 $T\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的一致最小方差无偏估计量, 记
+    则称 $T\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 为 $g(\theta)$ 的\textbf{一致最小方差无偏估计量}(简称\textbf{最优无偏估计量}), 记
     $$
         U=\mid T: E_{\theta}(T)=\theta, D_{\theta}(T)<\infty, \text { 对一切 } \left.\theta \in \Theta\right\}
     $$
-    $$U_{0}=\left\{T_{0}: E_{\theta}\left(T_{0}\right)=0, D_{\theta}\left(T_{0}\right)<\infty,\right.$$ 对一切 $\left.\theta \in \Theta\right\}$, 即 $U$ 为未知参数 $\theta$ 的方差有限的无偏估计量集, $U_{0}$ 为 $\theta$ 的方差有限数学期望为零的估计量集
+    $$U_{0}=\left\{T_{0}: E_{\theta}\left(T_{0}\right)=0, D_{\theta}\left(T_{0}\right)<\infty,\right. \left.\theta \in \Theta\right\}$$ 即 $U$ 为未知参数 $\theta$ 的方差有限的无偏估计量集, $U_{0}$ 为 $\theta$ 的方差有限数学期望为零的估计量集
 \end{definition}
-
 
 \begin{theorem}
     设 $U$ 非空, $T\left(\xi_{1}, \xi_{2}, \cdots, \xi_{\text {a }}\right) \in U,$ 则 $T_{\Delta} T$ $\left(\xi_{1}, \xi_{2}, \cdots, \xi_{n}\right)$ 为未知参数 $\theta$ 的最优无偏估计量的充要条件是对每个 $T_{0} \in U_{0}$ 有 $$E_{\theta}\left(T T_{0}\right)=0, \  \text { 对一切 } \theta \in \Theta$$
@@ -282,9 +285,25 @@
 
 \subsubsection{一致性(相合性)}
 
+\begin{definition}
+    若满足 $D_{\theta}(T)=\frac{\left[g^{\prime}(\theta)\right]^{2}}{n I(\theta)}$ 则称 $T$ 为 $g(\theta)$ 的\textbf{有效估计量}
+\end{definition}
+\par 若 $\frac{\partial^{2}}{\partial \theta^{2}} f(\xi ; \theta)$ 存在，且满足正则条件，则 $I(\theta)=-E_{\theta}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]$
+
+\subsection{区间估计}
+\par 希望得到一个区间, 使得待估计量以一定概率处在区间中.
+\subsubsection{一个正态总体}
+\par 若 $\sigma$ 已知, 可以通过查表得到 $\left(\bar{\xi} \pm \frac{\sigma}{\sqrt{n}} u_{1-\frac{\alpha}{2}}\right)$ 为 $a$ 的 $1-\alpha$ 置信区间.
+
+\par 当 $\sigma$ 未知时, 因为 $\tilde{S}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{2}$ 是 $\sigma^{2}$ 的最优无偏估计, 利用 $\tilde{S}$ 替换 $\frac{\bar{\xi}-a}{\sigma / \sqrt{n}}$ 中的 $\sigma$ 有 $\frac{\bar{\xi}-a}{\tilde{S} / \sqrt{n}} \sim t(n-1)$ , 所以只要将 $u_{1-\frac{\alpha}{2}}$ 换成 $t_{1-\frac{\alpha}{2}}(n-1)$
+
+\par 当未知 $a$ 需要估计 $\sigma^2$ 时, 利用 $\frac{(n-1) \tilde{S}^{2}}{\sigma^{2}} \sim \chi^{2}(n-1)$, 假设上下各占用一半 $\alpha$ , 最终得到置信区间为 $\left(\frac{(n-1) \tilde{S}^{2}}{\chi_{1-\frac{\alpha}{2}}^{2}(n-1)}, \frac{(n-1) \tilde{S}^{2}}{\chi_{\frac{\alpha}{2}}^{2}(n-1)}\right)$ .
+
+\subsubsection{两个正态总体}
+\par 估计两者平均值之差时若 $\sigma_{1}^{2}, \sigma_{2}^{2}$ 已知, 利用 $\frac{(\bar{\xi}-\bar{\eta})-\left(a_{1}-a_{2}\right)}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}} \sim N(0,1)$ 有置信区间 $\left((\bar{\xi}-\bar{\eta}) \pm u_{1-\frac{\alpha}{2}} \sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}\right)$
 
 
-
+\subsection{贝叶斯(Bayes)估计}
 
 
 \end{document}
