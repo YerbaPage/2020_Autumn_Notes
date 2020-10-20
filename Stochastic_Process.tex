@@ -9,36 +9,56 @@
 \footnotesize
 \section{基本概念}
 \begin{definition}[矩母函数]
-对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
-1,$$ 正态分布的矩母函数为$M_{X}t=e^{\mu t+\frac{t^{2} \sigma^{2}}{2}}$
+    对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
+        1,$$ 正态分布的矩母函数为$M_{X}t=e^{\mu t+\frac{t^{2} \sigma^{2}}{2}}$
 \end{definition}
 \par 对于相互独立的随机变量有$M_{X+Y}(t)=M_{X}(t) \cdot M_{Y}(t)$.
 
 
 
 \begin{definition}[数列的母函数(痛苦回忆)]
-设有一个实数列 $a=\left\{a_{0}, a_{1},\cdots, a_{n}, \cdots\right\},$ 如果幂级数
-$$
-G_{a}(z):=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{n} z^{n}+\cdots
-$$
-在$0$点的一个非空领域上收敛, 则称它为数列 a 的母函数.
+    设有一个实数列 $a=\left\{a_{0}, a_{1},\cdots, a_{n}, \cdots\right\},$ 如果幂级数
+    $$
+        G_{a}(z):=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{n} z^{n}+\cdots
+    $$
+    在$0$点的一个非空领域上收敛, 则称它为数列 a 的母函数.
 \end{definition}
 
 \begin{definition}[随机变量的母函数]
-设 $\xi$ 是 $\mathbb{Z}_{+-}$ 值随机变量,,则其概率分布律是一个有界数列, 定义$\xi$的母函数:$$
-G_{\xi}(z):=\sum z^{n} \mathbb{P}(\xi=n)=\mathbb{E}\left[z^{\xi}\right]
-$$
+    设 $\xi$ 是 $\mathbb{Z}_{+-}$ 值随机变量,,则其概率分布律是一个有界数列, 定义$\xi$的母函数:$$
+        G_{\xi}(z):=\sum z^{n} \mathbb{P}(\xi=n)=\mathbb{E}\left[z^{\xi}\right]
+    $$
 \end{definition}
 \par 随机变量的母函数同样有$G_{\xi+\eta}(z)=G_{\xi}(z) G_{\eta}(z)$
 
 \begin{definition}[随机过程]
-$\forall t \in T, \quad X(t) \equiv X(t, \omega): \Omega \mapsto \mathbb{R}$为随机变量,程随机变量族$X=\{X(t), t \in T\}$为随机过程.$X$可能取到的值称为状态,全体状态$E$称为状态空间.
+    $\forall t \in T, \quad X(t) \equiv X(t, \omega): \Omega \mapsto \mathbb{R}$为随机变量,程随机变量族$X=\{X(t), t \in T\}$为随机过程.$X$可能取到的值称为状态,全体状态$E$称为状态空间.
 \end{definition}
 
 \section{泊松过程}
 
 \begin{theorem}
-设 $N \sim P(\lambda), N$ 个事件独立地(也独立于个数 $N$) 以概率 $p_{i}$ 为 第 $i$ 个类型, $i=1,2, \cdots, n,$ 其 $\mathbf{p} p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第$i$类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立。
+    设 $N \sim P(\lambda), N$ 个事件独立地(也独立于个数 $N$) 以概率 $p_{i}$ 为 第 $i$ 个类型, $i=1,2, \cdots, n,$ 其 $\mathbf{p} p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第$i$类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立。
+\end{theorem}
+
+\section{更新过程}
+\subsection{基本定义与性质}
+\begin{definition}
+    设 $\left\{X_{n}, n \geq 1\right\}$ 为独立同分布的非负随机变量序列
+    $$
+        S_{0} \equiv 0, S_{n}:=\sum_{i=1}^{n} X_{i}, \quad(n \geq 1)
+    $$
+    定义更新过程 $N(t)=\sup \left\{n: S_{n} \leq t\right\}=\sum_{n=1}^{\infty} I_{\left\{S_{n} \leq t\right\}}:(0, t]$ 的更新次数
+\end{definition}
+
+\par $N$ 的分布函数为 $\mathbb{P}(N(t)=n)=\mathbb{P}\left(S_{n} \leq t\right)-\mathbb{P}\left(S_{n+1} \leq t\right)=F_{n}(t)-F_{n+1}(t)$, 其期望 $m(t)=\mathbb{E}\left[\sum_{n \geq 1} 1_{\left\{S_{n} \leq t\right\}}\right]=\sum_{n \geq 1} \mathbb{P}\left(S_{n} \leq t\right)=\sum_{n=1}^{\infty} F_{n}(t)\leq \frac{F(t)}{1-F(t)}<\infty$
+
+\begin{theorem}
+    $\mathbb{P}\left(\lim _{t \rightarrow \infty} \frac{1}{t} N(t)=\frac{1}{\mu}\right)=1$
+\end{theorem}
+
+\begin{theorem}
+    假设 $\mu, \sigma^{2}$ 均有限, 则当 $t \rightarrow \infty$ 时, $N(t)$ 的近似分布是正态分布 $ N\left(t / \mu, t \sigma^{2} / \mu^{3}\right) $
 \end{theorem}
 
 
@@ -56,9 +76,4 @@ $\forall t \in T, \quad X(t) \equiv X(t, \omega): \Omega \mapsto \mathbb{R}$为�
 
 
 
-
-
-
-
-  
 \end{document}
