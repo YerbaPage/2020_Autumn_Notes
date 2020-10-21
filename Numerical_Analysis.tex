@@ -349,8 +349,8 @@ $$
 \par 利用 $\frac{1}{2} a_{0}+\sum_{k=1}^{\infty}\left(a_{k} \cos k x+b_{k} \sin k x\right)$ 其中 $a_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \cos k x d x$
 $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行展开得到傅里叶级数. 只要函数一阶导数在 $[0,2\pi]$ 上分段连续就一致收敛.
 
+\par $f(x)$ 在 $N$ 个点 $\left\{x_{j}=\frac{2 \pi}{N} j(j=0,1, \cdots, N-1)\right\}$ 上的最小二乘傅里叶逼近为 $S(x)=\sum_{k=0}^{n-1} c_{k} \mathrm{e}^{\mathrm{i} k x}, \quad n \leq N$ 其中 $c_{k}=\frac{1}{N} \sum_{j=0}^{N-1} f_{j} \mathrm{e}^{-\mathrm{i} k j \frac{2 \pi}{N}}$
 
-
-
+\par 利用系数的周期性和对称性, 可以将 $N$ 点DFT归结为两个 $N/2$ 点的DFT简化计算: $\left\{\begin{array}{l}c_{2 j}=\sum_{k=0}^{N / 2-1} y_{k} \omega_{N / 2}^{j k} \\ c_{2 j+1}=\sum_{k=0}^{N / 2-1} y_{N / 2+k} \omega_{N / 2}^{j k}\end{array}\right.$
 
 \end{document}
