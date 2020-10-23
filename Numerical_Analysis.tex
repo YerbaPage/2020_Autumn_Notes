@@ -360,10 +360,25 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
     对最高 $m$ 次多项式准确成立, 称有代数精度 $m$ 次
 \end{definition}
 
+\begin{definition}[机械求积公式]
+    $\int_{a}^{b} f(x) d x \approx \sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$ 称为机械求积公式, 满足方程组 $\left\{\begin{array}{c}\sum A_{k}=b-a \\ \sum A_{k} x_{k}=\frac{1}{2}\left(b^{2}-a^{2}\right) \\ \vdots \\ \sum A_{k} x_{k}^{m}=\frac{1}{m+1}\left(b^{m+1}-a^{m+1}\right)\end{array}\right.$
+\end{definition}
+
+\begin{definition}[插值型求积公式]
+    $I_{n}=\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$ 其中 $A_{k}=\int_{a}^{b} l_{k}(x) d x, \quad k=0,1, \cdots, n$, 余项为 $\int_{a}^{b} \frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x) d x$
+\end{definition}
+
+\par 对于一般求积公式的余项 $R[f]=\int_{a}^{b} f(x) d x-\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)=K f^{(m+1)}(\eta)$ ,将 $f(x)=x^{m+1}$ 作为试探带入可以得到 $$K=\frac{1}{(m+1) !}\left[\frac{1}{m+2}\left(b^{m+2}-a^{m+2}\right)-\sum_{k=0}^{n} A_{k} x_{k}^{m+1}\right]$$
+
+
+\begin{definition}
+    定义 $h=\max _{1 \leq i \leq n}\left\{x_{i}-x_{i-1}\right\}$ , 若 $\lim _{n \rightarrow+\infty} \sum_{h \rightarrow 0}^{n} A_{k} f\left(x_{k}\right)=\int_{a=0}^{b} f(x) d x$ 称为收敛
+\end{definition}
 
 
 
 
+\subsection{Newton-Cotes 公式}
 
 
 
