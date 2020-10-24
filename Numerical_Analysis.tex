@@ -383,8 +383,33 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
 \subsection{Newton-Cotes 公式}
 
 \begin{definition}
-    设将 $[a, b]$ 划分为 $n$ 等份，选取等距节点 $x_{k}=a+k h$ 构造出的插值型求积公式 $I_{n}=(b-a) \sum_{k=0}^{n} C_{k}^{(n)} f\left(x_{k}\right)$ 称为 $ Newton-Cotes$ 公式
+    设将 $[a, b]$ 划分为 $n$ 等份，选取等距节点 $x_{k}=a+k h$ 构造出的插值型求积公式 $I_{n}=(b-a) \sum_{k=0}^{n} C_{k}^{(n)} f\left(x_{k}\right)$ 称为 $ Newton-Cotes$ 公式, 有 $C_{k}^{(n)}=\frac{h}{b-a} \int_{0}^{n} \prod_{j=0, j \neq k}^{n} \frac{t-j}{k-j} d t=\frac{(-1)^{n-k}}{n k !(n-k) !} \int_{0}^{n} \prod_{j=0, j \neq k}^{n}(t-j) d t$
 \end{definition}
+
+\par $n=1$ 梯形公式, $n=2$ Simpson公式, $n=4$ Cotes公式, 当 $n \geq 8$ 时系数出现负值, 数值不稳定.
+
+\begin{theorem}
+     偶数阶 Newton-Cotes 公式至少具有 $n+1$ 次代数精度. (利用 $R[f]=\int_{a}^{b} \prod_{j=0}^{n}\left(x-x_{j}\right) d x$)
+\end{theorem}
+
+\subsection{复合求积公式}
+
+
+\subsection{龙贝格求积公式}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
