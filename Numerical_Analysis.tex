@@ -389,24 +389,74 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
 \par $n=1$ 梯形公式, $n=2$ Simpson公式, $n=4$ Cotes公式, 当 $n \geq 8$ 时系数出现负值, 数值不稳定.
 
 \begin{theorem}
-     偶数阶 Newton-Cotes 公式至少具有 $n+1$ 次代数精度. (利用 $R[f]=\int_{a}^{b} \prod_{j=0}^{n}\left(x-x_{j}\right) d x$)
+    偶数阶 Newton-Cotes 公式至少具有 $n+1$ 次代数精度. (利用 $R[f]=\int_{a}^{b} \prod_{j=0}^{n}\left(x-x_{j}\right) d x$)
 \end{theorem}
 
 \subsection{复合求积公式}
 
+\par 将区间等分为若干子区间, 称为复合求积公式
+\begin{definition}[复合梯形公式]
+    $$T_{n}=\frac{h}{2} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]=\frac{h}{2}\left[f(a)+\sum_{k=0}^{n-1} f\left(x_{k}\right)+f(b)\right]$$ 余项为 $R_{n}(f)=1-T_{n}=\sum_{k=0}^{n-1}\left[-\frac{h^{3}}{12} f^{\prime \prime}\left(\eta_{k}\right)\right], \eta_{k} \in\left(x_{k}, x_{k+1}\right) =-\frac{b-a}{12} h^{2} f^{\prime \prime}(\eta) $, 只要 $f(x) \in C[a, b]$ 即收敛
+\end{definition}
+
+\begin{definition}[复合辛普森公式]
+    $$S_{n}=\frac{h}{6} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+4 f\left(x_{k+1 / 2}\right)+f\left(x_{k+1}\right)\right]=\frac{h}{6}\left[f(a)+4 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)+2 \sum_{k=1}^{n-1} f\left(x_{k}\right)+f(b)\right]$$ 余项为 $R_{n}(f)=I-S_{n}=-\frac{b-a}{180}\left(\frac{h}{2}\right)^{4} f^{(4)}(\eta)$, 只要 $f(x) \in C[a, b]$ 即收敛
+\end{definition}
 
 \subsection{龙贝格求积公式}
+\par 对于复合梯形公式, 可以有不断加密时的递推公式 $T_{2 n}=\frac{h}{4} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)=\frac{1}{2} T_{n}+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)$
 
+\begin{theorem}
+    记 $T_{n}=T(h)=I+\frac{b-a}{12} h^{2} f^{\prime \prime}(\eta)$, 当 $f(x) \in C^{\infty}[a, b]$ 有 $$
+        T(h)=I+\alpha_{1} h^{2}+\alpha_{2} h^{4}+\cdots+\alpha_{l} h^{2 l}+\cdots
+    $$, 其中 $\alpha_{l}$ 与 $h$ 无关.
+\end{theorem}
 
+\begin{definition}[Richardson 外推算法]
+    利用上述定理, 记 $T_{0}(h)=T(h)$ 有外推技巧 $T_{m}(h)=\frac{4^{m}}{4^{m}-1} T_{m-1}\left(\frac{h}{2}\right)-\frac{1}{4^{m}-1} T_{m-1}(h)$, 余项为 $T_{m}(h)=I+\delta_{1} h^{2(m+1)}+\delta_{2} h^{2(m+2)}+\cdots$
+\end{definition}
 
+\par 设以 $T_{0}^{(k)}$ 表示二分 $k$ 次后求得的梯形值，且以 $T_{m}^{(k)}$ 表示序列 $\left\{T_{0}^{(k)}\right\}$ 的 $m$ 次加速值, 从而有\textbf{龙贝格求积算法} $$
+    T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)}, k=1,2, \cdots
+$$
 
+\subsection{自适应积分方法}
 
+\par 在指定区间上达不到进度要求就再外推加密.
 
+\subsection{高斯求积公式}
+\begin{definition}
+    若求积公式 $\int_{a}^{b} f(x) d x \approx \sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$ 具有 $2 n+1$ 次代数精度，则称其节点 $x_{k}$ 为高斯点，相应的公式称为\textbf{高斯型求积公式}, 余项为 $R_{n}[f]=\frac{f^{(2 n+2)}(\eta)}{(2 n+2) !} \int_{a}^{b} \omega_{n+1}^{2}(x) \rho(x) d x$
+\end{definition}
 
+\begin{theorem}
+    插值型求积公式节点 $a \leq x_{0}<x_{1}<\cdots<$
+    $x_{n} \leq b$ 是高斯点的充要条件:
+    $$
+        \int_{a}^{b} p(x) \omega_{n+1}(x) \rho(x) d x=0
+    $$
+    其中 $p(x) \in H_{n}, \omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$
+\end{theorem}
 
+\begin{theorem}
+    由 $0<\int_{a}^{b} l_{k}^{2}(x) \rho(x)=\sum_{i=0}^{n} A_{i} l_{k}^{2}\left(x_{i}\right)=A_{k}$ 高斯型求积公式的求积系数全为正
+\end{theorem}}
 
+\begin{definition}
+    取权函数 $\rho(x)=1$ 对应高斯勒让德求积公式, 余项为 $R_{n}[f]=\frac{f^{(2 n+2)}(\eta)}{(2 n+2) !} \int_{a}^{b} \tilde{P}_{n+1}^{2}(x) d x$, 其中 $\tilde{P}_{n+1}(x)$ 是最高项系数为 $1$ 的勒让德多项式 $\bar{P}_{n}(x)=\frac{n !}{(2 n) !} \frac{d^{n}}{d x^{n}}\left[\left(x^{2}-1\right)^{n}\right]$, 利用其正交性化简得到 $R_{n}[f]=\frac{2^{2 n+3}[(n+1) !]^{4}}{(2 n+3)[(2 n+2) !]^{3}} f^{(2 n+2)}(\eta)$ 
+\end{definition}
 
+\begin{definition}
+    $\int_{-1}^{1} \frac{f(x)}{\sqrt{1-x^{2}}} d x \approx \sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$ 称为\textbf{高斯切比雪夫求积公式}, 零点 $x_{k}=\cos \left(\frac{2 k+1}{2 n+2} \pi\right)$, 系数 $A_{k}=\frac{\pi}{n+1}$, 故使用 $n$ 个节点时 $$\int_{-1}^{1} \frac{f(x)}{\sqrt{1-x^{2}}} d x \approx \frac{\pi}{n} \sum_{k=1}^{n} f\left(x_{k}\right), \quad x_{k}=\cos \frac{2 k-1}{2 n} \pi$$, 余项 $R[f]=\frac{2 \pi}{2^{2 n}(2 n) !} f^{(2 n)}(\eta)$.
+\end{definition}
 
+\par 带权的高斯求积公式可以用于计算奇异积分
+
+\begin{definition}
+    考虑区间 $[0,+\infty),$ 权函数 $\rho(x)=e^{-x}$ 的正交多项式为拉盖尔多项式 $L_{n}(x)=e^{x} \frac{d^{n}}{d x^{n}}\left(x^{n} e^{-x}\right)$ 对应的高斯求积公式 $\int_{0}^{+\infty} e^{-x} f(x) d x=\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$, 系数 $A_{k}=\frac{[(n+1) !]^{2}}{x_{k}\left[L_{n+1}\left(x_{k}\right)\right]^{2}}$, 余项 $R[f]=\frac{[(n+1) !]^{2}}{[(2 n+1) !]} f^{(2 n+2)}(\xi), \xi \in[0,+\infty)$
+\end{definition}
+
+\subsection{多重积分}
 
 
 
