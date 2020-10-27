@@ -403,7 +403,7 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
     $$S_{n}=\frac{h}{6} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+4 f\left(x_{k+1 / 2}\right)+f\left(x_{k+1}\right)\right]=\frac{h}{6}\left[f(a)+4 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)+2 \sum_{k=1}^{n-1} f\left(x_{k}\right)+f(b)\right]$$ 余项为 $R_{n}(f)=I-S_{n}=-\frac{b-a}{180}\left(\frac{h}{2}\right)^{4} f^{(4)}(\eta)$, 只要 $f(x) \in C[a, b]$ 即收敛
 \end{definition}
 
-\subsection{龙贝格求积公式}
+\subsection{Romberg 求积公式}
 \par 对于复合梯形公式, 可以有不断加密时的递推公式 $T_{2 n}=\frac{h}{4} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)=\frac{1}{2} T_{n}+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)$
 
 \begin{theorem}
@@ -440,7 +440,7 @@ $$
 
 \begin{theorem}
     由 $0<\int_{a}^{b} l_{k}^{2}(x) \rho(x)=\sum_{i=0}^{n} A_{i} l_{k}^{2}\left(x_{i}\right)=A_{k}$ 高斯型求积公式的求积系数全为正
-\end{theorem}}
+\end{theorem}
 
 \begin{definition}
     取权函数 $\rho(x)=1$ 对应高斯勒让德求积公式, 余项为 $R_{n}[f]=\frac{f^{(2 n+2)}(\eta)}{(2 n+2) !} \int_{a}^{b} \tilde{P}_{n+1}^{2}(x) d x$, 其中 $\tilde{P}_{n+1}(x)$ 是最高项系数为 $1$ 的勒让德多项式 $\bar{P}_{n}(x)=\frac{n !}{(2 n) !} \frac{d^{n}}{d x^{n}}\left[\left(x^{2}-1\right)^{n}\right]$, 利用其正交性化简得到 $R_{n}[f]=\frac{2^{2 n+3}[(n+1) !]^{4}}{(2 n+3)[(2 n+2) !]^{3}} f^{(2 n+2)}(\eta)$ 
