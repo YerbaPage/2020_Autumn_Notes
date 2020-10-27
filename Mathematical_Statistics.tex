@@ -305,5 +305,49 @@
 
 \subsection{贝叶斯(Bayes)估计}
 
+\subsubsection{后验估计}
+
+\par 回忆贝叶斯公式 $P\left(B_{i} \mid A\right)=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{i=1}^{n} P\left(A \mid B_{i}\right) P\left(B_{i}\right)}$
+
+\par 先验分布的选取(广义贝叶斯假设): 在没有任何信息时, Bayes 提出使用均匀分布作为 $\theta$ 的先验分布. 求后验分布的公式为: $$\pi(\theta \mid x)=\frac{h(x, \theta)}{m(x)}=\frac{p(x \mid \theta) \pi(\theta)}{\int_{\theta} p(x \mid \theta) \pi(\theta) \mathrm{d} \theta}$$
+
+\begin{definition}
+    函数 $\varphi(x)$ 与函数 $f(x)$ 只相差一个常数则称为\textbf{核}.
+\end{definition}
+
+\begin{definition}
+    选取先验分布使得后验分布和其同一类型, 叫做\textbf{共轭先验分布}
+\end{definition}
+
+\par , 若 $\xi \sim \Gamma(\alpha, \lambda), \frac{1}{\xi}$ 的分布称为\textbf{逆 Gamma 分布}，记为 $\frac{1}{\xi} \sim I \Gamma(\alpha, \lambda)$, 有 $p_{\xi}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} \mathrm{e}^{-\lambda x}, x>0$, 逆 Gamma 分布
+$p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha+1}} \mathrm{e}^{-\lambda \frac{1}{x}, x}>0$, 期望 $E \frac{1}{\xi}=\frac{\lambda}{\alpha-1}$.
+
+\par 在进行后验估计时. 通常选使得 $MSE(\hat{\theta} \mid x)=E^{\theta \mid x}(\hat{\theta}-\theta)^{2}$ 最小的估计量 $\hat{\theta}$, 又称为\textbf{贝叶斯估计}. 已知 $\pi(\theta \mid x),$ 参数函数 $g(\theta)$ 在均方误差下的 Bayes 估计为 $E(g(\theta) \mid x)$.
+
+\subsubsection{Bayes 区间估计}
+
+\par 利用 $\theta$ 的后验分布从而求置信区间, 下面以 $\xi \sim N\left(a, \sigma^{2}\right)$ 为例进行分析. 对于$\sigma^{2}$ 已知时 $a$ 的贝叶斯区间估计:
+
+\begin{itemize}
+    \item 若选用共轭分布作为 $a$ 的先验分布: $a \mid x \sim N\left(\frac{a_{0} \sigma^{2}+n \bar{x} \sigma_{0}^{2}}{\sigma^{2}+n \sigma_{0}^{2}}, \frac{\sigma_{0}^{2} \sigma^{2}}{\sigma^{2}+n \sigma_{0}^{2}}\right)$ 故置信度 $1-\alpha$ 的置信区间为 $A \pm B u_{1-\frac{\alpha}{2}}=\left(\frac{a_{0} \sigma^{2}+n \bar{x} \sigma_{0}^{2}}{\sigma^{2}+n \sigma_{0}^{2}} \pm \frac{\sigma_{0} \sigma u_{1-\frac{\alpha}{2}}}{\sqrt{\sigma^{2}+n \sigma_{0}^{2}}}\right)$
+    \item 若根据广义 Bayes 假设: $a \mid x \sim N\left(\bar{x}, \frac{\sigma^{2}}{n}\right)$, 故置信区间为 $\bar{\xi} \pm \frac{\sigma}{\sqrt{n}} u_{1-\frac{\alpha}{2}}$
+\end{itemize}
+
+\par 对于 $a$ 已知时， $\sigma^{2}$ 的贝叶斯区间估计: (以下设 $a=0$)
+
+\begin{itemize}
+    \item 选取共轭分布 $\pi\left(\sigma^{2} \mid x\right) \propto \left(\frac{1}{\sigma^{2}}\right)^{k+1+\frac{n}{2}} e^{-\left(\beta+\frac{1}{2} \sum_{i=1}^{n} x_{i}^{2}\right)} / \sigma^{2}$, 从而有置信区间 $\left(\frac{2 \beta+\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{1-\frac{\alpha}{2}}^{2}(2 k+n)}, \frac{2 \beta+\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{\frac{\alpha}{2}}^{2}(2 k+n)}\right)$
+    \item 根据广义 Bayes 假设: $\sigma^{2} \mid x \sim I \Gamma\left(\frac{n}{2}-1, \frac{1}{2} \sum_{i=1}^{n} x_{i}^{2}\right)$ 从而有区间估计 $\left(\frac{\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{1-\frac{\alpha}{2}}^{2}(n-2)}, \frac{\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{\frac{\alpha}{2}}^{2}(n-2)}\right)$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
