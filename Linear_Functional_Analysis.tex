@@ -28,7 +28,7 @@
 
 \title{Linear Functional Analysis Notes}
 \date{\today}
-\author{Yuling Shi}
+\author{{\footnotesize{Yuling Shi}} with Erin}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -310,7 +310,7 @@
         \item $0 \in A^{\perp}$.
         \item If $0 \in A$ then $A \cap A^{\perp}=\{0\},$ otherwise $A \cap A^{\perp}=\emptyset$
         \item $\{0\}^{\perp}=X ; X^{\perp}=\{0\}$
-        \item If $A$ contains an open ball $\bar{B}_{a}(r),$ for some $a \in \bar{X}$ and some positive $r>\overline{0}$ then $\Lambda^{\perp}=\{0\} ;$ in particular, if $A$ is a non-cmpty open sct then $\Lambda^{\perp}=\{0\}$
+        \item If $A$ contains an open ball $\bar{B}_{a}(r),$ for some $a \in \bar{X}$ and some positive $r>\overline{0}$ then $A^{\perp}=\{0\} ;$ in particular, if $A$ is a non-empty open set then $A^{\perp}=\{0\}$
         \item If $B \subset A$ then $A^{\perp} \subset B^{\perp}$.
         \item $A^{\perp}$ is a closed linear subspace of $X$.
         \item $A \subset\left(A^{\perp}\right)^{\perp}$.
@@ -336,12 +336,93 @@
 \end{theorem}
 
 \begin{theorem}(Orthogonal decomposition)
-    $Y$ a closed linear subspace of a Hilbert space $\mathcal{H}$. For any $x \in \mathcal{H},$ there exists a unique $y \in Y$ and $z \in Y^{\perp}$ such that $x=y+z .$ Also $,\|x\|^{2}=\|y\|^{2}+\|z\|^{2}$. 
+    $Y$ a closed linear subspace of a Hilbert space $\mathcal{H}$. For any $x \in \mathcal{H},$ there exists a unique $y \in Y$ and $z \in Y^{\perp}$ such that $x=y+z .$ Also $,\|x\|^{2}=\|y\|^{2}+\|z\|^{2}$.
 \end{theorem}
 
 \begin{lemma}
     If $Y$ is a closed linear subspace of a Hilbert space $\mathcal{H}$ then $Y^{\perp \perp}=Y$. If $Y$ is any linear subspace of a Hilbert space $\mathcal{H}$ then $Y^{\perp \perp}=\bar{Y}$.
 \end{lemma}
+
+\subsection{Orthonormal Bases in Infinite Dimensions}
+
+\begin{definition}[Orthonormal Sequence]
+    Let $X$ be an inner product space. A sequence $\left\{e_{n}\right\} \subset X$ is  an orthonormal sequence if $\left\|e_{n}\right\|=1$ for all $n \in \mathbb{N},$ and $\left(e_{m}, e_{n}\right)=0$ for all $m, n \in \mathbb{N}$ with $m \neq n$
+\end{definition}
+
+\begin{theorem}
+    Any infinite-dimensional inner product space $X$ contains an orthonormal sequence.
+\end{theorem}
+
+\begin{lemma}[Bessel’s Inequality]
+    Let $X$ be an inner product space and let $\left\{e_{n}\right\}$ be an orthonormal sequence in $X .$ For any $x \in X$ the (real) series $\sum_{n=1}^{\infty}\left|\left(x, e_{n}\right)\right|^{2}$ converges and
+    $$\sum_{n=1}^{\infty}\left|\left(x, e_{n}\right)\right|^{2} \leq\|x\|^{2}$$
+\end{lemma}
+
+\begin{theorem}
+    $\left\{e_{n}\right\}$ be an orthonormal sequence in $\mathcal{H}$, $\left\{\alpha_{n}\right\}$ be a sequence in $\mathbb{F} .$ Then the series $\sum_{n=1}^{\infty} \alpha_{n} e_{n}$ converges if and only if $\sum_{n=1}^{\infty}\left|\alpha_{n}\right|^{2}<\infty$(if and only if the sequence $\left\{\alpha_{n}\right\} \in \ell^{2}$.) If this holds, then
+    $$
+        \left\|\sum_{n=1}^{\infty} \alpha_{n} e_{n}\right\|^{2}=\sum_{n=1}^{\infty}\left|\alpha_{n}\right|^{2}
+    $$
+\end{theorem}
+
+\begin{corollary}
+    Let $\left\{e_{n}\right\}$ be an orthonormal sequence in $\mathcal{H} .$ For any $x \in \mathcal{H}$ the series $\sum_{n=1}^{\infty}\left(x, e_{n}\right) e_{n}$ converges.
+\end{corollary}
+
+\begin{theorem}
+    Let $\left\{e_{n}\right\}$ be an orthonormal sequence in $\mathcal{H}$, the following conditions are equivalent:
+    \begin{itemize}
+        \item $\left\{e_{n}: n \in \mathbb{N}\right\}^{\perp}=\{0\}$
+        \item $\overline{\operatorname{Sp}}\left\{e_{n}: n \in \mathbb{N}\right\}=\mathcal{H}$
+        \item $\|x\|^{2}=\sum_{n=1}^{\infty}\left|\left(x, e_{n}\right)\right|^{2}$ for all $x \in \mathcal{H}$
+        \item $x=\sum_{n=1}^{\infty}\left(x, e_{n}\right) e_{n}$ for all $x \in \mathcal{H}$.
+    \end{itemize}
+    Called orthogonal basis if any holds.
+\end{theorem}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item Finite dimensional normed vector spaces are separable.
+        \item An infinite-dimensional Hilbert space $\mathcal{H}$ is separable if and only if it has an orthonormal basis.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Fourier Series}
+
+\begin{theorem}
+    The set of functions $ C=\left\{c_{0}(x)=(1 / \pi)^{1 / 2}, c_{n}(x)=(2 / \pi)^{1 / 2} \cos n x: n \in \mathbb{N}\right\} $ is an orthonormal basis in $L^{2}[0, \pi]$.
+\end{theorem}
+
+\begin{corollary}
+    The space $L^{2}[0, \pi]$ is separable.
+\end{corollary}
+
+\begin{corollary}
+    The sets of functions
+    $$
+        \begin{array}{l}
+            E=\left\{e_{n}(x)=(2 \pi)^{-1 / 2} e^{i n x}: n \in \mathbb{Z}\right\} \\
+            F=\left\{2^{-1 / 2} c_{0}, 2^{-1 / 2} c_{n}, 2^{-1 / 2} s_{n}: n \in \mathbb{N}\right\}
+        \end{array}
+    $$
+    are orthonormal bases in the space $L_{\mathrm{C}}^{2}[-\pi, \pi] .$ The set $F$ is also an orthonormal basis in the space $L_{\mathbb{R}}^{2}[-\pi, \pi]$ (the set $E$ is clearly not appropriate for the space $L_{\mathbb{R}}^{2}[-\pi, \pi]$ since the functions in $E$ are complex $)$
+\end{corollary}
+
+\section{Linear Operators}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
