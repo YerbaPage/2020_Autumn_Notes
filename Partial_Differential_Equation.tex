@@ -5,7 +5,7 @@
 \begin{document}
 \author{}
 \maketitle
-% \tableofcontents
+\tableofcontents
 \footnotesize
 
 \section{\href{https://wenku.baidu.com/view/cf58eb62ed630b1c58eeb506.html}{波动方程}}
@@ -68,10 +68,10 @@ $$
 \begin{lemma}
     $M_{u}\left(x_{1}, x_{2}, x_{3}, r, t\right)=\frac{1}{4 \pi} \iint_{S_{1}} u\left(x_{1}+r \alpha_{1}, x_{2}+r \alpha_{2}, x_{3}+r \alpha_{3}, t\right) d \omega$ 满足 $\frac{\partial^{2} M_{u}}{\partial t^{2}}-a^{2}\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{2}{r} \frac{\partial}{\partial r}\right) M_{u}=0$
     $\left.M_{u}\right|_{t=0}=M_{\varphi}\left(x_{1}, x_{2}, x_{3}, r\right)$
-    $\left.\frac{\partial M_{u}}{\partial t}\right|_{t=0}=M_{\psi}\left(x_{1}, x_{2}, x_{3}, r\right)$ (我tm是真的看不懂)
+    $\left.\frac{\partial M_{u}}{\partial t}\right|_{t=0}=M_{\psi}\left(x_{1}, x_{2}, x_{3}, r\right)$
 \end{lemma}
 
-\begin{theorem}[[Poisson 公式]]
+\begin{theorem}[Poisson 公式]
     $\varphi \in C^{3}, \psi \in C^{2}$ 则存在唯一解 $u(x, y, z, t)=\frac{\partial}{\partial t}\left[\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \varphi d S\right]+\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \psi d S,$
 \end{theorem}
 
@@ -80,10 +80,46 @@ $$
 $\left\{\left.u\right|_{t=0}=\varphi(x, y)\right.$
 $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的原因是在于反映无后效现象的惠更斯原理对二维波动方程不成立, 在第一步就无法将径向对称的问题化到一维波动方程的情形处理').
 
-\par 对于球 $\left.S_{a t}^{M}=\{\xi, \eta, \zeta) \in R^{3} \mid \sqrt{(\xi-x)^{2}+(\eta-y)^{2}+(\zeta-z)^{2}}=a t\right\}$, 取其在平面上的投影 $\Sigma_{a t}^{M}=\left\{(\xi, \eta) \in R^{2} \mid \sqrt{(\xi-x)^{2}+(\eta-y)^{2}} \leq a t\right\}$, 从而有 $$u(x, y, t)=\widetilde{u}(x, y, z, t) = \frac{1}{2 \pi a}\left[\frac{\partial}{\partial t} \iint_{\sum_{a t}^{N}} \frac{\varphi(\xi, \eta)}{\sqrt{(a t)^{2}-(\xi-x)^{2}-(\eta-y)^{2}}} d \sigma\right.\left.+\iint_{\Sigma_{a t}^{h}} \frac{\psi(\xi, \eta)}{\sqrt{(a t)^{2}-(\xi-x)^{2}-(\eta-y)^{2}}} d \sigma\right] $$
+\par 对于球 $\left.S_{a t}^{M}=\{\xi, \eta, \zeta) \in R^{3} \mid \sqrt{(\xi-x)^{2}+(\eta-y)^{2}+(\zeta-z)^{2}}=a t\right\}$, 取其在平面上的投影 $\Sigma_{a t}^{M}=\left\{(\xi, \eta) \in R^{2} \mid \sqrt{(\xi-x)^{2}+(\eta-y)^{2}} \leq a t\right\}$, 从而有 $$u(x, y, t)=\widetilde{u}(x, y, z, t) = \frac{1}{2 \pi a}\left[\frac{\partial}{\partial t} \iint_{\sum_{a t}^{M}} \frac{\varphi(\xi, \eta)}{\sqrt{(a t)^{2}-(\xi-x)^{2}-(\eta-y)^{2}}} d \sigma\right.\left.+\iint_{\Sigma_{a t}^{h}} \frac{\psi(\xi, \eta)}{\sqrt{(a t)^{2}-(\xi-x)^{2}-(\eta-y)^{2}}} d \sigma\right] $$
 
 \subsubsection{齐次化原理}
 \par 原问题 $\left\{\begin{array}{l}u_{t t}=a^{2}\left(u_{x x}+u_{y y}+u_{z z}\right)+f(x, y, z, t) \\ \left.u\right|_{t=0}={0},\left.\quad u_{t}\right|_{t=0}={0}\end{array}\right.$, $w(x, y, z, t ; \tau)$ 是问题 $\left\{\begin{array}{l}w_{t t}=a^{2}\left(w_{x x}+w_{y y}+w_{z z}\right) \\ \left.w\right|_{t=\tau}=0,\left.\quad w_{t}\right|_{t=\tau}=f(x, y, z, \tau)\end{array}\right.$ 的解, 则 $u(x, y, z, t)=\int_{0}^{t} w(x, y, z, t ; \tau) d \tau$
+
+\subsection{波的传播和衰减}
+
+\par 对于二维问题, 空间上点 $\left(x_{0}, y_{0}, t_{0}\right)$
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figure/domain.jpg}
+	\caption{决定区域和影响区域 \label{fig:scatter}}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
