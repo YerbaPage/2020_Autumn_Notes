@@ -91,21 +91,81 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 \par 对于二维问题, 空间上点 $\left(x_{0}, y_{0}, t_{0}\right)$ \textbf{依赖}于 $t=0$ 时刻的圆 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2} \leqslant a^{2} t_{0}^{2}$, 而此圆唯一地\textbf{决定}着圆锥体 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2} \leqslant a^{2}\left(t-t_{0}\right)^{2} \left(t \leqslant t_{0}\right)$. 进一步考察 $t=0$ 平面上的点 $\left(x_{0}, y_{0}, 0\right)$, 它\textbf{影响}着圆锥 $\left(x_{0}-x\right)^{2}+\left(y_{0}-y\right)^{2} \leqslant a^{2} t^{2} \quad(t>0)$, 锥面 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}=a^{2}\left(t-t_{0}\right)^{2}$ 称为特征锥.
 
 \begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.5\textwidth]{figure/domain.jpg}
-	\caption{决定区域和影响区域 \label{fig:scatter}}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/domain.jpg}
+    \caption{决定区域和影响区域 \label{fig:scatter}}
 \end{figure}
 
-\par 对于三维问题, \textbf{依赖区域}是球面 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2} t_{0}^{2}$, \textbf{决定区域}是圆锥体 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2} \leqslant a^{2}\left(t_{0}-t\right)^{2}$, 初始平面上点 $\left(x_{0}, y_{0}, z_{0}, 0\right)$ 的影响区域为锥面 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2} t^{2} \quad(t>0)$, 相应有特征锥 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2}\left(t-t_{0}\right)^{2}$. 
- 
+\par 对于三维问题, \textbf{依赖区域}是球面 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2} t_{0}^{2}$, \textbf{决定区域}是圆锥体 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2} \leqslant a^{2}\left(t_{0}-t\right)^{2}$, 初始平面上点 $\left(x_{0}, y_{0}, z_{0}, 0\right)$ 的影响区域为锥面 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2} t^{2} \ (t>0)$, 相应有特征锥 $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2}+\left(z-z_{0}\right)^{2}=a^{2}\left(t-t_{0}\right)^{2}$.
+
 \subsubsection{Huygens 原理及波的弥散}
 
-\par 三维情况下有波的前阵面和后阵面称为 \textbf{Huygens原理}或 \textbf{无后效现象}, 而二位情况下扰动的影响范围为整个圆, 只有前阵面没有后阵面, 且扰动随着时间的推移扰动慢慢减弱, 称为波的\textbf{弥散}或称\textbf{有后效现象}, 进一步可以推广到奇数维和偶数维的情形.
+\par 三维情况下有波的前阵面和后阵面称为 \textbf{Huygens 原理}或 \textbf{无后效现象}, 而二位情况下扰动的影响范围为整个圆, 只有前阵面没有后阵面, 且扰动随着时间的推移扰动慢慢减弱, 称为波的\textbf{弥散}或称\textbf{有后效现象}, 进一步可以推广到奇数维和偶数维的情形.
 
 \subsubsection{波动方程的衰减}
 \par 三维波动方程 $|u(M, t)| \leqslant \frac{1}{4 \pi a^{2} t^{2}} \iint_{S_{u t}^{M} \cap B_{p}^{O}}\left|t \psi\left(M^{\prime}\right)+\varphi\left(M^{\prime}\right)+\nabla \varphi\left(M^{\prime}\right) \cdot \overline{M M^{\prime}}\right| d S_{M}\leqslant C t^{-1}$ , 二维有 $t^{-\frac{1}{2}}$ 的速度趋于零, 一维无衰减.
 
 \subsection{能量不等式及解的唯一性与稳定性}
+
+\subsubsection{振动的动能和位能}
+
+\par 动能和位能的和称为\textbf{能量积分}, 二位情况下动能可以表示为 $U=\frac{1}{2} \iint_{\Omega} \rho u_{t}^{2} d x d y$, 其中 $\Omega$ 是薄膜在 $O x y$ 平面上的投影. 而由于垂直方向分力可以记为 $T\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)$ 从而导出位能 $\left.V=\iint_{\Omega} \mid \frac{T}{2}\left[\left(\frac{\partial u}{\partial x}\right)^{2}+\left(\frac{\partial u}{\partial y}\right)^{2}\right]-F u\right\} d x d y$.
+
+\subsubsection{初边值问题解的唯一性与稳定性}
+
+\par 在没有外力的情况下, 薄膜的总能量可以写成 $E(t)=\iint_{\Omega}\left[u_{t}^{2}+a^{2}\left(u_{x}^{2}+u_{y}^{2}\right)\right] d x d y$, 而 $\frac{d E(t)}{d t} =2 \iint_{\Omega} u_{t}\left[u_{u}-a^{2}\left(u_{s x}+u_{x y}\right)\right] d x d y$, 根据能量守恒可以推导出初边值问题 $\left\{\begin{array}{l}\left.u_{u}=a^{2}\left(u_{x x}+u_{x y}\right)+f\right. \\ \left.u\right|_{t=0}=\varphi(x, y) \\ \left.u_{t}\right|_{t=0}=\psi(x, y) \\ \left.u\right|_{\Gamma}=0\end{array}\right. \label{problem}$ 解的唯一性.
+
+\par 由其次波动方程 $u_{t t}=a^{2}\left(u_{s x}+u_{y y}\right)$ 和齐次边界条件 $\left.u\right|_{\Gamma}=0$ 可以证明任意函数 $u(x, y, t)$ 成立能量守恒. 从而可以有两个同时满足初边值问题 \ref{problem} 的解的差恒为零, 从而有:
+
+\begin{theorem}
+    波动方程初边值问题 \ref{problem} 的解如果存在则一定唯一.
+\end{theorem}
+
+\par 对于外力不为零的情况, 能量 $E(t) \leqslant C_{0}\left(E(0)+\int_{0}^{T} \iint_{\Omega} f^{2} d x d y d t\right)$, $u$ 的平方模估计 $E_{0}(t) \leqslant e^{t} E_{0}(0)+e^{t} \int_{0}^{t} e^{-\tau} E(\tau) d \tau$, 综合得到\textbf{能量不等式} $E(t)+E_{0}(t) \leqslant C\left(E(0)+E_{0}(0)+\int_{0}^{T} \iint_{\Omega} f^{2} d x d y d t\right)$.
+
+\begin{theorem}
+    定义解的初始值和方程右端 $f$ 是\textbf{稳定}的当:
+    $$
+        \begin{array}{l}
+            \left\|\varphi_{1}-\varphi_{2}\right\|_{L^{2}(n)} \leqslant \eta, \quad\left\|\varphi_{1 x}-\varphi_{2 x}\right\|_{L^{2}(a)} \leqslant \eta \\
+            \left\|\varphi_{1 y}-\varphi_{2 y}\right\|_{L^{2}(a)} \leqslant \eta, \quad\left\|\psi_{1}-\psi_{2}\right\|_{L^{2}(a)} \leqslant \eta       \\
+            \left\|f_{1}-f_{2}\right\|_{L^{2}((0, T) \times a)} \leqslant \eta
+        \end{array}
+    $$
+    那么以 $\left(\varphi_{1}, \psi_{1}\right)$ 为初值 $、 f_{1}$ 为右端项的解 $u_{1}$ 与以 $\left(\varphi_{2}, \psi_{2}\right)$ 为初值 $、 f_{2}$ 为右端项的解 $u_{2}$ 之 差在 $0 \leqslant t \leqslant T$ 上满足
+\end{theorem}
+
+\subsubsection{柯西问题解的唯一性与稳定性}
+
+\par 全平面 $t=C_0$ 上的能量积分 $E_{1}(t)=\iint_{\mathbf{R}^{2}}\left[u_{t}^{2}+a^{2}\left(u_{x}^{2}+u_{y}^{2}\right)\right] d x d y$ 可能是发散的, 我们考虑一个随时间减小的区域(取特征锥) $\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2} \leqslant(R-a t)^{2}$, 对于锥体的截面 $\Omega_{t}:\left(x-x_{0}\right)^{2}+\left(y-y_{0}\right)^{2} \leqslant(R-a t)^{2}$ 有 $\frac{d E_{1}\left(\Omega_{t}\right)}{d t} \leqslant 0$
+
+\begin{theorem}
+    波动方程 $u_{tt}=a^{2}\left(u_{xx}+u_{y y}\right)+f$ 取初始条件 $\left\{\begin{array}{l}\left.u\right|_{t=0}=\varphi(x, y) \\ \left.u_{t}\right|_{t=0}=\psi(x, y)\end{array}\right.$ 的柯西问题的解是唯一的 \label{uniqueness}
+\end{theorem}
+
+\begin{theorem}
+    齐次波动方程 $u_{tt}=a^{2}\left(u_{xx}+u_{y y}\right)$ 取 \ref{uniqueness} 中初始条件的解\textbf{稳定}当:
+    $$
+        \begin{array}{l}
+            \left\|\varphi_{1}-\varphi_{2}\right\|_{L^{2}\left(\Omega_{0}\right)} \leqslant \eta, \quad\left\|\varphi_{1 x}-\varphi_{2 x}\right\|_{L^{2}\left(\Omega_{0}\right)} \leqslant \eta, \\
+            \left\|\varphi_{1 y}-\varphi_{2 y}\right\|_{L^{2}\left(n_{0}\right)} \leqslant \eta, \quad\left\|\psi_{1}-\psi_{2}\right\|_{L^{2}\left(n_{0}\right)} \leqslant \eta,
+        \end{array}
+    $$
+    则两初始值的解在 $0 \leqslant t \leqslant \frac{R}{a}$ 上成立
+    $$
+        \begin{array}{l}
+            \left\|u_{1}-u_{2}\right\|_{L^{2}\left(\Omega_{t}\right)} \leqslant \varepsilon, \quad\left\|u_{1 x}-u_{2 r}\right\|_{L^{2}\left(a_{t}\right)} \leqslant \varepsilon \\
+            \left\|u_{1 y}-u_{2 y}\right\|_{L^{2}\left(a_{t}\right)} \leqslant \varepsilon, \quad\left\|u_{1 t}-u_{2 t}\right\|_{L^{2}\left(a_{t}\right)} \leqslant \varepsilon
+        \end{array}
+    $$
+    且在锥体上成立 $\left\|u_{1}-u_{2}\right\|_{L^{2}(K)}=\sqrt{\iiint_{K}\left(u_{1}-u_{2}\right)^{2} d x d y d t} \leqslant \varepsilon$
+\end{theorem}
+
+
+\section{热传导方程}
+
+\subsection{初边值问题的分离变量法}
+
 
 
 
