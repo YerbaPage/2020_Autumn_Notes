@@ -32,8 +32,66 @@
 \begin{document}
 \maketitle
 \tableofcontents
-% \footnotesize
+\footnotesize
 \section{Preliminaries}
+\subsection{Linear Algebra}
+
+\begin{definition}[Linear Subspace]
+    A non-empty set $U \subset V$ is a \textbf{linear subspace} of $V$ if $\alpha x+\beta y \in U $ for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in U$
+\end{definition}
+
+\begin{definition}[Standard basis]
+    $\widehat{e}_{1}=(1,0,0, \ldots, 0), \widehat{e}_{2}=(0,1,0, \ldots, 0), \ldots, \widehat{e}_{k}=(0,0,0, \ldots, 1)$ will be called the \textbf{standard basis} for $\mathbb{F}^{k}$
+\end{definition}
+
+\begin{definition}[Linear transformation]
+    If for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in V$: $T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)$
+\end{definition}
+
+\subsection{Metric Spaces}
+
+\begin{definition}[Metric]
+    A metric on a set $M$ is a function for all $x, y, z \in M$
+    \begin{itemize}
+        \item $d(x, y) \geq 0$
+        \item $d(x, y)=0 \Longleftrightarrow x=y$
+        \item $d(x, y)=d(y, x)$
+        \item $d(x, z) \leq d(x, y)+d(y, z) \quad$ (the triangle inequality)
+    \end{itemize}
+    If $d$ is a metric on $M,$ then the pair $(M, d)$ is called a \textbf{metric space}.
+\end{definition}
+
+\begin{definition}[Induce]
+    Let $(M, d)$ be a metric space and let $N$ be a subset of $M .$ Define $d_{N}: N \times N \rightarrow \mathbb{R}$ by $d_{N}(x, y)=d(x, y)$ for all $x, y \in N$ (that is, $d_{N}$ is the restriction of $d$ to the subset $N$ ). Then $d_{N}$ is a metric on $N,$ called the metric induced on $N$ by $d$.
+\end{definition}
+
+\begin{theorem}
+    Suppose that $\left\{x_{n}\right\}$ is a convergent in a metric space $(M, d)$ Then $\left\{x_{n}\right\}$ is also a Cauchy sequence.
+\end{theorem}
+
+\begin{definition}[Open ball]
+    $B_{x}(r)=\{y \in M: d(x, y)<r\}$ will be called the open ball with centre $x$ and radius $r$
+\end{definition}
+
+\begin{definition}
+    Let $(M, d)$ be a metric space and let $A \subset M$
+    \begin{enumerate}
+        \item $A$ is \textbf{bounded} if there is a number $b>0$ such that $d(x, y)<b$ for all $x, y \in A$
+        \item $A$ is \textbf{open} if, for each point $x \in A,$ there is an $\epsilon>0$ such that $B_{x}(c) \subset A$
+        \item $A$ is \textbf{closed} if the set $M \backslash A$ is open.
+        \item  A point $x \in M$ is a \textbf{closure point} of $A$ if, for every $\epsilon>0,$ there is a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, if there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $y_{n} \rightarrow x$ ).
+        \item  The \textbf{closure} of $A,$ denoted by $\bar{A}$ or $A^{-},$ is the set of all closure points of $A$.
+        \item  $A$ is \textbf{dense} $($ in $M)$ if $\bar{A}=M$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    
+\end{theorem}
+
+
+
+
 
 \begin{theorem}
     Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
@@ -223,18 +281,15 @@
 \begin{definition}[Banach Space]
     A Banach space is a normed vector space which is complete under the metric
     associated with the norm.
-\end{definition}
 
-\begin{theorem}
     \begin{itemize}
         \item Any finite-dimensional normed vector space is a Banach space.
         \item If $X$ is a compact metric space then $C_{\mathrm{F}}(X)$ is a Banach space.
         \item If $(X, \Sigma, \mu)$ is a measure space then $L^{p}(X)$ is a Banach space for $1 \leq p \leq \infty$.
         \item $\ell^{p}$ is a Banach space for $1 \leq p \leq \infty$.
         \item If $X$ is a Banach space and $Y$ is a linear subspace of $X$ then $Y$ is a Banach space if and only if $Y$ is closed in $X$.
-        \item
     \end{itemize}
-\end{theorem}
+\end{definition}
 
 \begin{theorem}
     Let $X$ be a Banach space and let $\left\{x_{n}\right\}$ be a sequence in $X$. If the series $\sum_{k=1}^{\infty}\left\|x_{k}\right\|$ converges ($\sum_{k=1}^{\infty} x_{k}=\lim _{n \rightarrow \infty} s_{n}$ exists) then the series $\sum_{k=1}^{\infty} x_{k}$ converges.
