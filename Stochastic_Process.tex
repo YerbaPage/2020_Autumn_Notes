@@ -5,16 +5,14 @@
 \begin{document}
 \author{}
 \maketitle
-\tableofcontents
-\footnotesize
+% \tableofcontents
+% \footnotesize
 \section{基本概念}
 \begin{definition}[矩母函数]
     对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
         1,$$ 正态分布的矩母函数为$M_{X}t=e^{\mu t+\frac{t^{2} \sigma^{2}}{2}}$
 \end{definition}
 \par 对于相互独立的随机变量有$M_{X+Y}(t)=M_{X}(t) \cdot M_{Y}(t)$.
-
-
 
 \begin{definition}[数列的母函数(痛苦回忆)]
     设有一个实数列 $a=\left\{a_{0}, a_{1},\cdots, a_{n}, \cdots\right\},$ 如果幂级数
@@ -60,6 +58,106 @@
 \begin{theorem}
     假设 $\mu, \sigma^{2}$ 均有限, 则当 $t \rightarrow \infty$ 时, $N(t)$ 的近似分布是正态分布 $ N\left(t / \mu, t \sigma^{2} / \mu^{3}\right) $
 \end{theorem}
+
+\section{Markov 链}
+
+\begin{definition}[无后效性]
+    已知现在, 将来与过去无关.
+\end{definition}
+
+\begin{definition}
+    $\mathbb{P}\left(X_{n+1}=j \mid X_{n}, \cdots, X_{1}\right)=\mathbb{P}\left(X_{n+1}=j \mid X_{n}\right)$ 称为离散时间 Markov 链, 进一步如果 $P_{i j}(n):=\mathbb{P}\left(X_{n+1}=j \mid X_{n}=i\right)$ 与 $n$ 无关称为\textbf{时齐 Markov 链}
+\end{definition}
+
+\par 转移矩阵 $P_ij$ 满足非负性和正则性 $\forall i \in E, \sum_{j \in E} P_{i j}=1$ , 今后只讨论时齐 Markov 链故以下略去"时齐". 对于当前研究的 Markov 链利用时齐性质可以将有限维分布刻画为单步转移概率的乘积 $$\mathbb{P}\left(X_{n_{1}}=x_{1}, \cdots, X_{n_{k}}=x_{k}\right)=\mathbb{P}\left(X_{n_{1}}=x_{1}\right) \mathbb{P}\left(X_{n_{2}}=x_{2} \mid X_{n_{1}}=x_{1}\right) \cdots \mathbb{P}\left(X_{n_{k}}=x_{k} \mid X_{n_{k-1}}=x_{k-1}\right)$$.
+
+\begin{theorem}
+    若以 $S$ 为状态空间的随机过程 $\left\{X_{n}, n \geq 0\right\}$ 满足如下两个条件:
+    \begin{enumerate}
+        \item $\left\{\xi_{n}, n \geq 1\right\}$ 是独立同分布的随机序列且 $X_{0}$ 与 $\left\{\xi_{n}, n \geq 1\right\}$ 也相互独立
+        \item 存在函数 $f: S \times S \rightarrow S$ 使得 $X_{n}=f\left(X_{n-1}, \xi_{n}\right), n \geq 1 .$
+    \end{enumerate}
+    那么 $\left\{X_{n}, n \geq 0\right\}$ 是马氏链, 其转移概率为
+    $$p_{i j}=\mathbb{P}\left(f\left(i, \xi_{1}\right)=j\right), i, j \in S$$
+\end{theorem}
+
+\begin{theorem}[Chapman-Kolmogorov 方程]
+    $\mathbf{P}^{(n+m)}=\mathbf{P}^{(n)} \cdot \mathbf{P}^{(m)}$
+\end{theorem}
+
+\begin{definition}
+    若存在 $n \geq 0$ 使得 $P_{i j}^{n}>0,$ 则称 $i$ 到 $j$ \textbf{可达}(相反有 $P_{i j}^{n}=0, \forall n \geq 1$ 不可达 ), 记作 $i \rightarrow j .$ 若 $i \rightarrow j$ 且 $j \rightarrow i,$ 则为相通, 记作 $i \leftrightarrow j$. 相应衍生出自反性、对称性和传递性等性质.
+\end{definition}
+
+\begin{definition}
+    若某类中的任何状态均不可达其它类中任一状态, 则称此类是\textbf{闭}的. 若 Markov 链的状态空间只存在一个类, 即一切状态彼此相通, 则称该 Markov 链\textbf{不可约}.
+\end{definition}
+
+\begin{definition}[周期]
+    若集合 $\left\{n \geq 1: P_{i i}^{n}>0\right\}$ 非空, 则称该集合的最大公约数 $d(i):=G C D\left\{n \geq 1: P_{i i}^{n}>0\right\}$ 为 $i$ 的周期. $d(i)>1$ 称 $i$ 是周期的, $d(i)=1,$ 称 $i$ 是非周期的.
+\end{definition}
+
+\begin{lemma}
+    若 $i \leftrightarrow j,$ 则 $d(i)=d(j) .$
+\end{lemma}
+
+\begin{definition}
+    对任意 $n,$ 记 $f_{i j}^{n}$ 为 $i$ 发经 $n$ 步首次到达 $j$ 的概率: $f_{i j}^{n}:=\mathbb{P}\left(X_{n}=j, X_{k} \neq j, k=1,2, \cdots, n-1 \mid X_{0}=i\right), f_{i j}^{0} \equiv 0 $, 从而有 $i$ 发经有限步最终到达 $j$ 的概率 $f_{i j}:=\sum_{n=1}^{\infty} f_{i j}^{n}=\mathbb{P}\left(T_{i j}<\infty\right)$, 若 $f_{i i}=1,$ 则称 $i$ 为\textbf{常返状态}, $f_{i i}<1,$ 则称 $i$ 为\textbf{暂留状态}.
+\end{definition}
+
+\begin{definition}[判定定理]
+     常返的充要条件为 $\sum_{n=0}^{\infty} P_{i i}^{n}=\infty$, 暂留的充要条件是 $\sum_{n=0}^{\infty} P_{i i}^{n}=1 /\left(1-f_{i i}\right)<\infty$
+\end{definition}
+
+\begin{corollary}
+    若 $i$ 常返且 $i \leftrightarrow j,$ 则 $j$ 常返且 $f_{j i}=1 .$
+\end{corollary}
+
+\begin{theorem}[Polya 定理]
+    $d \geq 3$ 维空间中的对称随机游动是非常返的, $d=1,2$ 维空间中的对称随机游动都常返, 且都是零常返的.
+\end{theorem}
+
+\begin{definition}[正常返与零常返]
+    记平均回转时间 $\mu_{i i}:=\sum_{i=1}^{\infty} n f_{i i}^{n}$ 若 $\mu_{i i}<\infty,$ 则称 $i$ 为正(positive)常返若 $\mu_{i i}=\infty,$ 则称 $i$ 为零(null)常返, 只有在有无穷可列多个状态时, 才可能出现零常返态.
+\end{definition}
+
+\begin{theorem}
+    对任意 $i, j \in E, n \geq 1$:
+    \begin{enumerate}
+        \item $P_{i j}^{n}=\sum_{l=1}^{n} f_{i j}^{\prime} P_{j j}^{n-l}$
+        \item $f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \cdot I_{\{n>1\}}+P_{i j} \cdot I_{\{n=1\}},$ 即 $\left\{\begin{array}{l}f_{i j}^{1}=P_{i j} \\ f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \quad(n=2,3, \cdots)\end{array}\right.$
+        \item $i \rightarrow j \Leftrightarrow f_{i j}>0$, 
+        $i \leftrightarrow j \Leftrightarrow f_{i j}>0$ 且 $f_{j i}>0 .$
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    若 $j$ 非常返, 则 $\sum_{n=1}^{\infty} P_{i j}^{n}<\infty, \lim _{n \rightarrow \infty} P_{i j}^{n}=0 .$
+\end{corollary}
+
+\begin{theorem}[基本极限定理]
+    \begin{enumerate}
+        \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} P_{i i}^{n}=0 .$
+        \item 若 $i$ 为周期为 $d$ 的常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n d}=\frac{d}{\mu_{i i}}$.
+        其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0 .$
+        \item 若 $i$ 为非周期正常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n}=\frac{1}{\mu_{i i}}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[平稳分布]
+    
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
