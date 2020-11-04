@@ -386,7 +386,7 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
     设将 $[a, b]$ 划分为 $n$ 等份，选取等距节点 $x_{k}=a+k h$ 构造出的插值型求积公式 $I_{n}=(b-a) \sum_{k=0}^{n} C_{k}^{(n)} f\left(x_{k}\right)$ 称为 $ Newton-Cotes$ 公式, 有 $C_{k}^{(n)}=\frac{h}{b-a} \int_{0}^{n} \prod_{j=0, j \neq k}^{n} \frac{t-j}{k-j} d t=\frac{(-1)^{n-k}}{n k !(n-k) !} \int_{0}^{n} \prod_{j=0, j \neq k}^{n}(t-j) d t$
 \end{definition}
 
-\par $n=1$ 梯形公式, $n=2$ Simpson公式, $n=4$ Cotes公式, 当 $n \geq 8$ 时系数出现负值, 数值不稳定.
+\par $n=1$ 梯形公式, $n=2$ Simpson公式, 余项为 $-\frac{b-a}{180}\left(\frac{b-a}{2}\right)^{4}$, $n=4$ Cotes公式, 余项为 $-\frac{2(b-a)}{945}\left(\frac{b-a}{4}\right)^{6} f^{(6)}(\eta)$, 当 $n \geq 8$ 时系数出现负值, 数值不稳定.
 
 \begin{theorem}
     偶数阶 Newton-Cotes 公式至少具有 $n+1$ 次代数精度. (利用 $R[f]=\int_{a}^{b} \prod_{j=0}^{n}\left(x-x_{j}\right) d x$)
@@ -443,7 +443,7 @@ $$
 \end{theorem}
 
 \begin{definition}
-    取权函数 $\rho(x)=1$ 对应高斯勒让德求积公式, 余项为 $R_{n}[f]=\frac{f^{(2 n+2)}(\eta)}{(2 n+2) !} \int_{a}^{b} \tilde{P}_{n+1}^{2}(x) d x$, 其中 $\tilde{P}_{n+1}(x)$ 是最高项系数为 $1$ 的勒让德多项式 $\bar{P}_{n}(x)=\frac{n !}{(2 n) !} \frac{d^{n}}{d x^{n}}\left[\left(x^{2}-1\right)^{n}\right]$, 利用其正交性化简得到 $R_{n}[f]=\frac{2^{2 n+3}[(n+1) !]^{4}}{(2 n+3)[(2 n+2) !]^{3}} f^{(2 n+2)}(\eta)$ 
+    取权函数 $\rho(x)=1$ 对应高斯勒让德求积公式, 余项为 $R_{n}[f]=\frac{f^{(2 n+2)}(\eta)}{(2 n+2) !} \int_{a}^{b} \tilde{P}_{n+1}^{2}(x) d x$, 其中 $\tilde{P}_{n+1}(x)$ 是最高项系数为 $1$ 的勒让德多项式 $\bar{P}_{n}(x)=\frac{n !}{(2 n) !} \frac{d^{n}}{d x^{n}}\left[\left(x^{2}-1\right)^{n}\right]$, 利用其正交性化简得到 $R_{n}[f]=\frac{2^{2 n+3}[(n+1) !]^{4}}{(2 n+3)[(2 n+2) !]^{3}} f^{(2 n+2)}(\eta)$
 \end{definition}
 
 \begin{definition}
@@ -457,6 +457,54 @@ $$
 \end{definition}
 
 \subsection{多重积分}
+
+\par 分步使用节点积分.
+
+\subsection{数值微分}
+
+\par 中点方法 $f^{\prime}(a) \approx \frac{f(a+h)-f(a-h)}{2 h}$, 误差 $O\left(h^{2}\right)$, 且有 $\left|f^{\prime}(a)-G(h)\right| \leq \frac{h^{2}}{6} M$, 其中 $M \geq \max _{|x-a| \leq h}\left|f^{(3)}(x)\right|$. 若考虑到舍入误差, 有误差上界 $E(h)=\frac{h^{2}}{6} M+\frac{\varepsilon}{h}$, 对此求极值可以有最优步长 $h$.
+
+\par 还有插值方法, 先进行插值, 再利用插值多项式的导数作为逼近, 有余项 $f^{\prime}\left(x_{k}\right)-P_{n}^{\prime}\left(x_{k}\right)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}^{\prime}\left(x_{k}\right)$. 下面以两点公式和三点公式为例:
+
+\begin{enumerate}
+    \item 两点 $P_{1}(x)=\frac{x-x_{1}}{x_{0}-x_{1}} f\left(x_{0}\right)+\frac{x-x_{0}}{x_{1}-x_{0}} f\left(x_{1}\right)$ 有 $f^{\prime}\left(x_{0}\right)=\frac{1}{h}\left[f\left(x_{1}\right)-f\left(x_{0}\right)\right]-\frac{h}{2} f^{\prime \prime}(\xi)$
+    \item 三点 $P_{2}(x)=\frac{\left(x-x_{1}\right)\left(x-x_{2}\right)}{\left(x_{0}-x_{1}\right)\left(x_{0}-x_{2}\right)} f\left(x_{0}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{2}\right)}{\left(x_{1}-x_{0}\right)\left(x_{1}-x_{2}\right)} f\left(x_{1}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{1}\right)}{\left(x_{2}-x_{0}\right)\left(x_{2}-x_{1}\right)} f\left(x_{2}\right)$ 有
+          $$
+              \begin{array}{l}
+                  f^{\prime}\left(x_{0}\right)=\frac{1}{2 h}\left[-3 f\left(x_{0}\right)+4 f\left(x_{1}\right)-f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{0}\right) \\
+                  f^{\prime}\left(x_{1}\right)=\frac{1}{2 h}\left[-f\left(x_{0}\right)+f\left(x_{2}\right)\right]-\frac{h^{2}}{6} f^{(3)}\left(\xi_{1}\right)                         \\
+                  f^{\prime}\left(x_{2}\right)=\frac{1}{2 h}\left[f\left(x_{0}\right)-4 f\left(x_{1}\right)+3 f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{2}\right)
+              \end{array}
+          $$
+\end{enumerate}
+
+\par 利用三次样条函数作为近似并求导有 $\left\|f^{(k)}(x)-S^{(k)}(x)\right\|_{\infty} \leq C_{k}\left\|f^{(4)}\right\|_{\infty} h^{4-k}, k=0,1,2$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
