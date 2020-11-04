@@ -86,7 +86,7 @@
 \end{definition}
 
 \begin{theorem}
-    
+
 \end{theorem}
 
 
@@ -464,13 +464,51 @@
 \end{corollary}
 
 \section{Linear Operators}
+\subsection{Continuous Linear Transformations}
 
+\begin{lemma}
+    Let $X$ and $Y$ be normed linear spaces and let $T: X \rightarrow Y$ be a linear transformation. The following are equivalent:
+    \begin{enumerate}
+        \item $T$ is uniformly continuous;
+        \item $T$ is continuous;
+        \item $T$ is continuous at 0
+        \item there exists a positive real number $k$ such that $\|T(x)\| \leq k$ whenever $x \in X$ and $\|x\| \leq 1$
+        \item there exists a positive real number $k$ such that $\|T(x)\| \leq k\|x\|$ for all $x \in X$
+    \end{enumerate}
+\end{lemma}
 
+\begin{lemma}
+    If $\left\{c_{n}\right\} \in \ell^{\infty}$ and $\left\{x_{n}\right\} \in \ell^{p},$ where $1 \leq p<\infty,$ then $\left\{c_{n} x_{n}\right\} \in \ell^{p}$ and $ \sum_{n=1}^{\infty}\left|c_{n} x_{n}\right|^{p} \leq\left\|\left\{c_{n}\right\}\right\|_{\infty}^{p} \sum_{n=1}^{\infty}\left|x_{n}\right|^{p}$
+\end{lemma}
 
+\begin{definition}[Bounded]
+    Let $X$ and $Y$ be normed linear spaces and let $T: X \rightarrow Y$ be a linear transformation. $T$ is said to be \textbf{bounded} if there exists a positive real number $k$ such that $\|T(x)\| \leq k\|x\|$ for all $x \in X$
+\end{definition}
 
+\begin{theorem}
+    Let $X$ be a finite-dimensional normed space, let $Y$ be any normed linear space and let $T: X \rightarrow Y$ be a linear transformation. Then $T$ is continuous.
+\end{theorem}
 
+\begin{lemma}
+    If $X$ and $Y$ are normed linear spaces and $T: X \rightarrow Y$ is a continuous linear transformation then Ker $(T)$ is closed.
+\end{lemma}
 
+\begin{definition}[Graph]
+    If $X$ and $Y$ are normed spaces and $T: X \rightarrow Y$ is a linear transformation, the \textbf{graph} of $T$ is the linear subspace $\mathcal{G}(T)$ of $X \times Y$ defined by $\mathcal{G}(T)=\{(x, T x): x \in X\}$
+\end{definition}
 
+\begin{lemma}
+    If $X$ and $Y$ are normed spaces and $T: X \rightarrow Y$ is a continuous linear transformation then $\mathcal{G}(T)$ is closed.
+\end{lemma}
+
+\begin{lemma}
+    Let $X$ and $Y$ be normed linear spaces and let $S, T \in B(X, Y)$ with $\|S(x)\| \leq$ $k_{1}\|x\|$ and $\|T(x)\| \leq k_{2}\|x\|$ for all $x \in X .$ Let $\lambda \in \mathbb{F} .$ Then
+    \begin{enumerate}
+        \item $\|(S+T)(x)\| \leq\left(k_{1}+k_{2}\right)\|x\|$ for all $x \in X$
+        \item $\|(\lambda S)(x)\| \leq|\lambda| k_{1}\|x\|$ for all $x \in X$
+        \item $B(X, Y)$ is a linear subspace of $L(X, Y)$ and so $B(X, Y)$ is a vector space.
+    \end{enumerate}
+\end{lemma}
 
 
 
