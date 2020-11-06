@@ -101,12 +101,16 @@
     若 $i \leftrightarrow j,$ 则 $d(i)=d(j) .$
 \end{lemma}
 
+\begin{definition}[首达时间]
+    定义第一次完成两个状态之间转移的时间 $T_{i j}=\min \left\{n: X_{0}=i, X_{n}=j, n \geq 0\right\}$ 称为\textbf{首达时间}, 若达不到则取 $T_ij=+\infty$
+\end{definition}
+
 \begin{definition}
     对任意 $n,$ 记 $f_{i j}^{n}$ 为 $i$ 发经 $n$ 步首次到达 $j$ 的概率: $f_{i j}^{n}:=\mathbb{P}\left(X_{n}=j, X_{k} \neq j, k=1,2, \cdots, n-1 \mid X_{0}=i\right), f_{i j}^{0} \equiv 0 $, 从而有 $i$ 发经有限步最终到达 $j$ 的概率 $f_{i j}:=\sum_{n=1}^{\infty} f_{i j}^{n}=\mathbb{P}\left(T_{i j}<\infty\right)$, 若 $f_{i i}=1,$ 则称 $i$ 为\textbf{常返状态}, $f_{i i}<1,$ 则称 $i$ 为\textbf{暂留状态}.
 \end{definition}
 
 \begin{definition}[判定定理]
-     常返的充要条件为 $\sum_{n=0}^{\infty} P_{i i}^{n}=\infty$, 暂留的充要条件是 $\sum_{n=0}^{\infty} P_{i i}^{n}=1 /\left(1-f_{i i}\right)<\infty$
+    常返的充要条件为 $\sum_{n=0}^{\infty} P_{i i}^{n}=\infty$, 暂留的充要条件是 $\sum_{n=0}^{\infty} P_{i i}^{n}=1 /\left(1-f_{i i}\right)<\infty$
 \end{definition}
 
 \begin{corollary}
@@ -126,8 +130,8 @@
     \begin{enumerate}
         \item $P_{i j}^{n}=\sum_{l=1}^{n} f_{i j}^{\prime} P_{j j}^{n-l}$
         \item $f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \cdot I_{\{n>1\}}+P_{i j} \cdot I_{\{n=1\}},$ 即 $\left\{\begin{array}{l}f_{i j}^{1}=P_{i j} \\ f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \quad(n=2,3, \cdots)\end{array}\right.$
-        \item $i \rightarrow j \Leftrightarrow f_{i j}>0$, 
-        $i \leftrightarrow j \Leftrightarrow f_{i j}>0$ 且 $f_{j i}>0 .$
+        \item $i \rightarrow j \Leftrightarrow f_{i j}>0$,
+              $i \leftrightarrow j \Leftrightarrow f_{i j}>0$ 且 $f_{j i}>0 .$
     \end{enumerate}
 \end{theorem}
 
@@ -139,17 +143,28 @@
     \begin{enumerate}
         \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} P_{i i}^{n}=0 .$
         \item 若 $i$ 为周期为 $d$ 的常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n d}=\frac{d}{\mu_{i i}}$.
-        其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0 .$
+              其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0 .$
         \item 若 $i$ 为非周期正常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n}=\frac{1}{\mu_{i i}}$.
     \end{enumerate}
 \end{theorem}
 
 \begin{definition}[平稳分布]
-    
+    若非负数列 $\left\{\pi_{j}\right\}$ 满足
+    \begin{enumerate}
+        \item $\sum_{j \in E} \pi_{j}=1$
+        \item $\pi_{j}=\sum_{i \in E} \pi_{i} P_{i j}, \forall j \in E$.
+    \end{enumerate}
+    则称 $\left\{\pi_{j}\right\}$ 为 $X$ 的\textbf{平稳分布}. 如果 Markov 链 $\left\{X_{n}, n \geq 0\right\}$ 的初始分布是个平稳分布, 则该过
+    程为平稳过程.
 \end{definition}
 
+\begin{lemma}
+    如果 Markov 链是不可约的, $j$ 是非周期的，则 $\lim _{n \rightarrow \infty} P_{i j}^{n}=\frac{1}{\mu_{j j}}>0$ 称 $\left\{\frac{1}{\mu_{i j}}\right\}$ 为\textbf{极限分布}.
+\end{lemma}
 
-
+\begin{theorem}
+    非周期不可约链是正常返的充要条件是该链存在平稳分布, 此平稳分布就是它的极限分布.
+\end{theorem}
 
 
 

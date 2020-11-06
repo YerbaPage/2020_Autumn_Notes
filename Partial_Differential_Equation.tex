@@ -170,7 +170,29 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 
 \par 进一步对于初值问题应满足 $\varphi(x)=\sum_{k=1}^{\infty} A_{k} \sin \sqrt{\lambda_{k}} x$, 两边乘上 $\sin \sqrt{\lambda_{k}} x$ 再进行积分, 利用固有函数正交性 $$\int_{0}^{l} X_{n} X_{m} d x=\int_{0}^{l} \sin \sqrt{\lambda_{n}} x \sin \sqrt{\lambda_{m}} x d x=0, m \neq n$$ 得到 $A_{k}=\frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda}_{k} \xi d \xi$.
 
-\par 最终整合得到形式解为 
+\par 最终整合得到形式解为 $u(x, t)=\sum_{k=1}^{\infty} \frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda_{k}} \xi d \xi \cdot e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$
+
+\subsubsection{圆形区域}
+\par 现研究问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}} \\ u(x, y, 0)=\varphi(x, y) \\ \left.u\right|_{x^{2}+y^{2}+k^{2}}=0\end{array}\right.$ 这个问题很有意思..
+
+\subsection{柯西问题}
+\subsubsection{傅里叶变换及其基本性质}
+
+\par 定义傅里叶积分 $f(x)=\frac{1}{\pi} \int_{0}^{\infty} d \lambda \int_{-\infty}^{\infty} f(\xi) \cos \lambda(x-\xi) d \xi$, 和傅里叶变换 $g(\lambda)=\int_{-\cdots}^{\infty} f(\xi) e^{-i \lambda \xi} d \xi$ 记为 $F[f]$
+
+\begin{lemma}
+    卷积的傅里叶变换等于傅里叶变换的乘积 $F\left[f_{1} * f_{2}\right]=F\left[f_{1}\right] \cdot F\left[f_{2}\right]$, $F[-i x f(x)]=\frac{d}{d \lambda} F[f]$
+\end{lemma}
+
+\subsubsection{热传导方程柯西问题的求解} 
+
+\par 首先研究其次热传导方程的柯西问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} \\ u(x, 0)=\varphi(x)\end{array}\right.$, 通过傅里叶变换有 $\frac{d \tilde{u}}{d t}=-a^{2} \lambda^{2} \tilde{u}$ 得到最终解 $u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \varphi(\xi) e^{-\frac{(x-\xi)^{2}}{4 a^{2}}} d \xi$, 又称为\textbf{泊松公式}, 右端积分称为\textbf{泊松积分}.
+
+\par 而对于具有其次初始条件的柯西问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}}+f(x, t) \\ u(x, 0)=0\end{array}\right.$ 有 $u(x, t)=\int_{0}^{t} w(x, t ; \tau) d \tau$, 其中 $\left\{\begin{array}{l}\frac{\partial w}{\partial t}=a^{2} \frac{\partial^{2} w}{\partial x^{2}}, \quad t>\tau \\ w(x, \tau)=f(x, \tau)\end{array}\right.$, 从而求得 $u(x, t)=\frac{1}{2 a \sqrt{\pi}} \int_{0}^{t} \int_{-\infty}^{\infty} \frac{f(\xi, \tau)}{\sqrt{t-\tau}} e^{-\frac{(x-\xi)^{2}}{4 a^{2}(t-\tau)}} d \xi d \tau$.
+
+% \subsubsection{解的存在性}
+
+
 
 
 

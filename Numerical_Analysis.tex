@@ -469,13 +469,13 @@ $$
 \begin{enumerate}
     \item 两点 $P_{1}(x)=\frac{x-x_{1}}{x_{0}-x_{1}} f\left(x_{0}\right)+\frac{x-x_{0}}{x_{1}-x_{0}} f\left(x_{1}\right)$ 有 $f^{\prime}\left(x_{0}\right)=\frac{1}{h}\left[f\left(x_{1}\right)-f\left(x_{0}\right)\right]-\frac{h}{2} f^{\prime \prime}(\xi)$
     \item 三点 $P_{2}(x)=\frac{\left(x-x_{1}\right)\left(x-x_{2}\right)}{\left(x_{0}-x_{1}\right)\left(x_{0}-x_{2}\right)} f\left(x_{0}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{2}\right)}{\left(x_{1}-x_{0}\right)\left(x_{1}-x_{2}\right)} f\left(x_{1}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{1}\right)}{\left(x_{2}-x_{0}\right)\left(x_{2}-x_{1}\right)} f\left(x_{2}\right)$ 有
-          $$
-              \begin{array}{l}
-                  f^{\prime}\left(x_{0}\right)=\frac{1}{2 h}\left[-3 f\left(x_{0}\right)+4 f\left(x_{1}\right)-f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{0}\right) \\
-                  f^{\prime}\left(x_{1}\right)=\frac{1}{2 h}\left[-f\left(x_{0}\right)+f\left(x_{2}\right)\right]-\frac{h^{2}}{6} f^{(3)}\left(\xi_{1}\right)                         \\
-                  f^{\prime}\left(x_{2}\right)=\frac{1}{2 h}\left[f\left(x_{0}\right)-4 f\left(x_{1}\right)+3 f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{2}\right)
-              \end{array}
-          $$
+    $$
+        \begin{array}{l}
+            f^{\prime}\left(x_{0}\right)=\frac{1}{2 h}\left[-3 f\left(x_{0}\right)+4 f\left(x_{1}\right)-f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{0}\right) \\
+            f^{\prime}\left(x_{1}\right)=\frac{1}{2 h}\left[-f\left(x_{0}\right)+f\left(x_{2}\right)\right]-\frac{h^{2}}{6} f^{(3)}\left(\xi_{1}\right)                         \\
+            f^{\prime}\left(x_{2}\right)=\frac{1}{2 h}\left[f\left(x_{0}\right)-4 f\left(x_{1}\right)+3 f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{2}\right)
+        \end{array}
+    $$
 \end{enumerate}
 
 \par 利用三次样条函数作为近似并求导有 $\left\|f^{(k)}(x)-S^{(k)}(x)\right\|_{\infty} \leq C_{k}\left\|f^{(4)}\right\|_{\infty} h^{4-k}, k=0,1,2$.

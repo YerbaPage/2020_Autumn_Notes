@@ -20,7 +20,6 @@
   linktoc=all,
 }
 
-
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}{Def}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -86,10 +85,20 @@
 \end{definition}
 
 \begin{theorem}
-
+    Let $(M, d)$ be a metric space and let $A \subset M$.
+    \begin{enumerate}
+        \item $\bar{A}$ is closed and is equal to the intersection of the collection of all closed subsets of $M$ which contain $A$ (so $\bar{A}$ is the smallest closed set containing
+              $A)$
+        \item $A$ is closed if and only if $A=\bar{A}$.
+        \item $A$ is closed if and only if, whenever $\left\{x_{n}\right\}$ is a sequence in $A$ which converges to an element $x \in M,$ then $x \in A$
+        \item $x \in \bar{A}$ if and only if $\inf \{d(x, y): y \in A\}=0$
+        \item $A$ is dense if and only if, for any element $x \in M$ and any number $\epsilon>0$, there exists a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, for any element $x \in M$ there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $\left.y_{n} \rightarrow x\right)$
+    \end{enumerate}
 \end{theorem}
 
-
+\begin{definition}
+    $f$ is \textbf{uniformly continuous} (on $M$ ) if, for every $\epsilon>0,$ there exists $\delta>0$ such that, for all $x, y \in M$ $d_{M}(x, y)<\delta \Rightarrow d_{N}(f(x), f(y))<\epsilon$.
+\end{definition}
 
 
 
@@ -103,15 +112,78 @@
     \end{enumerate}
 \end{theorem}
 
+\begin{theorem}
+    $f$ is continuous at $x \in M$ if and only if $x_{n} \rightarrow x,$ satisfies $f\left(x_{n}\right) \rightarrow f(x)$, $f$ is continuous on $M$ if and only if either any open set $A \subset N,$ the set $f^{-1}(A) \subset M$ is open or for any closed set $A \subset N,$ the set $f^{-1}(A) \subset M$ is closed.
+\end{theorem}
+
+\begin{definition}[complete]
+    A metric space $(M, d)$ is \textbf{complete} if every Cauchy sequence in it is convergent. A set $A \subset M$ is \textbf{complete} (in $(M, d))$ if every Cauchy sequence in $A$ converges to an element of $A$. The space $\mathbb{F}^{k}$ with the standard metric is complete.
+\end{definition}
+
+\begin{theorem}[Baire's Category Theorem]
+    If $(M, d)$ is a complete metric space and $M=\bigcup_{j=1}^{\infty} A_{j},$ where each $A_{j} \subset M$ $j=1,2, \ldots,$ is closed, then at least one of the sets $A_{j}$ contains an open ball.
+\end{theorem}
+
+\begin{definition}[Compact]
+    Let $(M, d)$ be a metric space. A set $A \subset M$ is \textbf{compact} if every sequence $\left\{x_{n}\right\}$ in $A$ contains a subsequence that converges to an element of $A .$ A set $A \subset M$ is \textbf{relatively compact} if the closure $\bar{A}$ is compact. If the set $M$ itself is compact then we say that $(M, d)$ is a \textbf{compact metric space}.
+\end{definition}
+
+\begin{theorem}
+    Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
+    \begin{enumerate}
+        \item if $A$ is complete then it is closed;
+        \item if $M$ is complete then $A$ is complete if and only if it is closed;
+        \item if $A$ is compact then it is closed and bounded;
+        \item (Bolzano-Weierstrass) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Suppose that $(M, d)$ is a compact metric space and $f: M \rightarrow \mathbb{F}$ is continuous. Then there exists a constant $b>0$ such that $|f(x)| \leq b$ for all $x \in M$ (we say that $f$ is \textbf{bounded}). In particular, if $\mathbb{F}=\mathbb{R}$ then the numbers $\sup \{f(x): x \in M\}$ and $\inf \{f(x): x \in M\},$ exist and are finite. Furthermore, there exist points $x_{s}, x_{i} \in M$ such that $f\left(x_{s}\right)=\sup \{f(x): x \in M\}, f\left(x_{i}\right)=\inf \{f(x): x \in M\}$
+\end{theorem}
+
+\begin{definition}
+    Let $(M, d)$ be a compact metric space. Set of continuous functions $f: M \rightarrow$ $\mathbb{F}$ will be denoted by $C_{\mathbb{F}}(M) .$ We define \textbf{uniform metric} on $C_{\mathrm{F}}(M)$ by
+    $$
+        d(f, g)=\sup \{|f(x)-g(x)|: x \in M\}
+    $$
+\end{definition}
+
+\begin{definition}
+    $(M, d)$ is a compact metric space and $\left\{f_{n}\right\}$ is a sequence in $C(M)$
+    \begin{enumerate}
+        \item $\left\{f_{n}\right\}$ converges pointwise to $f$ if $\left|f_{n}(x)-f(x)\right| \rightarrow 0$ for all $x \in M$
+        \item $\left\{f_{n}\right\}$ converges uniformly to $f$ if $\sup \left\{\left|f_{n}(x)-f(x)\right|: x \in M\right\} \rightarrow 0$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    The metric space $C_{\mathbb{F}}(M)$ (also written as $C(M)$) is complete. For any compact set $M \subset \mathbb{R},$ the set $\mathcal{P}_{\mathrm{R}}$ (polynomial) is dense in $C_{\mathbb{R}}(M)$.
+\end{theorem}
+
+\begin{definition}[Separable]
+    A metric space $(M, d)$ is \textbf{separable} if it contains a countable, dense subset. The empty set is regarded as separable.
+\end{definition}
+
+\begin{theorem}
+    Suppose that $(M, d)$ is a metric space and $A \subset M$, then:
+    \begin{enumerate}
+        \item If $A$ is compact then it is separable.
+        \item If $A$ is separable and $B \subset A$ then $B$ is separable.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Lebesgue Integration}
+
 \begin{definition}[counting measure]
     We define counting measure
     $$\mu(A)=\left\{\begin{array}{ll}
-            n      & \text{if} A \text { has exactly } n \text { elements } \\
+            n      & \text{if A has exactly } n \text { elements } \\
             \infty & \text { otherwise }
         \end{array}\right.$$
 \end{definition}
 
-\begin{definition}[essential supremum]
+\begin{definition}[Essential supremum]
     Suppose that $f$ is a measurable function and there exists a number $b$ such that $f(x) \leq b a.e.$ Then we can define the \textbf{essential supremum} of $f$ to be $$ess \ sup \  f=\inf \{b: f(x) \leq b \  a.e. \}$$
 \end{definition}
 
@@ -120,10 +192,24 @@
 \end{definition}
 
 \begin{definition}
-    Define the spaces$$\begin{array}{l}
+    Suppose that $1 \leq p \leq \infty .$ In the special case where $(X, \Sigma, \mu)=\left(\mathbb{N}, \Sigma_{c}, \mu_{c}\right),$ the space $L^{p}(\mathbb{N})$ consists of the set of sequences $\left\{a_{n}\right\}$ in $\mathbb{F}$ with the property that
+    $$
+        \begin{array}{l}
+            \left(\sum_{n=1}^{\infty}\left|a_{n}\right|^{p}\right)^{1 / p}<\infty, \quad \text { for } 1 \leq p<\infty \\
+            \sup \left\{\left|a_{n}\right|: n \in \mathbb{N}\right\}<\infty, \quad \text { for } p=\infty
+        \end{array}
+    $$
+    These spaces will be denoted by $\ell^{p}$ (or $\ell_{k}^{p}$ )
+\end{definition}
+
+\begin{definition}
+    Define the spaces
+    $$
+        \begin{array}{l}
             \mathcal{L}^{p}(X)=\left\{f: f \text { is measurable and }\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}<\infty\right\}, \quad 1 \leq p<\infty \\
             \mathcal{L}^{\infty}(X)=\{f: f \text { is measurable and ess sup }|f|<\infty\}
-        \end{array}$$
+        \end{array}
+    $$
     We also define the corresponding sets $L^{P}(X)$ by identifying functions in $\mathcal{L}^{p}(X)$ which are $a.e.$ equal. In practice, we simply refer to such $\mathcal{L}$ rather than classes themselves.
 \end{definition}
 
@@ -510,7 +596,7 @@
     \end{enumerate}
 \end{lemma}
 
-
+\subsection{The Norm of a Bounded Linear Operator}
 
 
 
