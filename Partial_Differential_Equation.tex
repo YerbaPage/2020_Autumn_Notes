@@ -166,7 +166,7 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 \subsection{初边值问题的分离变量法}
 \subsubsection{一个空间变量}
 
-\par 对于问题 $\left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
+\par 对于问题 $\left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 根据 $X(x)=A \cos \sqrt{\lambda} x+B \sin \sqrt{\lambda} x$ 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 带入 $T_{k}(t)=C_{k} e^{-a^{2} \lambda_{k} t}$ 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
 
 \par 进一步对于初值问题应满足 $\varphi(x)=\sum_{k=1}^{\infty} A_{k} \sin \sqrt{\lambda_{k}} x$, 两边乘上 $\sin \sqrt{\lambda_{k}} x$ 再进行积分, 利用固有函数正交性 $$\int_{0}^{l} X_{n} X_{m} d x=\int_{0}^{l} \sin \sqrt{\lambda_{n}} x \sin \sqrt{\lambda_{m}} x d x=0, m \neq n$$ 得到 $A_{k}=\frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda}_{k} \xi d \xi$.
 
@@ -178,10 +178,10 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 \subsection{柯西问题}
 \subsubsection{傅里叶变换及其基本性质}
 
-\par 定义傅里叶积分 $f(x)=\frac{1}{\pi} \int_{0}^{\infty} d \lambda \int_{-\infty}^{\infty} f(\xi) \cos \lambda(x-\xi) d \xi$, 和傅里叶变换 $g(\lambda)=\int_{-\cdots}^{\infty} f(\xi) e^{-i \lambda \xi} d \xi$ 记为 $F[f]$
+\par 定义傅里叶积分 $f(x)=\frac{1}{\pi} \int_{0}^{\infty} d \lambda \int_{-\infty}^{\infty} f(\xi) \cos \lambda(x-\xi) d \xi$, 和傅里叶变换 $g(\lambda)=\int_{-\infty}^{\infty} f(\xi) e^{-i \lambda \xi} d \xi$ 记为 $F[f]$
 
 \begin{lemma}
-    卷积的傅里叶变换等于傅里叶变换的乘积 $F\left[f_{1} * f_{2}\right]=F\left[f_{1}\right] \cdot F\left[f_{2}\right]$, $F[-i x f(x)]=\frac{d}{d \lambda} F[f]$
+    卷积的傅里叶变换等于傅里叶变换的乘积 $F\left[f_{1} * f_{2}\right]=F\left[f_{1}\right] \cdot F\left[f_{2}\right]$, $F\left[f_{1} \cdot f_{2}\right]=\frac{1}{2 \pi} F\left[f_{1}\right] * F\left[f_{2}\right]$, $F[-i x f(x)]=\frac{d}{d \lambda} F[f]$, $F\left[f^{\prime}(x)\right]=i \lambda F[f(x)]$
 \end{lemma}
 
 \subsubsection{热传导方程柯西问题的求解} 
