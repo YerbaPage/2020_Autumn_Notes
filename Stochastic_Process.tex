@@ -166,13 +166,57 @@
     非周期不可约链是正常返的充要条件是该链存在平稳分布, 此平稳分布就是它的极限分布.
 \end{theorem}
 
+\section{离散鞅论}
+\subsection{基本概念}
+
+\begin{definition}
+    定义$\mathcal{F}_{n}^{0}:=\sigma\left(Z_{k}, k \leq n\right)$, 若 $\mathbb{E}\left|Z_{n}\right|<\infty$, 且满足 $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}^{0}\right]=Z_{n}$ 则称 $Z$ 为鞅. $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}\right] \geq(\leq) Z_{n}, n \geq 0$ 则 $Z$ 称为下 $($ 上)鞅.
+\end{definition}
+
+\par 条件期望性质有 $\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}) \mid \mathcal{B})=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{B}) \mid \mathcal{A})=\mathbb{E}(\xi \mid \mathcal{A})$, $\mathbb{E}[\mathbb{E}[\tilde{x} \mid \mathcal{A}]]=\mathbb{E}\left[{ }^{z}\right]$
 
 
+\subsection{鞅基本定理}
 
+\begin{definition}
+    如果值域为 $I$ 的随机变量 $T$ 满足 $\{T=n\} \in \mathcal{F}_{n}, n \in I$, 则称为停时.
+\end{definition}
 
+\begin{lemma}
+    如果 $T$ 与 $S$ 是停时, 那么 $T \wedge S$ 与 $T \vee S$ 也是停时.
+\end{lemma}
 
+\begin{definition}
+    定义 $T-$ 停止序列 $X_{n}^{T}(\omega):=X_{n \wedge T}(\omega), n \geq 0$ 称之为停止过程.
+\end{definition}
 
+\begin{theorem}[有界停止定理]
+    \begin{enumerate}
+        \item 如果 $\left\{X_{n}: n \in I\right\}$ 是鞅, $T$ 是停时, 那么鞅的停止序列 $\left\{X_{n}^{T}: n \in I\right\}$ 也是鞅. 进一步, 如果 $T$ 是有界的, 那么 $\mathbb{E} X_{T}=\mathbb{E} X_{0}$.
+        \item 设 $X$ 是下鞅, $S, T$ 是停时且 $S \leq T,$ 则 $\left\{X_{n}^{T}-X_{n}^{S}: n \in I\right\}$ 是下鞅. 因此 $\mathbb{E} X_{n}^{S} \leq \mathbb{E} X_{n}^{T}$
+    \end{enumerate}
+\end{theorem}
 
+\begin{theorem}[Wald 等式]
+    设 $\left\{\xi_{n}: n \geq 1\right\}$ 是可积独立同分布随机序列且 $\mathbb{E}_{\zeta 1}^{\tau}=0$, $T$ 是可积停时, 则 $\mathbb{E} \sum_{n=1}^{T} \xi_{n}=0 .$
+\end{theorem}
+
+\begin{theorem}[停止定理]
+    设 $\left(M_{n}, \mathcal{F}_{n}\right)$ 是鞅, $T$ 是停时且满足
+    \begin{enumerate}
+        \item $\mathbb{P}(T<\infty)=1$
+        \item $\mathbb{E}\left[\left|M_{T}\right|\right]<\infty$
+        \item $\lim _{n \rightarrow \infty} \mathbb{E}\left[\left|M_{n}\right| ; T>n\right]=0$
+    \end{enumerate}
+    则有 $\mathbb{E} M_{T}=\mathbb{E} M_{0}$.
+\end{theorem}
+
+\section{Brown 运动}
+\subsection{基本定义}
+
+\begin{definition}
+    
+\end{definition}
 
 
 
