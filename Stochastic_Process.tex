@@ -215,11 +215,56 @@
 \subsection{基本定义}
 
 \begin{definition}
-    
+    若 $\{X(t), t \geq 0\}$ 满足
+    \begin{enumerate}
+        \item $X(0)=0,$ a.s.
+        \item $X(t)$ 是独立增量过程
+        \item 对任意 $s, t>0, X(s+t)-X(s) \sim N\left(0, c^{2} t\right)$
+        \item $X(t)$ 是关于 $t$ 的连续函数. 则称 $\{X(t), t \geq 0\}$ 为 Brown 运动
+    \end{enumerate}
+    当 $c=1$ 时, 称 $\{X(t), t \geq 0\}$ 为\textbf{标准 Brown 运动}.
 \end{definition}
 
+\begin{theorem}
+    对任意 $0 \leq a<s, t<\infty$, 有$\mathbb{E}[(X(s)-X(a))(X(t)-X(a))]=(s-a) \wedge(t-a)$, 进一步 $\mathbb{E}[X(s) X(t)]=s \wedge t$.
+\end{theorem}
 
+\begin{theorem}
+    Brown 运动是一个 Markov 过程.
+\end{theorem}
 
+\begin{theorem}[有限维分布]
+    $\forall 0=t_{0}<t_{1}<\cdots<t_{n},\left(X\left(t_{1}\right), \cdots, X\left(t_{n}\right)\right)$ 的联合密度为 $$f_{t_{1}, \cdots, t_{n}}\left(x_{1}, \cdots, x_{n}\right)=\prod_{i=1}^{n} f_{t_{i}-t_{i-1}}\left(x_{i}-x_{i-1}\right)$$ 其中 $f_{t}(x)=\frac{1}{\sqrt{2 \pi t}} \mathrm{e}^{-\frac{x^{2}}{2 t}}, t>0, x \in \mathbf{R}$
+\end{theorem}
+
+\begin{definition}[Gauss 过程]
+    若过程 $\{X(t), t \in T\}$ 对任意 $t_{1}<t_{2}<\cdots<t_{n}$, $
+\left(X\left(t_{1}\right), \cdots, X\left(t_{n}\right)\right)$ 的联合分布为 $n$ 维正态分布, 则称 $\{X(t), t \in T\}$ 为 \textbf{Gauss 过程}. Brown 运动是 Gauss 过程.
+\end{definition}
+
+\begin{theorem}
+    设 $\{B(t), t \geq 0\}$ 是轨道连续的 Gauss 过程, $B(0)=0$ 且 $ \mathbb{E} B(t)=0, \mathbb{E}[B(s) B(t)]=t \wedge s(\forall s, t>0)$, 则 $\{B(t), t \geq 0\}$ 是 Brown 运动. 反之亦然.
+\end{theorem}
+
+\begin{theorem}[不变性]
+    若 $\{B(t), t \geq 0\}$ 是 Brown 运动, $a, c>0,$ 则 
+    \begin{itemize}
+        \item $\{B(t)-B(a) ; t \geq 0\}$ 是 Brown 运动
+        \item $\{B(c t) / \sqrt{c} ; t \geq 0\}$ 是 Brown 运动
+    \end{itemize} 
+\end{theorem}
+
+\begin{theorem}
+    $\tilde{X}(t):=\left\{\begin{array}{ll}t X(1 / t), & t>0 \\ 0, & t=0\end{array}\right.$ 是 Brown 运动.
+\end{theorem}
+
+\begin{theorem}
+    $\mathbb{P}\left(\sup _{t \geq 0} X(t)=\infty\right)=1$, $\mathbb{P}\left(\lim \sup _{t \geq 0} X(t)=\infty, \liminf _{t \geq 0} X(t)=-\infty\right)=1$
+\end{theorem}
+
+\begin{lemma}
+    一维 Brown 运动是常返的, 以概率 $1$ 可达任何点.
+\end{lemma}
 
 
 
