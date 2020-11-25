@@ -524,18 +524,28 @@ $$
     若 $x^{*}$ 为 $\varphi(x)$ 的不动点, 设 $\varphi^{\prime \prime}(x)$ 存在， $\varphi^{\prime}\left(x^{*}\right) \neq 1,$ 则 $x^{*}$ 是 $\psi(x)$ 的不动点，且Steffensen 迭代法是二阶收敛的. 若原迭代法 $p$ 阶收敛, 则加速后 $p+1$ 阶收敛.
 \end{theorem}
 
-\section{牛顿法}
+\subsection{Newton 法}
 
+\begin{definition}
+    经典的迭代格式 $x_{k+1}=x_{k}-\frac{f\left(x_{k}\right)}{f^{\prime}\left(x_{k}\right)}$, 有 $\varphi^{\prime}\left(x^{*}\right)=0$, $\varphi^{\prime \prime}\left(x^{*}\right)=\frac{f^{\prime \prime}\left(x^{*}\right)}{f^{\prime}\left(x^{*}\right)}$ , 从而牛顿法平方收敛.
+\end{definition}
 
+\par 牛顿法的缺陷为每一步迭代都需要计算函数值和导数值, 计算量大, 同时只有局部收敛, 依赖初始值的选取.
 
+\par 可以使用平行弦法 $x_{k+1}=x_{k}-\frac{1}{f^{\prime}\left(x_{0}\right)} f\left(x_{k}\right)$ 减少计算, 具有局部收敛性且收敛阶为线性收敛.
 
+\begin{definition}
+    为了强制收敛性, 有牛顿下山法限制迭代的单调性 $\left|f\left(x_{k+1}\right)\right|<\left|f\left(x_{k}\right)\right|$, 通过 $x_{k+1}=x_{k}-\lambda \frac{f\left(x_{k}\right)}{f^{\prime}\left(x_{k}\right)}$ 从 $\lambda = 1$ 开始，逐次减半试.
+\end{definition}
 
+\par 在有重根的情况下 $f(x)=\left(x-x^{*}\right)^{m} g(x)$ , 牛顿迭代线性收敛, 若取 $x_{k+1}=x_{k}-m \frac{f\left(x_{k}\right)}{f^{\prime}\left(x_{k}\right)}$ 则有二阶收敛性.
 
+\par 令 $\mu(x)=\frac{f(x)}{f^{\prime}(x)}, \quad$ 则 $x^{*}$ 是 $\mu(x)=0$ 的单根, 从而构造迭代法 $\varphi(x)=x-\frac{\mu(x)}{\mu^{\prime}(x)}=x-\frac{f(x) f^{\prime}(x)}{\left[f^{\prime}(x)\right]^{2}-f(x) f^{\prime \prime}(x)}$ 具有二阶收敛性.
 
+\subsection{弦截法和抛物线法}
 
+\par 利用差商 $\frac{f\left(x_{k}\right)-f\left(x_{k-1}\right)}{x_{k}-x_{k-1}}$ 代替导数. 具有超线性收敛 $p=\frac{1+\sqrt{5}}{2}$.
 
-
-
-
+\par 以 $f(x)=0$ 的三个近似根 $x_{k}, x_{k-1}, x_{k-2}$ 构造二次插值多项式 $$p_{1}(x)=f\left(x_{k}\right)+f\left[x_{k}, x_{k-1}\right]\left(x-x_{k}\right)+f\left[x_{k}, x_{k-1}, x_{k-2}\right]\left(x-x_{k}\right)\left(x-x_{k-1}\right)$$ 有两个零点 $x_{k+1}=x_{k}-\frac{2 f\left(x_{k}\right)}{\omega \pm \sqrt{\omega^{2}-4 f\left(x_{k}\right) f\left[x_{k}, x_{k-1}, x_{k-2}\right]}}$ 其中 $\omega=f\left[x_{k}, x_{k-1}\right]+f\left[x_{k}, x_{k-1}, x_{k-2}\right]\left(x_{k}-x_{k-1}\right)$, 选取适当的一个作为新的近似根, 此迭代法 $p=1.840$ 超线性收敛.
 
 \end{document}
