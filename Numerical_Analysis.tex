@@ -469,13 +469,13 @@ $$
 \begin{enumerate}
     \item 两点 $P_{1}(x)=\frac{x-x_{1}}{x_{0}-x_{1}} f\left(x_{0}\right)+\frac{x-x_{0}}{x_{1}-x_{0}} f\left(x_{1}\right)$ 有 $f^{\prime}\left(x_{0}\right)=\frac{1}{h}\left[f\left(x_{1}\right)-f\left(x_{0}\right)\right]-\frac{h}{2} f^{\prime \prime}(\xi)$
     \item 三点 $P_{2}(x)=\frac{\left(x-x_{1}\right)\left(x-x_{2}\right)}{\left(x_{0}-x_{1}\right)\left(x_{0}-x_{2}\right)} f\left(x_{0}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{2}\right)}{\left(x_{1}-x_{0}\right)\left(x_{1}-x_{2}\right)} f\left(x_{1}\right)+\frac{\left(x-x_{0}\right)\left(x-x_{1}\right)}{\left(x_{2}-x_{0}\right)\left(x_{2}-x_{1}\right)} f\left(x_{2}\right)$ 有
-    $$
-        \begin{array}{l}
-            f^{\prime}\left(x_{0}\right)=\frac{1}{2 h}\left[-3 f\left(x_{0}\right)+4 f\left(x_{1}\right)-f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{0}\right) \\
-            f^{\prime}\left(x_{1}\right)=\frac{1}{2 h}\left[-f\left(x_{0}\right)+f\left(x_{2}\right)\right]-\frac{h^{2}}{6} f^{(3)}\left(\xi_{1}\right)                         \\
-            f^{\prime}\left(x_{2}\right)=\frac{1}{2 h}\left[f\left(x_{0}\right)-4 f\left(x_{1}\right)+3 f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{2}\right)
-        \end{array}
-    $$
+          $$
+              \begin{array}{l}
+                  f^{\prime}\left(x_{0}\right)=\frac{1}{2 h}\left[-3 f\left(x_{0}\right)+4 f\left(x_{1}\right)-f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{0}\right) \\
+                  f^{\prime}\left(x_{1}\right)=\frac{1}{2 h}\left[-f\left(x_{0}\right)+f\left(x_{2}\right)\right]-\frac{h^{2}}{6} f^{(3)}\left(\xi_{1}\right)                         \\
+                  f^{\prime}\left(x_{2}\right)=\frac{1}{2 h}\left[f\left(x_{0}\right)-4 f\left(x_{1}\right)+3 f\left(x_{2}\right)\right]+\frac{h^{2}}{3} f^{(3)}\left(\xi_{2}\right)
+              \end{array}
+          $$
 \end{enumerate}
 
 \par 利用三次样条函数作为近似并求导有 $\left\|f^{(k)}(x)-S^{(k)}(x)\right\|_{\infty} \leq C_{k}\left\|f^{(4)}\right\|_{\infty} h^{4-k}, k=0,1,2$.
@@ -483,24 +483,48 @@ $$
 \section{非线性方程数值解}
 \subsection{方程求根与二分法}
 
-\par 对于二分法有收敛性分析由 $\left|x_{k}-x^{*}\right| \leq \frac{b_{k}-a_{k}}{2}=\frac{b-a}{2^{k+1}}$ 得到 $x_{k}=\frac{b_{k}+a_{k}}{2} \rightarrow x^{*}(k \rightarrow \infty)$.
+\par 对于二分法有收敛性分析由 $\left|x_{k}-x^{*}\right| \leq \frac{b_{k}-a_{k}}{2}=\frac{b-a}{2^{k+1}}$ 得到 $x_{k}=\frac{b_{k}+a_{k}}{2} \rightarrow x^{*}(k \rightarrow \infty)$. 二分法算法简单且收敛性好, 但是收敛太慢, 通常用于初步求近似值.
 
+\subsection{不动点迭代法}
 
+\par $f\left(x^{*}\right)=0 \Leftrightarrow x^{*}=\varphi\left(x^{*}\right)$ 则称 $x^{*}$ 为函数 $\varphi(x)$ 的一个不动点, 进一步构造迭代公式 $x_{k+1}=\varphi\left(x_{k}\right)$.
 
+\begin{theorem}[不动点存在性与唯一性]
+    设迭代函数 $\varphi(x) \in C[a, b]$, 并且
+    \begin{enumerate}
+        \item $\forall x \in[a, b],$ 都有 $\varphi(x) \in[a, b]$
+        \item $\exists$ 正常数 $L<1,$ 使得 $\forall x, y \in[a, b]$, 都有 $|\varphi(x)-\varphi(y)| \leq L|x-y|$
+    \end{enumerate}
+    那么 $\varphi(x)$ 在 $[a, b]$ 上存在唯一的不动点 $x^{*}$, 且有收敛性 $\left|x_{k}-x^{*}\right| \leq \frac{L^{k}}{1-L}\left|x_{1}-x_{0}\right|$, 也可以使用 $\left|x^{*}-x_{k}\right| \leq \frac{1}{1-L}\left|x_{k+1}-x_{k}\right|$ 简化计算确定精度
+\end{theorem}
 
+\begin{definition}[局部收敛]
+    设 $x^{*}$ 为迭代函数 $\varphi(x)$ 的不动点， $\varphi^{\prime}(x)$ 在 $x^{*}$ 的某邻域内连续，且| $\varphi^{\prime}(x) \mid<1,$ 则迭代法是局部收敛的.
+\end{definition}
 
+\begin{definition}
+    定义误差 $e_{k}=x_{k}-x^{*}$, 若 $\lim _{k \rightarrow \infty} \frac{e_{k+1}}{e_{k}^{p}}=C$ 则称为 $p$ 阶收敛, 当 $p=1$ 时，迭代法为线性收敛, 当 $p>1$ 时，迭代法为超线性收敛, 当 $p=2$ 时，迭代法为平方收敛.
+\end{definition}
 
+\begin{theorem}
+    利用泰勒展开 $\varphi\left(x_{k}\right)=\varphi\left(x^{*}\right)+\frac{\varphi^{(p)}(\xi)}{p !}\left(x_{k}-x^{*}\right)^{p}$, 进一步 $x_{k+1}-x^{*}=\frac{\varphi^{(p)}(\xi)}{p !}\left(x_{k}-x^{*}\right)^{p}$ , 从而有若前 $p-1$ 阶导数均为零则迭代过程在 $x^{*}$ 附近是 $p$ 阶收敛.
+\end{theorem}
 
+\subsection{迭代收敛的加速方法}
 
+\begin{definition}[Aitken 加速收敛法]
+    假设导数变化不大认为 $x_{1}-x^{*} \approx L\left|x_{0}-x^{*}\right|$ , 有 $\frac{x_{1}-x^{*}}{x_{2}-x^{*}} \approx \frac{x_{0}-x^{*}}{x_{1}-x^{*}}$, 从而解出 $$\bar{x}_{k+1}=x_{k}-\frac{\left(x_{k+1}-x_{k}\right)^{2}}{x_{k}-2 x_{k+1}+x_{k+2}}=x_{1}-\left(\Delta x_{k}\right)^{2} / \Delta^{2} x_{k}$$
+\end{definition}
 
+\begin{definition}[Steffensen 迭代法]
+    结合上方的加速收敛法, 有 $\psi(x)=x-\frac{[\varphi(x)-x]^{2}}{\varphi(\varphi(x))-2 \varphi(x)+x}$,
+\end{definition}
 
+\begin{theorem}
+    若 $x^{*}$ 为 $\varphi(x)$ 的不动点, 设 $\varphi^{\prime \prime}(x)$ 存在， $\varphi^{\prime}\left(x^{*}\right) \neq 1,$ 则 $x^{*}$ 是 $\psi(x)$ 的不动点，且Steffensen 迭代法是二阶收敛的. 若原迭代法 $p$ 阶收敛, 则加速后 $p+1$ 阶收敛.
+\end{theorem}
 
-
-
-
-
-
-
+\section{牛顿法}
 
 
 
