@@ -5,10 +5,11 @@
 \date{}
 
 \begin{document}
-\author{Someone}
+% \author{}
 \maketitle
 \tableofcontents
 \footnotesize
+\newpage
 \section{数值分析与科学计算引论}
 \subsection{数值计算的误差}
 
@@ -21,18 +22,17 @@
 \end{definition}
 
 \begin{theorem}[有效数字与相对误差]
-    设近似数$x^{*}$表示为$x^{*}=\pm10^{m}\times\left(a_{1}+a_{2}\times10^{-1}+\cdots+a_{l}\times10^{-(l-1)}\right)$,$m$是第一位有效数字的科学计数表示,若$x^{*}$具有n位有效数字，则其相对误差限为$\varepsilon_{r}^{*}\leq\frac{1}{2a_{1}}\times10^{-(n-1)}$反之,若$x^{*}$的相对误差限$\varepsilon_{r}^{*}\leq\frac{1}{2\left(a_{1}+1\right)}\times10^{-(n-1)}$
-    则$x^{*}$至少具有n位有效数字.
+    设近似数 $x^{*}$ 表示为 $x^{*}=\pm10^{m}\times\left(a_{1}+a_{2}\times10^{-1}+\cdots+a_{l}\times10^{-(l-1)}\right)$,$m$ 是第一位有效数字的科学计数表示, 若 $x^{*}$ 具有n位有效数字，则其相对误差限为 $\varepsilon_{r}^{*}\leq\frac{1}{2a_{1}}\times10^{-(n-1)}$反之,若$x^{*}$的相对误差限 $\varepsilon_{r}^{*}\leq\frac{1}{2\left(a_{1}+1\right)}\times10^{-(n-1)}$
+    则 $x^{*}$ 至少具有n位有效数字.
 \end{theorem}
 
-\par 对函数误差的估计,近似使用$$\varepsilon\left(f\left(x^{*}\right)\right) \approx\left|f^{\prime}\left(x^{*}\right)\right| \varepsilon\left(x^{*}\right)$$
-\par 对多元函数使用$$\begin{aligned}
+\par 对函数误差的估计, 近似使用 $\varepsilon\left(f\left(x^{*}\right)\right) \approx\left|f^{\prime}\left(x^{*}\right)\right| \varepsilon\left(x^{*}\right)$, 对多元函数使用$$\begin{aligned}
         e\left(A^{*}\right) & =A^{*}-A=f\left(x_{1}^{*}, \cdots, x_{n}^{*}\right)-f\left(x_{1}, \cdots, x_{n}\right)                                                    \\
                             & \approx \sum_{k=1}^{n}\left(\frac{\partial f\left(x_{1}^{*}, \cdots, x_{n}^{*}\right)}{\partial x_{k}}\right)\left(x_{k}^{*}-x_{k}\right) \\
                             & =\sum_{k=1}^{n}\left(\frac{\partial f}{\partial x_{k}}\right)^{*} e_{k}^{*}
     \end{aligned}$$
-\par 从而有误差限$$\varepsilon\left(A^{*}\right) \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \varepsilon\left(x_{k}^{*}\right)$$
-\par 于是相对误差限$$\varepsilon_{r}^{*}=\varepsilon_{r}\left(A^{*}\right)=\frac{\varepsilon\left(A^{*}\right)}{\left|A^{*}\right|} \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \frac{\varepsilon\left(x_{k}^{*}\right)}{\left|A^{*}\right|}$$
+\par 从而有误差限 $\varepsilon\left(A^{*}\right) \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \varepsilon\left(x_{k}^{*}\right)$
+于是相对误差限 $\varepsilon_{r}^{*}=\varepsilon_{r}\left(A^{*}\right)=\frac{\varepsilon\left(A^{*}\right)}{\left|A^{*}\right|} \approx \sum_{k=1}^{n}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \frac{\varepsilon\left(x_{k}^{*}\right)}{\left|A^{*}\right|}$
 
 \subsection{误差定性分析与避免误差危害}
 \par 若初始数据误差传播中增长快,称之为\textbf{数值不稳定},如$I_{n}=\mathrm{e}^{-1} \int_{0}^{1} x^{n} \mathrm{e}^{x} d x$例子
@@ -53,7 +53,7 @@
 \end{algorithm}
 
 \begin{algorithm}[迭代法求根]
-    假设离最优解还有距离$\Delta x$,即$\left(x_{0}+\Delta x\right)^{2}=a$,略去平方项(暂时认为很小)有$\Delta x \approx \frac{1}{2}\left(\frac{a}{x_{0}}-x_{0}\right)$,于是可以开始逐步迭代,可以证明序列$\left\{x_{k}\right\}$ 对任何 $x_{0}>0$ 均收敛.
+    假设离最优解还有距离 $\Delta x$,即$\left(x_{0}+\Delta x\right)^{2}=a$, 略去平方项(暂时认为很小)有 $\Delta x \approx \frac{1}{2}\left(\frac{a}{x_{0}}-x_{0}\right)$, 于是可以开始逐步迭代,可以证明序列 $\left\{x_{k}\right\}$ 对任何 $x_{0}>0$ 均收敛.
 \end{algorithm}
 
 \begin{algorithm}[松弛法]
@@ -71,7 +71,7 @@
 \par 选择线性插值基函数,每个节点搞一个,基函数$l_{j}\left(x_{k}\right)=\left\{\begin{array}{ll}1, & k=j \\ 0, & k \neq j\end{array}\right.$选择使得其他节点处为零,只在本节点为1,称此$n+1$个多项式为节点($n+1$个)上的$n$次插值函数,$$L_{n}(x)=\sum_{k=0}^{n} y_{k} l_{k}(x)$$而基函数具体表达式为:
 $$l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1}\right) \cdots\left(x-x_{n}\right)}{\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)}$$
 
-\par 若记$\omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$有$\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)$,从而$$L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}$$
+\par 若记 $\omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$ 有 $\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)$ , 从而 $$L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}$$
 
 \par 利用插值点处误差为零的条件吗,结合罗尔定理可以得到误差估计$R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)$
 
@@ -81,7 +81,7 @@ $$l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1
 \par 首先假设插值多项式符合形式$P_{n}(x)-a_{0}+a_{1}\left(x-x_{0}\right)+\cdots+a_{n}\left(x-x_{0}\right) \cdots\left(x-x_{n}\right)$,然后一步步求解得到各项系数的表达式.
 
 \begin{definition}
-    一阶均差(也叫差商)$f\left[x_{0}, x_{k}\right]=\frac{f\left(x_{k}\right)-f\left(x_{0}\right)}{x_{k}-x_{0}}$,二阶均差$f\left[x_{0}, x_{1}, x_{k}\right]=\frac{f\left[x_{0}, x_{k}\right]-f\left[x_{0}, x_{1}\right]}{x_{k}-x_{1}}$,$k$阶均差$$f\left[x_{0}, x_{1}, \cdots x_{k}\right]=\frac{f\left[x_{0}, \cdots, x_{k-2}, x_{k}\right]-f\left[x_{0}, x_{1} \cdots, x_{k-1}\right]}{x_{k}-x_{k-1}}$$
+    一阶均差(也叫差商) $f\left[x_{0}, x_{k}\right]=\frac{f\left(x_{k}\right)-f\left(x_{0}\right)}{x_{k}-x_{0}}$, 二阶均差 $f\left[x_{0}, x_{1}, x_{k}\right]=\frac{f\left[x_{0}, x_{k}\right]-f\left[x_{0}, x_{1}\right]}{x_{k}-x_{1}}$, $k$ 阶均差 $$f\left[x_{0}, x_{1}, \cdots x_{k}\right]=\frac{f\left[x_{0}, \cdots, x_{k-2}, x_{k}\right]-f\left[x_{0}, x_{1} \cdots, x_{k-1}\right]}{x_{k}-x_{k-1}}$$
 \end{definition}
 
 \begin{property}
@@ -89,7 +89,7 @@ $$l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1
     $$f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\sum_{j=0}^{k} \frac{f\left(x_{j}\right)}{\left(x_{j}-x_{0}\right) \cdots\left(x_{j}-x_{j-1}\right)\left(x_{j}-x_{j+1}\right) \cdots\left(x_{j}-x_{k}\right)}$$有递推公式$$f\left[x_{0}, x_{1}, \cdots, x_{k}\right]-\frac{\left.f[x_{1}, x_{2}, \cdots, x_{k}\right]-f\left[x_{0}, x_{1}, \cdots, x_{k-1}\right]}{x_{k}-x_{0}}$$且由罗尔定理有$f\left[x_{0}, x_{1}, \cdots, x_{n}\right]=\frac{f^{(n)}(\xi)}{n !}$
 \end{property}
 
-\par 从而有 $f(x)=P_{n}(x)+R_{n}(x)$, 其中 $$P_{n}(x)=f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right) +f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right) \cdots\left(x-x_{n-1}\right) $$余项$$R_{n}(x)=f(x)-P_{n}(x)=f\left[x, x_{0}, \cdots, x_{n}\right] \omega_{n+1}(x)$$其中$\omega_{n+1}(x)$同 \ref{Lag} 中定义.
+\par 从而有 $f(x)=P_{n}(x)+R_{n}(x)$, 其中 $$P_{n}(x)=f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right) +f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right) \cdots\left(x-x_{n-1}\right) $$ 余项 $R_{n}(x)=f(x)-P_{n}(x)=f\left[x, x_{0}, \cdots, x_{n}\right] \omega_{n+1}(x)$ 其中$\omega_{n+1}(x)$同 \ref{Lag} 中定义.
 
 \par 与拉格朗日插值相比,两者实际上等价,但是牛顿插值计算更方便,余项形式中也可以没有导数,在离散情况下更适合.下面考虑对于离散点等距时的差分形式牛顿插值多项式.
 
@@ -152,7 +152,7 @@ $$l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1
     则有估计式$$\max _{a \leq x \leq b}\left|f^{(k)}(x)-S^{(k)}(x)\right| \leq C_{k} \max _{a \leq x \leq b}\left|f^{(4)}(x)\right| h^{4-k}$$其中$C_{0}=\frac{5}{384}, C_{1}=\frac{1}{24}, C_{2}=\frac{3}{8}$,此估计式同时表明了函数值至二阶导数均一致收敛于原始$f(x)$的值至二阶导数.
 \end{theorem}
 
-\section{函数逼近与快速傅里叶变换}
+\section{函数逼近}
 \subsection{函数逼近概念}
 
 \par 已经讨论的插值方法中通过简单函数逼近未知函数,属于函数逼近的一种,下面试图寻找一种函数类使得选择其中函数可以方便地逼近未知函数并在某种度量意义下误差最小.
@@ -346,13 +346,13 @@ $$
     a_{k}^{*}=\frac{\left(f, P_{k}\right)}{\left(P_{k}, P_{k}\right)}=\frac{\sum_{i=0}^{m} \omega\left(x_{i}\right) f\left(x_{i}\right) P_{k}\left(x_{i}\right)}{\sum_{i=0}^{m} \omega\left(x_{i}\right) P_{k}^{2}\left(x_{i}\right)}
 $$
 
-\subsection{三角多项式逼近与快速傅里叶变换}
-\par 利用 $\frac{1}{2} a_{0}+\sum_{k=1}^{\infty}\left(a_{k} \cos k x+b_{k} \sin k x\right)$ 其中 $a_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \cos k x d x$
-$b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行展开得到傅里叶级数. 只要函数一阶导数在 $[0,2\pi]$ 上分段连续就一致收敛.
+% \subsection{三角多项式逼近与快速傅里叶变换}
+% \par 利用 $\frac{1}{2} a_{0}+\sum_{k=1}^{\infty}\left(a_{k} \cos k x+b_{k} \sin k x\right)$ 其中 $a_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \cos k x d x$
+% $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行展开得到傅里叶级数. 只要函数一阶导数在 $[0,2\pi]$ 上分段连续就一致收敛.
 
-\par $f(x)$ 在 $N$ 个点 $\left\{x_{j}=\frac{2 \pi}{N} j(j=0,1, \cdots, N-1)\right\}$ 上的最小二乘傅里叶逼近为 $S(x)=\sum_{k=0}^{n-1} c_{k} \mathrm{e}^{\mathrm{i} k x}, \quad n \leq N$ 其中 $c_{k}=\frac{1}{N} \sum_{j=0}^{N-1} f_{j} \mathrm{e}^{-\mathrm{i} k j \frac{2 \pi}{N}}$
+% \par $f(x)$ 在 $N$ 个点 $\left\{x_{j}=\frac{2 \pi}{N} j(j=0,1, \cdots, N-1)\right\}$ 上的最小二乘傅里叶逼近为 $S(x)=\sum_{k=0}^{n-1} c_{k} \mathrm{e}^{\mathrm{i} k x}, \quad n \leq N$ 其中 $c_{k}=\frac{1}{N} \sum_{j=0}^{N-1} f_{j} \mathrm{e}^{-\mathrm{i} k j \frac{2 \pi}{N}}$
 
-\par 利用系数的周期性和对称性, 可以将 $N$ 点DFT归结为两个 $N/2$ 点的DFT简化计算: $\left\{\begin{array}{l}c_{2 j}=\sum_{k=0}^{N / 2-1} y_{k} \omega_{N / 2}^{j k} \\ c_{2 j+1}=\sum_{k=0}^{N / 2-1} y_{N / 2+k} \omega_{N / 2}^{j k}\end{array}\right.$
+% \par 利用系数的周期性和对称性, 可以将 $N$ 点DFT归结为两个 $N/2$ 点的DFT简化计算: $\left\{\begin{array}{l}c_{2 j}=\sum_{k=0}^{N / 2-1} y_{k} \omega_{N / 2}^{j k} \\ c_{2 j+1}=\sum_{k=0}^{N / 2-1} y_{N / 2+k} \omega_{N / 2}^{j k}\end{array}\right.$
 
 \section{数值积分}
 
@@ -403,26 +403,26 @@ $b_{k}=\frac{1}{\pi} \int_{0}^{2 \pi} f(x) \sin k x d x$ 对周期函数进行�
     $$S_{n}=\frac{h}{6} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+4 f\left(x_{k+1 / 2}\right)+f\left(x_{k+1}\right)\right]=\frac{h}{6}\left[f(a)+4 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)+2 \sum_{k=1}^{n-1} f\left(x_{k}\right)+f(b)\right]$$ 余项为 $R_{n}(f)=I-S_{n}=-\frac{b-a}{180}\left(\frac{h}{2}\right)^{4} f^{(4)}(\eta)$, 只要 $f(x) \in C[a, b]$ 即收敛
 \end{definition}
 
-\subsection{Romberg 求积公式}
-\par 对于复合梯形公式, 可以有不断加密时的递推公式 $T_{2 n}=\frac{h}{4} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)=\frac{1}{2} T_{n}+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)$
+% \subsection{Romberg 求积公式}
+% \par 对于复合梯形公式, 可以有不断加密时的递推公式 $T_{2 n}=\frac{h}{4} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)=\frac{1}{2} T_{n}+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+1 / 2}\right)$
 
-\begin{theorem}
-    记 $T_{n}=T(h)=I+\frac{b-a}{12} h^{2} f^{\prime \prime}(\eta)$, 当 $f(x) \in C^{\infty}[a, b]$ 有 $$
-        T(h)=I+\alpha_{1} h^{2}+\alpha_{2} h^{4}+\cdots+\alpha_{l} h^{2 l}+\cdots
-    $$, 其中 $\alpha_{l}$ 与 $h$ 无关.
-\end{theorem}
+% \begin{theorem}
+%     记 $T_{n}=T(h)=I+\frac{b-a}{12} h^{2} f^{\prime \prime}(\eta)$, 当 $f(x) \in C^{\infty}[a, b]$ 有 $$
+%         T(h)=I+\alpha_{1} h^{2}+\alpha_{2} h^{4}+\cdots+\alpha_{l} h^{2 l}+\cdots
+%     $$, 其中 $\alpha_{l}$ 与 $h$ 无关.
+% \end{theorem}
 
-\begin{definition}[Richardson 外推算法]
-    利用上述定理, 记 $T_{0}(h)=T(h)$ 有外推技巧 $T_{m}(h)=\frac{4^{m}}{4^{m}-1} T_{m-1}\left(\frac{h}{2}\right)-\frac{1}{4^{m}-1} T_{m-1}(h)$, 余项为 $T_{m}(h)=I+\delta_{1} h^{2(m+1)}+\delta_{2} h^{2(m+2)}+\cdots$
-\end{definition}
+% \begin{definition}[Richardson 外推算法]
+%     利用上述定理, 记 $T_{0}(h)=T(h)$ 有外推技巧 $T_{m}(h)=\frac{4^{m}}{4^{m}-1} T_{m-1}\left(\frac{h}{2}\right)-\frac{1}{4^{m}-1} T_{m-1}(h)$, 余项为 $T_{m}(h)=I+\delta_{1} h^{2(m+1)}+\delta_{2} h^{2(m+2)}+\cdots$
+% \end{definition}
 
-\par 设以 $T_{0}^{(k)}$ 表示二分 $k$ 次后求得的梯形值，且以 $T_{m}^{(k)}$ 表示序列 $\left\{T_{0}^{(k)}\right\}$ 的 $m$ 次加速值, 从而有\textbf{龙贝格求积算法} $$
-    T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)}, k=1,2, \cdots
-$$
+% \par 设以 $T_{0}^{(k)}$ 表示二分 $k$ 次后求得的梯形值，且以 $T_{m}^{(k)}$ 表示序列 $\left\{T_{0}^{(k)}\right\}$ 的 $m$ 次加速值, 从而有\textbf{龙贝格求积算法} $$
+%     T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)}, k=1,2, \cdots
+% $$
 
-\subsection{自适应积分方法}
+% \subsection{自适应积分方法}
 
-\par 在指定区间上达不到进度要求就再外推加密.
+% \par 在指定区间上达不到进度要求就再外推加密.
 
 \subsection{高斯求积公式}
 \begin{definition}
@@ -456,9 +456,9 @@ $$
     考虑区间 $[0,+\infty),$ 权函数 $\rho(x)=e^{-x}$ 的正交多项式为拉盖尔多项式 $L_{n}(x)=e^{x} \frac{d^{n}}{d x^{n}}\left(x^{n} e^{-x}\right)$ 对应的高斯求积公式 $\int_{0}^{+\infty} e^{-x} f(x) d x=\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)$, 系数 $A_{k}=\frac{[(n+1) !]^{2}}{x_{k}\left[L_{n+1}\left(x_{k}\right)\right]^{2}}$, 余项 $R[f]=\frac{[(n+1) !]^{2}}{[(2 n+1) !]} f^{(2 n+2)}(\xi), \xi \in[0,+\infty)$
 \end{definition}
 
-\subsection{多重积分}
+% \subsection{多重积分}
 
-\par 分步使用节点积分.
+% \par 分步使用节点积分.
 
 \subsection{数值微分}
 
@@ -502,7 +502,7 @@ $$
     设 $x^{*}$ 为迭代函数 $\varphi(x)$ 的不动点， $\varphi^{\prime}(x)$ 在 $x^{*}$ 的某邻域内连续，且| $\varphi^{\prime}(x) \mid<1,$ 则迭代法是局部收敛的.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[收敛速度]
     定义误差 $e_{k}=x_{k}-x^{*}$, 若 $\lim _{k \rightarrow \infty} \frac{e_{k+1}}{e_{k}^{p}}=C$ 则称为 $p$ 阶收敛, 当 $p=1$ 时，迭代法为线性收敛, 当 $p>1$ 时，迭代法为超线性收敛, 当 $p=2$ 时，迭代法为平方收敛.
 \end{definition}
 
