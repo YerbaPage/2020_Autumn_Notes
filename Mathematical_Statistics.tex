@@ -352,13 +352,26 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
     \textbf{第Ⅰ类错误}为拒真错误, 其发生的概率 $\alpha$ 称为\textbf{显著性水平}, \textbf{第Ⅱ类错误} 为取伪错误, 发生概率记为 $\beta$.
 \end{definition}
 
+\par 当样本总数 $n$ 固定时, 犯两类错误的概率 $\alpha$ 与 $\beta$ 不能同时减小. 要同时减小, 需要增大样本容量.
+
 \begin{definition}
     设检验问题 $H_{0}: \theta \in \Theta_{0}, \quad H_{1}: \theta \in \Theta_{1}$ 的拒绝域为 $W$, 则样本观察值落在拒绝域 $W$ 内的概率称为该检验的\textbf{势函数}, 记为 $g(\theta)=P_{\theta}\{x \in W\}, \quad \theta \in \Theta_{0} \cup \theta_{1} \subset \theta $
 \end{definition}
 
+\subsection{参数假设检验}
+\subsubsection{单个正态总体均值的假设检验}
 
+\par 当 $\sigma$ 已知时
+\begin{enumerate}
+    \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $H_{0}=\left\{\left|\bar{\xi}-a_{0}\right|>\frac{\sigma u_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}=\left\{\left|\frac{\xi-a_{0}}{\sigma / \sqrt{n}}\right|>u_{1-\frac{\alpha}{2}}\right\},$
+    \item $H_{0}: a=a_{0}, \quad H_{1}: a>a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\bar{\xi}>a_{0}+\frac{\sigma}{\sqrt{n}} u_{1-\alpha}\right\}=\left\{\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}}>u_{1-\alpha}\right\}$
+\end{enumerate}
 
-
+\par 而当更为常见的情况 $\sigma$ 未知时
+\begin{enumerate}
+    \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\left|\frac{\bar{\xi}-a_{0}}{\tilde{s} / \sqrt{n}}\right|>t_{1-\frac{\alpha}{2}}(n-1)\right\}$
+    \item 对于其他假设类似有 $\left\{\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}}>t_{1-\alpha}(n-1)\right\}$ 等结果.
+\end{enumerate}
 
 
 

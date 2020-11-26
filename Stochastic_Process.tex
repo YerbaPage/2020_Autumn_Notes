@@ -5,8 +5,8 @@
 \begin{document}
 \author{}
 \maketitle
-% \tableofcontents
-% \footnotesize
+\tableofcontents
+\footnotesize
 \section{基本概念}
 \begin{definition}[矩母函数]
     对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
@@ -39,8 +39,11 @@
     设 $N \sim P(\lambda), N$ 个事件独立地(也独立于个数 $N$) 以概率 $p_{i}$ 为 第 $i$ 个类型, $i=1,2, \cdots, n,$ 其 $\mathbf{p} p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第$i$类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立。
 \end{theorem}
 
+
+
+
+
 \section{更新过程}
-\subsection{基本定义与性质}
 \begin{definition}
     设 $\left\{X_{n}, n \geq 1\right\}$ 为独立同分布的非负随机变量序列
     $$
@@ -167,7 +170,7 @@
 \end{theorem}
 
 \section{离散鞅论}
-\subsection{基本概念}
+% \subsection{基本概念}
 
 \begin{definition}
     定义$\mathcal{F}_{n}^{0}:=\sigma\left(Z_{k}, k \leq n\right)$, 若 $\mathbb{E}\left|Z_{n}\right|<\infty$, 且满足 $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}^{0}\right]=Z_{n}$ 则称 $Z$ 为鞅. $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}\right] \geq(\leq) Z_{n}, n \geq 0$ 则 $Z$ 称为下 $($ 上)鞅.
@@ -176,7 +179,7 @@
 \par 条件期望性质有 $\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}) \mid \mathcal{B})=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{B}) \mid \mathcal{A})=\mathbb{E}(\xi \mid \mathcal{A})$, $\mathbb{E}[\mathbb{E}[\tilde{x} \mid \mathcal{A}]]=\mathbb{E}\left[{ }^{z}\right]$
 
 
-\subsection{鞅基本定理}
+% \subsection{鞅基本定理}
 
 \begin{definition}
     如果值域为 $I$ 的随机变量 $T$ 满足 $\{T=n\} \in \mathcal{F}_{n}, n \in I$, 则称为停时.
@@ -212,7 +215,6 @@
 \end{theorem}
 
 \section{Brown 运动}
-\subsection{基本定义}
 
 \begin{definition}
     若 $\{X(t), t \geq 0\}$ 满足
