@@ -168,7 +168,7 @@
     设总体 $\xi \sim N\left(a_{1}, \sigma_{1}^{2}\right),$ 总体 $\eta \sim N\left(a_{2}, \sigma_{2}^{2}\right)$,记相互独立的样本$\bar{\xi}=\frac{1}{m} \sum_{i=1}^{m} \xi_{i}, S_{1}^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(\xi_{i}-\bar{\xi}\right)^{2}$
     $\bar{\eta}=\frac{1}{n} \sum_{i=1}^{n} \eta_{i}, S_{2}^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\eta_{i}-\bar{\eta}\right)^{2}$有
     \begin{enumerate}
-        \item $F \triangleq \frac{(n-1) m S_{1}^{2}}{(m-1) n S_{2}^{2}} \cdot \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}}-F(m-1, n-1)$
+        \item $F \triangleq \frac{(n-1) m S_{1}^{2}}{(m-1) n S_{2}^{2}} \cdot \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \sim F(m-1, n-1)$
         \item 当$\sigma_{1}=\sigma_{2}=\sigma$,有$T \triangleq \frac{\bar{\xi}-\bar{\eta}-\left(a_{1}-a_{2}\right)}{\sqrt{m S_{1}^{2}+n S_{2}^{2}}} \sqrt{\frac{m n(m+n-2)}{m+n}} \sim t(m+n-2)$
     \end{enumerate}
 \end{theorem}
@@ -373,7 +373,9 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
     \item 对于其他假设类似有 $\left\{\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}}>t_{1-\alpha}(n-1)\right\}$ 等结果.
 \end{enumerate}
 
+\par 当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 T 检验.
 
+\subsection{非参数假设检验}
 
 
 

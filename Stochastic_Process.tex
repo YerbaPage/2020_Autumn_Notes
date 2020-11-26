@@ -39,8 +39,67 @@
     设 $N \sim P(\lambda), N$ 个事件独立地(也独立于个数 $N$) 以概率 $p_{i}$ 为 第 $i$ 个类型, $i=1,2, \cdots, n,$ 其 $\mathbf{p} p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第$i$类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立。
 \end{theorem}
 
+\begin{theorem}
+    设 $N \sim P(\lambda), N$ 个事件独立地为第 $i$ 个类型, $i=1,2, \cdots, n,$ 其中 $p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第 $i$ 类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立.
+\end{theorem}
 
+\begin{definition}[点过程]
+    $(\Omega, \mathcal{F}, \mathbb{P})$ 上随机过程 $\{N(t), t \geq 0\}$ 如果满足:
+    $\forall \omega \in \Omega$, 其样本函数 $t \mapsto N(t) \equiv N(t, \omega)$
+    以概率 1 是一个只取非负整数值的, 右连续的, 单调增函数, 则称 $\{N(t), t \geq 0\}$ 为点过程.
+\end{definition}
 
+\begin{definition}[Poisson 点过程]
+    如果计数过程 $\{N(t), t \geq 0\}$ 满足:
+    \begin{enumerate}
+        \item $N(0)=0$ a.s.
+        \item $N(t)$ 是独立增量过程: 对任意 $t, s \geq 0, N(t+s)-N(s)$ 与 $\mathcal{F}_{s}$ 独立
+        \item $N(t)$ 的其增量服从 Poisson 分布: 对任意 $t, s \geq 0$, $\mathbb{P}(N(t+s)-N(s)=k)=\frac{(\lambda t)^{k}}{k !} \mathrm{e}^{-\lambda t}, k=0,1,2, \cdots$
+    \end{enumerate}
+    则称 $\{N(t), t \geq 0\}$ 为具参数 $\lambda$ 的 Poisson 过程.
+\end{definition}
+
+\begin{definition}
+    设 $\{N(t), t \geq 0\}$ 为参数为 $\lambda$ 的 Poisson 过程. 记 $X_{1}$ 为第一个事 件的来到时刻, $X_{n}$ 为第 $n-1$ 个到第 $n$ 个事件之间的时 间 $(n \geq 2), S_{n}$ 为第 $n$ 个事件来到的时间 $($ 或等待时间 $)(n \geq 1)$: $S_{n}:=\inf \left\{t: t>S_{n-1}, N(t)=n\right\}, \quad S_{0} \equiv 0$ 则 $X_{n}=S_{n}-S_{n-1}(n \geq 1), \quad S_{n}=\sum_{i=1}^{n} X_{i}(n \geq 1)$ 称 $\left\{X_{n}, n \geq 1\right\}$ 为来到时间间隔序列, $\left\{S_{n}, n \geq 1\right\}$ 为等待时间序列.
+\end{definition}
+
+\begin{lemma}
+    $\{N(t) \geq n\}=\left\{S_{n} \leq t\right\}$ \\
+    $\{N(t)=n\}=\left\{S_{n} \leq t<S_{n+1}\right\}=\left\{S_{n} \leq t\right\} \backslash\left\{S_{n+1} \leq t\right\}$
+\end{lemma}
+
+\begin{lemma}[来到时间间隔分布]
+    $X_{n}(n=1,2, \cdots)$ 为 i.i.d., 均值为 $1 / \lambda$ 的指数分布随机变量序列
+\end{lemma}
+
+\begin{lemma}[等待时间分布]
+    $S_{n} \sim \Gamma(n, \lambda),$ 即其密度函数为 $\lambda \mathrm{e}^{-\lambda t} \frac{(\lambda t)^{n-1}}{(n-1) !}$ 特别的, $X_{1} \equiv S_{1} \sim \operatorname{Exp}(\lambda)$.
+\end{lemma}
+
+\begin{lemma}
+    在 $[0, t)$ 中有一个事件发生的条件下, 这个事件发生的时间 $X_{1}$ 是个均匀分布的随机变量.
+\end{lemma}
+
+\begin{theorem}[Poisson 过程完全随机性]
+    在已知 $N(t)=n$ 的条件下， $n$ 个顾客的来到时刻 $S_{1}, \cdots, S_{n}$ 与 $n$ 个 $[0, t]$ 上均匀分布的独立随机变量的顺序统计量有相同分布. 即 $f_{S_{1}, \cdots, S_{n} \mid N(t)=n}\left(s_{1}, \cdots, s_{n} \mid n\right)=\frac{n !}{t^{n}}, 0<s_{1}<\cdots<s_{n} \leq $
+\end{theorem}
+
+\begin{theorem}[Poisson 过程分流]
+    设顾客按强度 $\lambda$ 的 Poisson 过程到达. $N_{i}(t)$ 为 $[0, t]$ 中到达的第新 $\mathrm{i}$ 类顾客数 $(i=1,2) .$ 假定时刻 $s$ 的到达者与其他的到达独立. 令
+$p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时刻到达者为第 2 类 $),$ 则 $N_{1}(t), N_{2}(t)$ 为独立的随机变量且 分别服从参数为 $\lambda t p, \lambda t(1-p)$ 的 Poisson 分布. 其中 $p=\frac{1}{t} \int_{0}^{t} p(s) \mathrm{d} s$
+\end{theorem}
+
+\begin{lemma}
+    对于任意 $[0, \infty)$ 上的可积函数 $f$, 有 $\mathbb{E}\left[\sum_{n=1}^{\infty} f\left(S_{n}\right)\right]=\lambda \int_{0}^{\infty} f(t) \mathrm{d} t$
+\end{lemma}
+
+\begin{definition}[复合 Poisson 过程]
+    若对任意 $t \geq 0,$ 有 $X(t)=\sum_{i=1}^{N(t)} Y_{i .}$ 其中, $Y_{1}, Y_{2}, \cdots$ 为 i.i.d. 且与参数为 $\lambda$ 的 Poisson 过程 $\{N(t), t \geq 0\}$ 独立, 则称随机过 程 $X=\{X(t), t \geq 0\}$ 是复合 Poisson 过程
+\end{definition}
+
+\begin{theorem}
+    复合 Poisson 过程 $X(t)=\sum_{i=1}^{N(t)} Y_{i}$ 有平稳独立增量, 矩母函数 $\phi_{t}(u) \equiv \mathbb{E}\left[\mathrm{e}^{u X(t)}\right]=\exp \left\{\lambda t\left(\phi_{Y}(u)-1\right)\right\}$ , $\begin{aligned} \mathbb{E}[X(t)] &=\phi_{t}^{\prime}(0)=\lambda t \cdot \mathbb{E} Y \\ \mathbf{D}(X(t)) &=\phi_{t}^{\prime \prime}(0)-\left(\phi_{t}^{\prime}(0)\right)^{2}=\lambda t \cdot \mathbb{E} Y^{2} \end{aligned}$
+\end{theorem}
 
 
 \section{更新过程}
@@ -241,7 +300,7 @@
 
 \begin{definition}[Gauss 过程]
     若过程 $\{X(t), t \in T\}$ 对任意 $t_{1}<t_{2}<\cdots<t_{n}$, $
-\left(X\left(t_{1}\right), \cdots, X\left(t_{n}\right)\right)$ 的联合分布为 $n$ 维正态分布, 则称 $\{X(t), t \in T\}$ 为 \textbf{Gauss 过程}. Brown 运动是 Gauss 过程.
+        \left(X\left(t_{1}\right), \cdots, X\left(t_{n}\right)\right)$ 的联合分布为 $n$ 维正态分布, 则称 $\{X(t), t \in T\}$ 为 \textbf{Gauss 过程}. Brown 运动是 Gauss 过程.
 \end{definition}
 
 \begin{theorem}
@@ -249,11 +308,11 @@
 \end{theorem}
 
 \begin{theorem}[不变性]
-    若 $\{B(t), t \geq 0\}$ 是 Brown 运动, $a, c>0,$ 则 
+    若 $\{B(t), t \geq 0\}$ 是 Brown 运动, $a, c>0,$ 则
     \begin{itemize}
         \item $\{B(t)-B(a) ; t \geq 0\}$ 是 Brown 运动
         \item $\{B(c t) / \sqrt{c} ; t \geq 0\}$ 是 Brown 运动
-    \end{itemize} 
+    \end{itemize}
 \end{theorem}
 
 \begin{theorem}
