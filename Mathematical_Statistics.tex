@@ -359,9 +359,8 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \end{definition}
 
 \subsection{参数假设检验}
-\subsubsection{单个正态总体均值的假设检验}
 
-\par 当 $\sigma$ 已知时
+\par 参数假设检验主要利用第一章末尾推导的分布, 要注意使用的总体方差(已知时)与样本方差. 当 $\sigma$ 已知时
 \begin{enumerate}
     \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $H_{0}=\left\{\left|\bar{\xi}-a_{0}\right|>\frac{\sigma u_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}=\left\{\left|\frac{\xi-a_{0}}{\sigma / \sqrt{n}}\right|>u_{1-\frac{\alpha}{2}}\right\},$
     \item $H_{0}: a=a_{0}, \quad H_{1}: a>a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\bar{\xi}>a_{0}+\frac{\sigma}{\sqrt{n}} u_{1-\alpha}\right\}=\left\{\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}}>u_{1-\alpha}\right\}$
@@ -376,6 +375,8 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \par 当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 T 检验.
 
 \subsection{非参数假设检验}
+\par \textbf{皮尔逊$\chi^{2}$ 检验}定义检验统计量 $\chi^{2}=\sum_{i=1}^{r} \frac{\left(v_{i}-n p_{i}\right)^{2}}{n p_{i}}$
+
 
 
 
