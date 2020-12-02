@@ -36,7 +36,7 @@
 \end{definition}
 
 \begin{definition}[经验分布函数]
-    若 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 为总体$\xi$的样本, $\xi_{(1)}, \xi_{(2)} \ldots, \xi_{(n)}$ 为样本 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 的顺序统计量.对任意实数 $x$, 记$$F_{n}(x)=\left\{\begin{array}{cc}0, & x \leq \xi_{(1)} \\ \frac{k}{n}, & \xi_{k}<x \leq \xi_{k+1} \\ 1, & x>\xi_{(n)}\end{array}\right.$$为总体$\xi$的经验分布函数,可用单位阶跃函数表示为$F_{n}(x)=\frac{1}{n} \sum_{k=1}^{n} \mu\left(x-\xi_{k}\right), x \in R$.($F_{n}(x)$ 单调不减,左连续, $0 \leq F_{n}(x) \leq 1, F_{n}(-\infty)=0, F_{n}(+\infty)=1$所以是分布函数)
+    若 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 为总体 $\xi$ 的样本, $\xi_{(1)}, \xi_{(2)} \ldots, \xi_{(n)}$ 为样本 $\xi_{1}, \xi_{2} \ldots, \xi_{n}$ 的顺序统计量.对任意实数 $x$, 记 $$F_{n}(x)=\left\{\begin{array}{cc}0, & x \leq \xi_{(1)} \\ \frac{k}{n}, & \xi_{k}<x \leq \xi_{k+1} \\ 1, & x>\xi_{(n)}\end{array}\right.$$为总体 $\xi$ 的经验分布函数,可用单位阶跃函数表示为 $F_{n}(x)=\frac{1}{n} \sum_{k=1}^{n} \mu\left(x-\xi_{k}\right), x \in R$. ($F_{n}(x)$ 单调不减, 左连续, $0 \leq F_{n}(x) \leq 1, F_{n}(-\infty)=0, F_{n}(+\infty)=1$ 所以是分布函数)
 \end{definition}
 
 \par 事实上,$\mu\left(x-\xi_{k}\right) \sim B(1, F(x))$,从而有$$\begin{array}{c}
@@ -347,7 +347,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \subsection{基本思想和概念}
 
 \begin{definition}
-    假设检验问题需要两个假设: 原假设 $H_0$ 和原假设被拒绝时而应接受的备选假设 $H_1$ .假如备择假设H1位于原假设的右侧或左侧，则称该检验问题为\textbf{单侧检验问题}. 假如备择假设$H_1$ 位于原假设 $H_0$ 的两侧, 则称其为\textbf{双侧检验问题}.
+    假设检验问题需要两个假设: 原假设 $H_0$ 和原假设被拒绝时而应接受的备选假设 $H_1$ .假如备择假设 $H_{1}$ 位于原假设的右侧或左侧，则称该检验问题为\textbf{单侧检验问题}. 假如备择假设$H_1$ 位于原假设 $H_0$ 的两侧, 则称其为\textbf{双侧检验问题}.
 \end{definition}
 
 \begin{definition}[错误类别]
@@ -367,20 +367,11 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \subsubsection{单个正态总体均值的假设检验}
 
 \begin{enumerate}
-    \item 当 $\sigma$ 已知时可以利用 $\frac{\bar{\xi}-a_{0}{\sigma / \sqrt{n}} \sim N(0,1)$
+    \item 当 $\sigma$ 已知时可以利用 $\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}} \sim N(0,1)$
     \item 当 $\sigma$ 未知时应当使用 $\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}} \sim t(n-1)$
     \item 对于非正态总体有 $\frac{\bar{\xi}-a}{S / \sqrt{n}} \stackrel{L}{\rightarrow} \zeta \sim N(0,1)$ 作为总体均值的假设检验
 \end{enumerate} 
 
-% \begin{enumerate}
-%     \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $H_{0}=\left\{\left|\bar{\xi}-a_{0}\right|>\frac{\sigma u_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}=\left\{\left|\frac{\xi-a_{0}}{\sigma / \sqrt{n}}\right|>u_{1-\frac{\alpha}{2}}\right\},$
-%     \item $H_{0}: a=a_{0}, \quad H_{1}: a>a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\bar{\xi}>a_{0}+\frac{\sigma}{\sqrt{n}} u_{1-\alpha}\right\}=\left\{\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}}>u_{1-\alpha}\right\}$
-% \end{enumerate}
-
-% \begin{enumerate}
-%     \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\left|\frac{\bar{\xi}-a_{0}}{\tilde{s} / \sqrt{n}}\right|>t_{1-\frac{\alpha}{2}}(n-1)\right\}$
-%     \item 对于其他假设类似有 $\left\{\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}}>t_{1-\alpha}(n-1)\right\}$ 等结果.
-% \end{enumerate}
 
 \subsubsection{单个正态总体方差的假设检验}
 
@@ -407,7 +398,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \subsubsection{指数分布中参数 $\lambda$ 的假设检验}
 
-\par $\bar{\xi}$ 为1 $/ \lambda$ 的有效估计量，通常 $\frac{\bar{\xi}}{1 / \lambda}=\lambda \bar{\xi}$ 应接近 1，当 $\left(\lambda_{0}\right$ 已知时有 $2 \lambda n \bar{\xi} \sim \chi^{2}(2 n)$ 
+\par $\bar{\xi}$ 为 $1 / \lambda$ 的有效估计量，通常 $\frac{\bar{\xi}}{1 / \lambda}=\lambda \bar{\xi}$ 应接近 1，当 $\lambda_{0}$ 已知时有 $2 \lambda n \bar{\xi} \sim \chi^{2}(2 n)$ 
 
 \subsection{非参数假设检验}
 
