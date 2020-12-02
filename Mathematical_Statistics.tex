@@ -375,7 +375,32 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \par 当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 T 检验.
 
 \subsection{非参数假设检验}
-\par \textbf{皮尔逊$\chi^{2}$ 检验}定义检验统计量 $\chi^{2}=\sum_{i=1}^{r} \frac{\left(v_{i}-n p_{i}\right)^{2}}{n p_{i}}$
+
+\subsubsection{分布函数的拟合检验}
+
+\par \textbf{皮尔逊$\chi^{2}$ 检验}定义检验统计量 $\chi^{2}=\sum_{i=1}^{r} \frac{\left(v_{i}-n p_{i}\right)^{2}}{n p_{i}}$ 当 $n \rightarrow \infty$ 极限为自由度 $r-1$ 的 $\chi^2$ 分布, 显著性水平定为 $c=\chi_{1-\alpha}^{2}(r-1)$.
+
+\par 当分布有参数 $\theta_{1} \cdots \theta_{k}$ 未知时, 通常会进行极大似然估计, 此时 $\chi^2$ 分布自由度要相应减小为 $r-k-1$.
+
+\subsubsection{连续分布的拟合检验}
+
+\par 对于连续总体样本估计, 进行假设检验 $H_{0}: F(x)=F_{0}(x), \quad H_{1}: F(x) \neq F_{0}(x)$, 通过设立区间将问题转化成离散检验, 而 $\chi^{2} \stackrel{L}{\rightarrow} \eta \sim \chi^{2}(m-1-l)$. 对其化简有 $\chi^{2}=\sum_{i=1}^{m} \frac{\left(v_{i}-n p_{i}\right)^{2}}{n p_{i}}$.
+
+\subsubsection{多项分布的等同性检验}
+
+\par 有时也被称为分布的齐性检验
+\begin{enumerate}
+    \item 若诸分类概率 $p_{1}, p_{2}, \cdots, p_{r}$ 已知场合, 可用渐近分布 $\chi^{2}(2 r-2)$ 的 检验统计量 $\chi^{2}=\sum_{i=1}^{2} \sum_{j=1}^{r} \frac{\left(o_{i j}-E_{i j}^{\prime}\right)^{2}}{E_{i j}^{\prime}}$ 进行检验
+    \item 若诸分类概率 $p_{1}, p_{2}, \cdots, p_{r}$ 未知场合, 可用渐近分布 $\chi^{2}(2 r-k-2)$ 的检验统计量 $\chi^{2}=\sum_{i=1}^{2} \sum_{j=1}^{r} \frac{\left(o_{i j}-E_{i j}^{\prime \prime}\right)^{2}}{E_{i i}^{\prime \prime}}$ 进行检验
+\end{enumerate}
+
+\subsubsection{两总体之间秩和检验(Wilcoxon)}
+
+\par 检验两独立样本总体分布是否相同, 将样本从小到大排列并分别计算秩, 假设 $n_1 \leq n_2$ , 则 $\alpha=P\left\{R_{1}<T_{1}\right.$ or $R_{1}>T_{2} \mid H_{0}$ 成立 $\}$.
+
+\subsubsection{两总体之间独立性检验}
+
+\par 独立性假设 $H_{0}: F(x, y)=F_{1}(x) F_{2}(y), \quad H_{1}: F(x, y) \neq F_{1}(x) F_{2}(y)$ 可以等价于 $H_{0}: p_{i k}=p_{i} \cdot p_{k}, \quad H_{1}: p_{i k} \neq p_{i} \cdot p_{k}$. 需估计 $(r-1)+(s-1)=r+s-2$ 个未知参数 $p_{1} \cdots p_{r-1} p_{1} \cdots p_{s-1}$, 通过极大似然法得到 $\left\{\begin{aligned} \hat{p}_{i} &=\frac{n_{i}}{n} \\ \hat{p}_{k} &=\frac{n \cdot k}{n} \end{aligned}\right.$, 所以 $$\chi^{2}=\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{\left(n_{i k}-n \hat{p}_{i k}\right)^{2}}{n \hat{p}_{i k}}=n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i .} n_{\cdot k}}-1\right] \sim \chi^{2}[(r-1)(s-1)] $$ 从而 $H_{0}$ 的拒绝域为 $\left\{n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i} n_{\cdot k}}-1\right]>\chi_{1-\alpha}^{2}[(r-1)(s-1)]\right\}$
 
 
 
