@@ -183,7 +183,7 @@
     \item $x_{a}=y_{1-a}, y_{a}=x_{1-\alpha}$
     \item 对于正态分布 $N(0,1)$ 与 $t$ 分布 $t(n)$ 有$y_{1-\alpha}=-y_{\alpha}, x_{1-\alpha}=-x_{\alpha}
           $即$y_{1-\alpha}=-y_{\alpha}=x_{a}=-x_{1-\alpha}$
-    \item 设 $F_{\alpha}(m, n)$ 为$F \sim F(m, n)$ 的下侧$\alpha$ 分位数,则$F_{a}(m, n)=\frac{1}{F_{1-a}(n, m)}$
+    \item 设 $F_{\alpha}(m, n)$ 为 $F \sim F(m, n)$ 的下侧 $\alpha$ 分位数,则 $F_{a}(m, n)=\frac{1}{F_{1-a}(n, m)}$
 \end{enumerate}
 
 \section{参数估计}
@@ -191,13 +191,13 @@
 \subsection{点估计常用方法}
 
 \subsubsection{矩法}
-\par 由辛钦大数定律(Wiener-Khinchin Law)有$$\lim _{n \rightarrow \infty} P\left\{\left|\frac{1}{n} \sum_{i=1}^{n} X_{i}-\frac{1}{n} \sum_{i=1}^{n} E\left(X_{i}\right)\right|<\varepsilon\right\}=1$$由科尔莫格罗夫 强大数定律(Kolmogorov Strong Law)有$$P \lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^{n}\left(\xi_{k}-E \xi_{k}\right)=0=1$$
-\par 从而可以用样本的矩来估计样本参数,得 $\theta_{1}, \theta_{2}, \cdots, \theta_{t}$ 的解 $\hat{\theta}_{1}, \hat{\theta}_{2}, \cdots, \hat{\theta}_{t}$作为估计量.
+\par 由辛钦大数定律(Wiener-Khinchin Law)有 $$\lim _{n \rightarrow \infty} P\left\{\left|\frac{1}{n} \sum_{i=1}^{n} X_{i}-\frac{1}{n} \sum_{i=1}^{n} E\left(X_{i}\right)\right|<\varepsilon\right\}=1$$ 由科尔莫格罗夫 强大数定律(Kolmogorov Strong Law)有 $$P \lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^{n}\left(\xi_{k}-E \xi_{k}\right)=0=1$$
+\par 从而可以用样本的矩来估计样本参数, 得 $\theta_{1}, \theta_{2}, \cdots, \theta_{t}$ 的解 $\hat{\theta}_{1}, \hat{\theta}_{2}, \cdots, \hat{\theta}_{t}$ 作为估计量.
 
 \subsubsection{极大似然法}
-\par 构造极大似然函数$L(\theta)=\prod_{i=1}^{n} p\left(\xi_{i} ; \theta\right)$,固定样本观察值选择使得$L(\theta)$达到最大的参数$\hat{\theta}$作为参数 $\theta$ 的估计值.
+\par 构造极大似然函数 $L(\theta)=\prod_{i=1}^{n} p\left(\xi_{i} ; \theta\right)$,固定样本观察值选择使得 $L(\theta)$ 达到最大的参数 $\hat{\theta}$ 作为参数 $\theta$ 的估计值.
 
-\par 考虑到$L(\theta)$连乘的形式,可以将方程转换为$\frac{\partial \ln L(\theta)}{\partial \theta_{k}}=0, \quad k=1,2, \cdots, t$.对于方程无唯一解的情况,可以通过定义结合变量范围确定使得$L(\theta)$最大的取值.
+\par 考虑到 $L(\theta)$ 连乘的形式,可以将方程转换为 $\frac{\partial \ln L(\theta)}{\partial \theta_{k}}=0, \quad k=1,2, \cdots, t$ .对于方程无唯一解的情况,可以通过定义结合变量范围确定使得 $L(\theta)$ 最大的取值.
 
 \par 极大似然法不要求原点矩存在,相对于矩法具有更好的性质,但是在求解方程时需要借助数值方法求近似解.
 
@@ -211,16 +211,16 @@
 
 \par 例如,$S^{* 2} \triangleq \frac{1}{n-1} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)=\frac{n}{n-1} S^{2}$是总体方差的无偏估计量,又叫修正样本方差.
 
-\par 应注意的是,如果 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 是参数 $\theta$ 的无偏估计量,除了 $g$ 是线性函数外,推不出$g(T)$也是 $g(\theta)$ 的无偏估计量,例如不能用对均值估计量的平方作为对二阶矩原点的估计.
+\par 应注意的是,如果 $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 是参数 $\theta$ 的无偏估计量, 除了 $g$ 是线性函数外, 推不出$g(T)$也是 $g(\theta)$ 的无偏估计量, 例如不能用对均值估计量的平方作为对二阶矩原点的估计.
 
-\par 事实上,存在某一参数有多种无偏估计量的情况,为对之进行对比,引入无偏估计量的方差.
+\par 事实上, 存在某一参数有多种无偏估计量的情况, 为对之进行对比, 引入无偏估计量的方差.
 
 \begin{definition}
-    若对于一切 $\theta \in \Theta$(即任意可能的参数范围,因为估计时不确定具体值)均有$D_{\theta}\left(\hat{\theta}_{1}\right) \leqslant D_{\theta}\left(\hat{\theta}_{2}\right),$ 则说估计量$\hat{\theta}_{1}$比估计量$\hat{\theta}_{2}$ 有效.
+    若对于一切 $\theta \in \Theta$ (即任意可能的参数范围, 因为估计时不确定具体值)均有 $D_{\theta}\left(\hat{\theta}_{1}\right) \leqslant D_{\theta}\left(\hat{\theta}_{2}\right)$, 则说估计量 $\hat{\theta}_{1}$ 比估计量 $\hat{\theta}_{2}$ 有效.
 \end{definition}
 
 \begin{theorem}[Rao-Cramer不等式]{\label{cr}}
-    设总体 $\xi$ 为具有密度函数 $f(x ; \theta)$ 的连续型随机变量 $, \theta$ 为未知參数, $\theta \in \Theta . \xi_{1}, \cdots, \xi_{n}$ 为 $\xi$ 的 样本, $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为可估计函数 $g(\theta)$ 的无偏估计量. 如果
+    设总体 $\xi$ 为具有密度函数 $f(x ; \theta)$ 的连续型随机变量, $\theta$ 为未知參数, $\theta \in \Theta . \xi_{1}, \cdots, \xi_{n}$ 为 $\xi$ 的 样本, $T\left(\xi_{1}, \cdots, \xi_{n}\right)$ 为可估计函数 $g(\theta)$ 的无偏估计量. 如果
     \begin{enumerate}
         \item $\Theta$ 为实数域 $R$ 中的开区间且集合 $\left\{x: f(x; \theta)>0 \right\}$ 与 $\theta$ 无关.
         \item $\frac{\partial}{\partial \theta} f(x ; \theta)$ 存在,且 $I(\theta) \equiv E_{\theta}\left[\frac{\partial}{\partial \theta} \ln f(\xi ; \theta)\right]^{2}>0$, 此处 $I(\theta)$ 又叫 Fisher 信息量.
@@ -305,7 +305,7 @@
 \subsubsection{两个正态总体}
 \par 估计两者平均值之差时若 $\sigma_{1}^{2}, \sigma_{2}^{2}$ 已知, 利用 $\frac{(\bar{\xi}-\bar{\eta})-\left(a_{1}-a_{2}\right)}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}} \sim N(0,1)$ 有置信区间 $\left((\bar{\xi}-\bar{\eta}) \pm u_{1-\frac{\alpha}{2}} \sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}\right)$
 
-\subsection{贝叶斯(Bayes)估计}
+\subsection{贝叶斯估计}
 
 \subsubsection{后验估计}
 
@@ -326,7 +326,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \par 在进行后验估计时. 通常选使得 $MSE(\hat{\theta} \mid x)=E^{\theta \mid x}(\hat{\theta}-\theta)^{2}$ 最小的估计量 $\hat{\theta}$, 又称为\textbf{贝叶斯估计}. 已知 $\pi(\theta \mid x),$ 参数函数 $g(\theta)$ 在均方误差下的 Bayes 估计为 $E(g(\theta) \mid x)$.
 
-\subsubsection{Bayes 区间估计}
+\subsubsection{贝叶斯区间估计}
 
 \par 利用 $\theta$ 的后验分布从而求置信区间, 下面以 $\xi \sim N\left(a, \sigma^{2}\right)$ 为例进行分析. 对于$\sigma^{2}$ 已知时 $a$ 的贝叶斯区间估计:
 
@@ -370,7 +370,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
     \item 当 $\sigma$ 已知时可以利用 $\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}} \sim N(0,1)$
     \item 当 $\sigma$ 未知时应当使用 $\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}} \sim t(n-1)$
     \item 对于非正态总体有 $\frac{\bar{\xi}-a}{S / \sqrt{n}} \stackrel{L}{\rightarrow} \zeta \sim N(0,1)$ 作为总体均值的假设检验
-\end{enumerate} 
+\end{enumerate}
 
 
 \subsubsection{单个正态总体方差的假设检验}
@@ -398,7 +398,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \subsubsection{指数分布中参数 $\lambda$ 的假设检验}
 
-\par $\bar{\xi}$ 为 $1 / \lambda$ 的有效估计量，通常 $\frac{\bar{\xi}}{1 / \lambda}=\lambda \bar{\xi}$ 应接近 1，当 $\lambda_{0}$ 已知时有 $2 \lambda n \bar{\xi} \sim \chi^{2}(2 n)$ 
+\par $\bar{\xi}$ 为 $1 / \lambda$ 的有效估计量，通常 $\frac{\bar{\xi}}{1 / \lambda}=\lambda \bar{\xi}$ 应接近 1，当 $\lambda_{0}$ 已知时有 $2 \lambda n \bar{\xi} \sim \chi^{2}(2 n)$
 
 \subsection{非参数假设检验}
 
@@ -420,7 +420,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
     \item 若诸分类概率 $p_{1}, p_{2}, \cdots, p_{r}$ 未知场合, 可用渐近分布 $\chi^{2}(2 r-k-2)$ 的检验统计量 $\chi^{2}=\sum_{i=1}^{2} \sum_{j=1}^{r} \frac{\left(o_{i j}-E_{i j}^{\prime \prime}\right)^{2}}{E_{i i}^{\prime \prime}}$ 进行检验
 \end{enumerate}
 
-\subsubsection{两总体之间秩和检验(Wilcoxon)}
+\subsubsection{两总体之间秩和检验}
 
 \par 检验两独立样本总体分布是否相同, 将样本从小到大排列并分别计算秩, 假设 $n_1 \leq n_2$ , 则 $\alpha=P\left\{R_{1}<T_{1}\right.$ or $R_{1}>T_{2} \mid H_{0}$ 成立 $\}$.
 
