@@ -291,8 +291,11 @@
 \par 若 $\frac{\partial^{2}}{\partial \theta^{2}} f(\xi ; \theta)$ 存在，且满足正则条件，则 $I(\theta)=-E_{\theta}\left[\frac{\partial^{2}}{\partial \theta^{2}} \ln f(\xi ; \theta)\right]$
 
 \subsection{区间估计}
+
 \par 希望得到一个区间, 使得待估计量以一定概率处在区间中.
+
 \subsubsection{一个正态总体}
+
 \par 若 $\sigma$ 已知, 可以通过查表得到 $\left(\bar{\xi} \pm \frac{\sigma}{\sqrt{n}} u_{1-\frac{\alpha}{2}}\right)$ 为 $a$ 的 $1-\alpha$ 置信区间.
 
 \par 当 $\sigma$ 未知时, 因为 $\tilde{S}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{2}$ 是 $\sigma^{2}$ 的最优无偏估计, 利用 $\tilde{S}$ 替换 $\frac{\bar{\xi}-a}{\sigma / \sqrt{n}}$ 中的 $\sigma$ 有 $\frac{\bar{\xi}-a}{\tilde{S} / \sqrt{n}} \sim t(n-1)$ , 所以只要将 $u_{1-\frac{\alpha}{2}}$ 换成 $t_{1-\frac{\alpha}{2}}(n-1)$
@@ -301,7 +304,6 @@
 
 \subsubsection{两个正态总体}
 \par 估计两者平均值之差时若 $\sigma_{1}^{2}, \sigma_{2}^{2}$ 已知, 利用 $\frac{(\bar{\xi}-\bar{\eta})-\left(a_{1}-a_{2}\right)}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}} \sim N(0,1)$ 有置信区间 $\left((\bar{\xi}-\bar{\eta}) \pm u_{1-\frac{\alpha}{2}} \sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}\right)$
-
 
 \subsection{贝叶斯(Bayes)估计}
 
@@ -349,7 +351,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \end{definition}
 
 \begin{definition}[错误类别]
-    \textbf{第Ⅰ类错误}为拒真错误, 其发生的概率 $\alpha$ 称为\textbf{显著性水平}, \textbf{第Ⅱ类错误} 为取伪错误, 发生概率记为 $\beta$.
+    \textbf{第Ⅰ类错误}为拒真错误, 其发生的概率 $\alpha$ 称为\textbf{显著性水平}, \textbf{第Ⅱ类错误}为取伪错误, 发生概率记为 $\beta$.
 \end{definition}
 
 \par 当样本总数 $n$ 固定时, 犯两类错误的概率 $\alpha$ 与 $\beta$ 不能同时减小. 要同时减小, 需要增大样本容量.
@@ -360,19 +362,52 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \subsection{参数假设检验}
 
-\par 参数假设检验主要利用第一章末尾推导的分布, 要注意使用的总体方差(已知时)与样本方差. 当 $\sigma$ 已知时
+\par 参数假设检验主要利用第一章末尾推导的分布, 应注意总体方差(已知时)与样本方差, 记 $S^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{2}$, $\tilde{S}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(\xi_{i}-\bar{\xi}\right)^{2}$
+
+\subsubsection{单个正态总体均值的假设检验}
+
 \begin{enumerate}
-    \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $H_{0}=\left\{\left|\bar{\xi}-a_{0}\right|>\frac{\sigma u_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}=\left\{\left|\frac{\xi-a_{0}}{\sigma / \sqrt{n}}\right|>u_{1-\frac{\alpha}{2}}\right\},$
-    \item $H_{0}: a=a_{0}, \quad H_{1}: a>a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\bar{\xi}>a_{0}+\frac{\sigma}{\sqrt{n}} u_{1-\alpha}\right\}=\left\{\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}}>u_{1-\alpha}\right\}$
+    \item 当 $\sigma$ 已知时可以利用 $\frac{\bar{\xi}-a_{0}{\sigma / \sqrt{n}} \sim N(0,1)$
+    \item 当 $\sigma$ 未知时应当使用 $\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}} \sim t(n-1)$
+    \item 对于非正态总体有 $\frac{\bar{\xi}-a}{S / \sqrt{n}} \stackrel{L}{\rightarrow} \zeta \sim N(0,1)$ 作为总体均值的假设检验
+\end{enumerate} 
+
+% \begin{enumerate}
+%     \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $H_{0}=\left\{\left|\bar{\xi}-a_{0}\right|>\frac{\sigma u_{1-\frac{\alpha}{2}}}{\sqrt{n}}\right\}=\left\{\left|\frac{\xi-a_{0}}{\sigma / \sqrt{n}}\right|>u_{1-\frac{\alpha}{2}}\right\},$
+%     \item $H_{0}: a=a_{0}, \quad H_{1}: a>a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\bar{\xi}>a_{0}+\frac{\sigma}{\sqrt{n}} u_{1-\alpha}\right\}=\left\{\frac{\bar{\xi}-a_{0}}{\sigma / \sqrt{n}}>u_{1-\alpha}\right\}$
+% \end{enumerate}
+
+% \begin{enumerate}
+%     \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\left|\frac{\bar{\xi}-a_{0}}{\tilde{s} / \sqrt{n}}\right|>t_{1-\frac{\alpha}{2}}(n-1)\right\}$
+%     \item 对于其他假设类似有 $\left\{\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}}>t_{1-\alpha}(n-1)\right\}$ 等结果.
+% \end{enumerate}
+
+\subsubsection{单个正态总体方差的假设检验}
+
+\par 在 $a$ 未知时考虑 $\sigma^{2}$ 的假设检验问题, 由 $\tilde{S}^{2}$ 是 $\sigma^{2}$ 的 UMVUE, $\tilde{S}^{2} / \sigma^{2}$ 通常应接近1, 再利用 $\frac{(n-1) \tilde{S}^{2}}{\sigma_{0}^{2}} \sim \chi^{2}(n-1)$ 获得拒绝域.
+
+\subsubsection{两个正态总体均值的假设检验}
+
+\begin{enumerate}
+    \item 若 $\sigma_{1}^{2}, \sigma_{2}^{2}$ 均已知, 当 $H_{0}$ 成立时有 $\bar{\xi}-\bar{\eta} \sim N\left(0, \frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}\right)$
+    \item 若 $\sigma_{1}^{2}=\sigma_{2}^{2}=\sigma^{2},$ 但 $\sigma^{2}$ 未知， 当 $H_{0}$ 成立时有 $T=\frac{\bar{\xi}-\bar{\eta}}{\sqrt{n_{1} S_{1}^{2}+n_{2} S_{2}^{2}}} \sqrt{\frac{n_{1} n_{2}\left(n_{1}+n_{2}-2\right)}{n_{1}+n_{2}}} \sim t\left(n_{1}+n_{2}-2\right)$
 \end{enumerate}
 
-\par 而当更为常见的情况 $\sigma$ 未知时
-\begin{enumerate}
-    \item $H_{0}: a=a_{0}, \quad H_{1}: a \neq a_{0}$, $H_{0}$ 的拒绝域为 $\left\{\left|\frac{\bar{\xi}-a_{0}}{\tilde{s} / \sqrt{n}}\right|>t_{1-\frac{\alpha}{2}}(n-1)\right\}$
-    \item 对于其他假设类似有 $\left\{\frac{\bar{\xi}-a_{0}}{\tilde{S} / \sqrt{n}}>t_{1-\alpha}(n-1)\right\}$ 等结果.
-\end{enumerate}
+\subsubsection{两个正态总体方差的假设检验}
 
-\par 当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 T 检验.
+\par 对于与 $a_{1}, a_{2}$ 均未知时有 $\frac{\widetilde{S_{1}}^{2}}{\widetilde{S_{2}}^{2}} \cdot \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \sim F\left(n_{1}-1, n_{2}-1\right)$
+
+\begin{definition}[$T$ 检验]
+    当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 $T$ 检验.
+\end{definition}
+
+\subsubsection{广义似然比检验}
+
+\par 考虑假设检验问题 $H_{0}: \theta \in \Theta_{0}, H_{1}: \theta \in \Theta_{1} \triangleq \Theta-\Theta_{0}$, 定义\textbf{广义似然比} $\lambda\left(x_{1}, \cdots, x_{n}\right)=\frac{\sup _{\theta \in \Theta_{0}}\{L(X ; \theta)\}}{\sup _{\theta \in \Theta}\{L(X ; \theta)\}}$ 则 $H_{0}$ 成立时候 $\lambda\left(\xi_{1}, \cdots, \xi_{n}\right)$ 应接近于1. 但通常 $\lambda$ 的分布较难确定.
+
+\subsubsection{指数分布中参数 $\lambda$ 的假设检验}
+
+\par $\bar{\xi}$ 为1 $/ \lambda$ 的有效估计量，通常 $\frac{\bar{\xi}}{1 / \lambda}=\lambda \bar{\xi}$ 应接近 1，当 $\left(\lambda_{0}\right$ 已知时有 $2 \lambda n \bar{\xi} \sim \chi^{2}(2 n)$ 
 
 \subsection{非参数假设检验}
 
@@ -401,11 +436,5 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 \subsubsection{两总体之间独立性检验}
 
 \par 独立性假设 $H_{0}: F(x, y)=F_{1}(x) F_{2}(y), \quad H_{1}: F(x, y) \neq F_{1}(x) F_{2}(y)$ 可以等价于 $H_{0}: p_{i k}=p_{i} \cdot p_{k}, \quad H_{1}: p_{i k} \neq p_{i} \cdot p_{k}$. 需估计 $(r-1)+(s-1)=r+s-2$ 个未知参数 $p_{1} \cdots p_{r-1} p_{1} \cdots p_{s-1}$, 通过极大似然法得到 $\left\{\begin{aligned} \hat{p}_{i} &=\frac{n_{i}}{n} \\ \hat{p}_{k} &=\frac{n \cdot k}{n} \end{aligned}\right.$, 所以 $$\chi^{2}=\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{\left(n_{i k}-n \hat{p}_{i k}\right)^{2}}{n \hat{p}_{i k}}=n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i .} n_{\cdot k}}-1\right] \sim \chi^{2}[(r-1)(s-1)] $$ 从而 $H_{0}$ 的拒绝域为 $\left\{n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i} n_{\cdot k}}-1\right]>\chi_{1-\alpha}^{2}[(r-1)(s-1)]\right\}$
-
-
-
-
-
-
 
 \end{document}
