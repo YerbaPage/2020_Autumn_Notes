@@ -606,25 +606,163 @@
     Let $\mathbb{F}^{p}$ have the standard norm and let $A$ be a $m \times n$ matrix with entries in $F$. If $T: \mathbb{F}^{n} \rightarrow \mathbb{F}^{m}$ is the bounded linear transformation defined by $T(x)=A x$ then the norm of the matrix $A$ is defined by $\|A\|=\|T\|$.
 \end{definition}
 
+\begin{theorem}
+    Let $X$ be a normed linear space and let $W$ be a dense subspace of $X .$ Let $Y$ be a Banach space and let $S \in B(W, Y)$.
+    \begin{enumerate}
+        \item If $x \in X$ and $\left\{x_{n}\right\}$ and $\left\{y_{n}\right\}$ are sequences in $W$ such that $\lim _{n \rightarrow \infty} x_{n}=$ $\lim _{n \rightarrow \infty} y_{n}=x$ then $\left\{S\left(x_{n}\right)\right\}$ and $\left\{S\left(y_{n}\right)\right\}$ both converge and $\lim _{n \rightarrow \infty} S\left(x_{n}\right) = \lim _{n \rightarrow \infty} S\left(y_{n}\right)
+              $
+        \item There exists $T \in B(X, Y)$ such that $\|T\|=\|S\|$ and $T x=S x$ for all $x \in W$
+    \end{enumerate}
+\end{theorem}
 
+\begin{definition}[isometry]
+    Let $X$ and $Y$ be normed linear spaces and let $T \in L(X, Y) .$ If $\|T(x)\|=\|x\|$ for all $x \in X$ then $T$ is called an isometry.
+\end{definition}
 
+\begin{lemma}
+    Let $X$ and $Y$ be normed linear spaces and let $T \in L(X, Y) .$ If $T$ is an isometry then $T$ is bounded and $\|T\|=1$.
+\end{lemma}
 
+\begin{definition}
+    If $X$ and $Y$ are nurmed linear spaces and $T$ is an isometry from $X$ onto $Y$ then $T$ is called an \textbf{isometric isomorphism} and $X$ and $Y$ are called \textbf{isometrically isomorphic}.
+\end{definition}
 
+\begin{theorem}
+    Let $\mathcal{H}$ be an infinite-dimensional Hilbert space over $\mathbb{F}$ with an orthonormal basis $\left\{e_{n}\right\} .$ Then there is an isometry $T$ of $\mathcal{H}$ onto $\ell_{\mathrm{F}}^{2}$ such that $T\left(e_{n}\right)=\widetilde{e}_{n}$ for all $n \in \mathbb{N}$
+\end{theorem}
 
+\begin{corollary}
+    Any infinite-dimensional, separable Hilbert space $\mathcal{H}$ over $\mathbb{F}$ is isometrically isomorphic to $\ell_{\mathrm{F}}^{2}$
+\end{corollary}
 
+\subsection{The Space $B(X, Y)$}
 
+\begin{theorem}
+    If $X$ is a normed linear space and $Y$ is a Banach space then $B(X, Y)$ is a Banach space.
+\end{theorem}
 
+\begin{definition}[dual space]
+    Let $X$ be a normed space. Linear transformations from $X$ to $\mathbb{F}$ are called linear functionals. The space $B(X, \mathbb{F})$ is called the \textbf{dual space} of $X$ and denoted $X^{\prime}$
+\end{definition}
 
+\begin{corollary}
+    If $X$ is a normed vector space then $X^{\prime}$ is a Banach space.
+\end{corollary}
 
+\begin{lemma}
+    If $X, Y$ and $Z$ are normed linear spaces and $T \in B(X, Y)$ and $S \in B(Y, Z)$ then $S \circ T \in B(X, Z)$ and $\|S \circ T\| \leq\|S\|\|T\|$
+\end{lemma}
 
+\begin{definition}[product]
+    Let $X, Y$ and $Z$ be normed linear spaces and $T \in B(X, Y)$ and $S \in B(Y, Z)$ The composition $S \circ T$ of $S$ and $T$ will be denoted by $S T$ and called the product of $S$ and $T$
+\end{definition}
 
+\begin{lemma}
+    Let $X$ be a normed linear space.
+    \begin{enumerate}
+        \item $B(X)$ is an algebra with identity and hence a ring with identity.
+        \item If $\left\{T_{n}\right\}$ and $\left\{S_{n}\right\}$ are sequences in $B(X)$ such that $\lim _{n \rightarrow \infty} T_{n}=T$ and $\lim _{n \rightarrow \infty} S_{n}=S$ then $\lim _{n \rightarrow \infty} S_{n} T_{n}=S T$
+    \end{enumerate}
+\end{lemma}
 
+\begin{lemma}
+    Let $X$ be a normed linear space and let $T \in B(X) .$ If $p$ and $q$ are polynomials and $\lambda, \mu \in \mathbb{C}$ then
+    \begin{enumerate}
+        \item $(\lambda p+\mu q)(T)=\lambda p(T)+\mu q(T)$
+        \item $(p q)(T)=p(T) q(T)$
+    \end{enumerate}
+\end{lemma}
 
+\subsection{Inverses of Operators }
 
+\begin{definition}[invertable]
+    Let $X, Y$ be normed linear spaces. An operator $T \in B(X, Y)$ is said to be \textbf{invertible} if there exists $S \in B(Y, X)$ such that $S T=I_{X}, T S=I_{Y},$ in which case $S$ is the inverse of $T$ and is denoted by $T^{-1}$.
+\end{definition}
 
+\begin{lemma}
+    If $X, Y, Z$ are normed linear spaces and $T_{1} \in B(X, Y), T_{2} \in B(Y, Z)$ are invertible, then:
+    \begin{enumerate}
+        \item $T_{1}^{-1}$ is invertible with inverse $T_{1}$
+        \item $T_{2} T_{1}$ is invertible with inverse $T_{1}^{-1} T_{2}^{-1}$
+    \end{enumerate}
+\end{lemma}
 
+\begin{definition}[isomorphism]
+    Let $X, Y$ be normed linear spaces. If an invertible operator $T \in B(X, Y)$ exists then $X, Y$ are isomorphic, and $T$ is an isomorphism between $X$ and $Y$ .
+\end{definition}
 
+\begin{lemma}
+    If the normed linear spaces $X, Y,$ are isomorphic, then:
+    \begin{enumerate}
+        \item  $\operatorname{dim} X<\infty$ if and only if $\operatorname{dim} Y<\infty,$ in which case $\operatorname{dim} X=\operatorname{dim} Y$
+        \item $X$ is separable if and only if $Y$ is separable;
+        \item $X$ is complete (i.e., Banach) if and only if $Y$ is complete (i.e., Banach).
+    \end{enumerate}
+\end{lemma}
 
+\begin{theorem}
+    Let $X$ be a Banach space. If $T \in B(X)$ is an operator with $\|T\|<1$ then $I-T$ is invertible and the inverse is given by $(I-T)^{-1}=\sum_{n=0}^{\infty} T^{n}$ (called $Neumann \ series$)
+\end{theorem}
+
+\begin{corollary}
+    Let $X, Y$ be Banach spaces. The set $\mathcal{A}$ of invertible operators in $B(X, Y)$ is open.
+\end{corollary}
+
+\begin{theorem}[Open mapping]
+    Suppose that $X$ and $Y$ are Banach spaces and $T \in B(X, Y)$ is surjective. Let
+    $$
+        L=\{T(x): x \in X \text { and }\|x\| \leq 1\}
+    $$
+    with closure $\bar{L}$. Then:
+    \begin{enumerate}
+        \item there exists $r>0$ such that $\{y \in Y:\|y\| \leq r\} \subseteq \bar{L} ;$
+        \item $\left\{y \in Y:\|y\| \leq \frac{r}{2}\right\} \subseteq L$
+        \item if, in addition, $T$ is one-to-one then $T$ is invertible.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}[closed graph]
+    If $X$ and $Y$ are Banach space and $T$ is a linear transformation from $X$ into $Y$ such that $\mathcal{G}(T),$ the graph of $T,$ is closed, then $T$ is continuous.
+\end{corollary}
+
+\begin{corollary}[Banach's Isomorphism Theorem]
+    If $X, Y$ are Banach spaces and $T \in B(X, Y)$ is bijective, then $T$ is invertible
+\end{corollary}
+
+\begin{lemma}
+    If $X, Y$ are normed linear spaces and $T \in B(X, Y)$ is invertible then, for all $x \in X$
+    $$
+        \|T x\| \geq\left\|T^{-1}\right\|^{-1}\|x\|
+    $$
+\end{lemma}
+
+\begin{lemma}
+    Suppose that $X$ is a Banach space, $Y$ is a normed space and $T \in B(X, Y) .$ If there exists $\alpha>0$ such that $\|T x\| \geq \alpha\|x\|$ for all $x \in X,$ then $\operatorname{Im}(T)$ is closed.
+\end{lemma}
+
+\begin{theorem}
+    Suppose that $X, Y$ are Banach spaces, and $T \in B(X, Y) .$ The following are equivalent:
+    \begin{enumerate}
+        \item $T$ is invertible
+        \item $\operatorname{Im}(T)$ is dense in $Y$ and there exists $\alpha>0$ such that $\|T x\| \geq \alpha\|x\|$ for all $x \in X$
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Suppose that $X, Y$ are Banach spaces, and $T \in B(X, Y) .$ The operator $T$ is not invertible if and only if $\operatorname{Im}(T)$ is not dense in $Y$ or there exists a sequence $\left\{x_{n}\right\}$ in $X$ with $\left\|x_{n}\right\|=1$ for all $n \in \mathbb{N}$ but $\lim _{n \rightarrow \infty} T x_{n}=0$
+\end{corollary}
+
+\begin{theorem}[Uniform Boundedness Principle]
+    Let $U, X$ be Banach spaces. Suppose that $S$ is a non-empty set and, for each $s \in S, T_{s} \in B(U, X) .$ If, for each $u \in U,$ the set $\left\{\left\|T_{s}(u)\right\|: s \in S\right\}$ is bounded then the set $\left\{\left\|T_{s}\right\|: s \in S\right\}$ is bounded.
+\end{theorem}
+
+\begin{corollary}
+    Let $U, X$ be Banach spaces and $T_{n} \in B(U, X), n=1,2, \ldots$ Suppose that, $\lim _{n \rightarrow \infty} T_{n} u$ exists, for each $u \in U,$ and define $T u=\lim _{n \rightarrow \infty} T_{n} u .$ Then $T \in B(U, X)$
+\end{corollary}
+
+\section{Duality and the Hahn–Banach Theorem}
+
+\subseciton{Dual Spaces}
 
 
 
