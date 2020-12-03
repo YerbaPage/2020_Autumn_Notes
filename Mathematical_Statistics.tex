@@ -5,8 +5,10 @@
 \begin{document}
 \author{}
 \maketitle
-\footnotesize
+% \footnotesize
 \tableofcontents
+\newpage
+
 \section{抽样分布}
 \subsection{基本概念}
 
@@ -160,8 +162,8 @@
 \end{proposition}
 
 \begin{proposition}
-    设 $\xi_{1}, \cdots, \xi_{k}$ 为 $k(k \geqslant 2)$ 个相互独立的随机变量,且 $\xi_{i} \sim N(0,1), i=1,2, \cdots, k .$ 今从这 $k$ 个相互独立的总体中分别抽取容量为 $n_{i}$ 的样本 $\xi_{i 1}, \cdots, \xi_{i n_{i}}, i=1,2, \cdots, k,$ 且这 $k$ 个样本相互独立,记$\bar{\xi}_{i}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}} \xi_{i j}, S_{i}^{2}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}_{i}\right)^{2}, i=1,2, \cdots, k$
-    $n=\sum_{i=1}^{k} n_{i}, \bar{\xi}=\frac{1}{n} \sum_{n=1}^{k} \sum_{j=1}^{m_{i}} \xi_{i j}$,则有离差平方和的分解式$$S_{总}^{2} \triangleq \sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}\right)^{2}=Q+U$$其中$\boldsymbol{Q}=\sum_{i=1}^{k} n_{i} S_{i}^{2}, U=\sum_{i=1}^{k} n_{i}\left(\bar{\xi}_{i}-\bar{\xi}\right)^{2}$,且有$\frac{U /(k-1)}{Q /(n-k)} \sim F(k-1, n-k)$
+    设 $\xi_{1}, \cdots, \xi_{k}$ 为 $k(k \geqslant 2)$ 个相互独立的随机变量,且 $\xi_{i} \sim N(0,1), i=1,2, \cdots, k .$ 今从这 $k$ 个相互独立的总体中分别抽取容量为 $n_{i}$ 的样本 $\xi_{i 1}, \cdots, \xi_{i n_{i}}, i=1,2, \cdots, k,$ 且这 $k$ 个样本相互独立, 记 $\bar{\xi}_{i}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}} \xi_{i j}, S_{i}^{2}=\frac{1}{n_{i}} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}_{i}\right)^{2}, i=1,2, \cdots, k$
+    $n=\sum_{i=1}^{k} n_{i}, \bar{\xi}=\frac{1}{n} \sum_{n=1}^{k} \sum_{j=1}^{m_{i}} \xi_{i j}$,则有离差平方和的分解式 $$S_{总}^{2} \triangleq \sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(\xi_{i j}-\bar{\xi}\right)^{2}=Q+U$$ 其中 $\boldsymbol{Q}=\sum_{i=1}^{k} n_{i} S_{i}^{2}, U=\sum_{i=1}^{k} n_{i}\left(\bar{\xi}_{i}-\bar{\xi}\right)^{2}$, 且有 $\frac{U /(k-1)}{Q /(n-k)} \sim F(k-1, n-k)$
 \end{proposition}
 
 \begin{theorem}
@@ -292,7 +294,7 @@
 
 \subsection{区间估计}
 
-\par 希望得到一个区间, 使得待估计量以一定概率处在区间中.
+% \par 希望得到一个区间, 使得待估计量以一定概率处在区间中.
 
 \subsubsection{一个正态总体}
 
@@ -309,12 +311,10 @@
 
 \subsubsection{后验估计}
 
-\par 回忆贝叶斯公式 $P\left(B_{i} \mid A\right)=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{i=1}^{n} P\left(A \mid B_{i}\right) P\left(B_{i}\right)}$
-
-\par 先验分布的选取(广义贝叶斯假设): 在没有任何信息时, Bayes 提出使用均匀分布作为 $\theta$ 的先验分布. 求后验分布的公式为: $$\pi(\theta \mid x)=\frac{h(x, \theta)}{m(x)}=\frac{p(x \mid \theta) \pi(\theta)}{\int_{\theta} p(x \mid \theta) \pi(\theta) \mathrm{d} \theta}$$
+\par 回忆贝叶斯公式 $P\left(B_{i} \mid A\right)=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{i=1}^{n} P\left(A \mid B_{i}\right) P\left(B_{i}\right)}$ 先验分布的选取(广义贝叶斯假设): 在没有任何信息时, Bayes 提出使用均匀分布作为 $\theta$ 的先验分布. 求后验分布的公式为: $$\pi(\theta \mid x)=\frac{h(x, \theta)}{m(x)}=\frac{p(x \mid \theta) \pi(\theta)}{\int_{\theta} p(x \mid \theta) \pi(\theta) \mathrm{d} \theta}$$
 
 \begin{definition}
-    函数 $\varphi(x)$ 与函数 $f(x)$ 只相差一个常数则称为\textbf{核}.
+    函数 $\varphi(x)$ 与函数 $f(x)$ 只相差一个常数系数则称为\textbf{核}.
 \end{definition}
 
 \begin{definition}
@@ -342,6 +342,7 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
     \item 根据广义 Bayes 假设: $\sigma^{2} \mid x \sim I \Gamma\left(\frac{n}{2}-1, \frac{1}{2} \sum_{i=1}^{n} x_{i}^{2}\right)$ 从而有区间估计 $\left(\frac{\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{1-\frac{\alpha}{2}}^{2}(n-2)}, \frac{\sum_{i=1}^{n} \xi_{i}^{2}}{\chi_{\frac{\alpha}{2}}^{2}(n-2)}\right)$
 \end{itemize}
 
+% \newpage
 \section{假设检验}
 
 \subsection{基本思想和概念}
@@ -388,9 +389,9 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \par 对于与 $a_{1}, a_{2}$ 均未知时有 $\frac{\widetilde{S_{1}}^{2}}{\widetilde{S_{2}}^{2}} \cdot \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \sim F\left(n_{1}-1, n_{2}-1\right)$
 
-\begin{definition}[$T$ 检验]
-    当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 $T$ 检验.
-\end{definition}
+% \begin{definition}[$T$ 检验]
+%     当样本成对收集的时候需要比较不同获得方式对观察值的影响差异是否显著而进行多次重复实验, 叫做 $T$ 检验.
+% \end{definition}
 
 \subsubsection{广义似然比检验}
 
@@ -426,6 +427,6 @@ $p_{\frac{1}{\xi}}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{1}{x^{\alpha
 
 \subsubsection{两总体之间独立性检验}
 
-\par 独立性假设 $H_{0}: F(x, y)=F_{1}(x) F_{2}(y), \quad H_{1}: F(x, y) \neq F_{1}(x) F_{2}(y)$ 可以等价于 $H_{0}: p_{i k}=p_{i} \cdot p_{k}, \quad H_{1}: p_{i k} \neq p_{i} \cdot p_{k}$. 需估计 $(r-1)+(s-1)=r+s-2$ 个未知参数 $p_{1} \cdots p_{r-1} p_{1} \cdots p_{s-1}$, 通过极大似然法得到 $\left\{\begin{aligned} \hat{p}_{i} &=\frac{n_{i}}{n} \\ \hat{p}_{k} &=\frac{n \cdot k}{n} \end{aligned}\right.$, 所以 $$\chi^{2}=\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{\left(n_{i k}-n \hat{p}_{i k}\right)^{2}}{n \hat{p}_{i k}}=n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i .} n_{\cdot k}}-1\right] \sim \chi^{2}[(r-1)(s-1)] $$ 从而 $H_{0}$ 的拒绝域为 $\left\{n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i} n_{\cdot k}}-1\right]>\chi_{1-\alpha}^{2}[(r-1)(s-1)]\right\}$
+\par 独立性假设 $H_{0}: F(x, y)=F_{1}(x) F_{2}(y), \quad H_{1}: F(x, y) \neq F_{1}(x) F_{2}(y)$ 可以等价于 $H_{0}: p_{i k}=p_{i} \cdot p_{k}, \quad H_{1}: p_{i k} \neq p_{i} \cdot p_{k}$. 需估计 $(r-1)+(s-1)=r+s-2$ 个未知参数 $p_{1} \cdots p_{r-1} p_{1} \cdots p_{s-1}$, 通过极大似然法得到 $\left\{\begin{aligned} \hat{p}_{i} &=\frac{n_{i}}{n} \\ \hat{p}_{k} &=\frac{n k}{n} \end{aligned}\right.$, 所以 $$\chi^{2}=\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{\left(n_{i k}-n \hat{p}_{i k}\right)^{2}}{n \hat{p}_{i k}}=n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i .} n_{k}}-1\right] \sim \chi^{2}[(r-1)(s-1)] $$ 从而 $H_{0}$ 的拒绝域为 $\left\{n\left[\sum_{i=1}^{r} \sum_{k=1}^{s} \frac{n_{i k}^{2}}{n_{i} n_{k}}-1\right]>\chi_{1-\alpha}^{2}[(r-1)(s-1)]\right\}$
 
 \end{document}
