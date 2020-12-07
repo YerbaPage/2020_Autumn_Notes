@@ -16,12 +16,12 @@
 \subsubsection{方程分类和基本概念}
 
 \begin{itemize}
-    \item 若各阶偏导数都是线性的, 称为\textbf{线性偏微分方程} 
+    \item 若各阶偏导数都是线性的, 称为\textbf{线性偏微分方程}
     \item 含有如 $uu_{x}, u_{x}^{2}$ 称为\textbf{非线性偏微分方程}
-    \begin{itemize}
-        \item 若最高阶导数是线性的, 称为\textbf{拟线性偏微分方程}, 进一步如果系数为自变量的函数, 称为\textbf{半线性偏微分方程}
-        \item 若最高阶导数不是线性的, 称为\textbf{完全非线性偏微分方程}
-    \end{itemize}
+          \begin{itemize}
+              \item 若最高阶导数是线性的, 称为\textbf{拟线性偏微分方程}, 进一步如果系数为自变量的函数, 称为\textbf{半线性偏微分方程}
+              \item 若最高阶导数不是线性的, 称为\textbf{完全非线性偏微分方程}
+          \end{itemize}
 \end{itemize}
 
 \par 未知函数连续且一切偏导数连续, 能使方程成立, 称为方程的\textbf{解}或\textbf{古典解}
@@ -189,15 +189,15 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 \section{热传导方程}
 
 \subsection{初边值问题的分离变量法}
-\subsubsection{一个空间变量}
+\subsubsection*{一个空间变量}
 
-\par 对于问题 $\left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 根据 $X(x)=A \cos \sqrt{\lambda} x+B \sin \sqrt{\lambda} x$ 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 带入 $T_{k}(t)=C_{k} e^{-a^{2} \lambda_{k} t}$ 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
+\par 对于问题 $\label{chubian} \left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 根据 $X(x)=A \cos \sqrt{\lambda} x+B \sin \sqrt{\lambda} x$ 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 带入 $T_{k}(t)=C_{k} e^{-a^{2} \lambda_{k} t}$ 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
 
 \par 进一步对于初值问题应满足 $\varphi(x)=\sum_{k=1}^{\infty} A_{k} \sin \sqrt{\lambda_{k}} x$, 两边乘上 $\sin \sqrt{\lambda_{k}} x$ 再进行积分, 利用固有函数正交性 $$\int_{0}^{l} X_{n} X_{m} d x=\int_{0}^{l} \sin \sqrt{\lambda_{n}} x \sin \sqrt{\lambda_{m}} x d x=0, m \neq n$$ 得到 $A_{k}=\frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda}_{k} \xi d \xi$.
 
 \par 最终整合得到形式解为 $u(x, t)=\sum_{k=1}^{\infty} \frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda_{k}} \xi d \xi \cdot e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$
 
-\subsubsection{圆形区域}
+\subsubsection*{圆形区域}
 \par 现研究问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}} \\ u(x, y, 0)=\varphi(x, y) \\ \left.u\right|_{x^{2}+y^{2}+k^{2}}=0\end{array}\right.$ 这个问题很有意思..
 
 \subsection{柯西问题}
@@ -209,7 +209,7 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
     卷积的傅里叶变换等于傅里叶变换的乘积 $F\left[f_{1} * f_{2}\right]=F\left[f_{1}\right] \cdot F\left[f_{2}\right]$, $F\left[f_{1} \cdot f_{2}\right]=\frac{1}{2 \pi} F\left[f_{1}\right] * F\left[f_{2}\right]$, $F[-i x f(x)]=\frac{d}{d \lambda} F[f]$, $F\left[f^{\prime}(x)\right]=i \lambda F[f(x)]$
 \end{lemma}
 
-\subsubsection{热传导方程柯西问题的求解} 
+\subsubsection{热传导方程柯西问题的求解}
 
 \par 首先研究其次热传导方程的柯西问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} \\ u(x, 0)=\varphi(x)\end{array}\right.$, 通过傅里叶变换有 $\frac{d \tilde{u}}{d t}=-a^{2} \lambda^{2} \tilde{u}$ 得到最终解 $u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \varphi(\xi) e^{-\frac{(x-\xi)^{2}}{4 a^{2}}} d \xi$, 又称为\textbf{泊松公式}, 右端积分称为\textbf{泊松积分}.
 
@@ -219,18 +219,150 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 
 \subsection{极值原理及解的唯一性与稳定性}
 
+\subsubsection{极值原理}
 
+\begin{theorem}[极值原理]
+    设 $u(x, t)$ 在矩形内部连续且满足热传导方程 $\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}}$ 则它在矩形的两个侧边 $(x=\alpha$ 及 $x=\beta, 0 \leqslant t \leqslant T)$ 及底边 $(t=$ $0, \alpha \leqslant x \leqslant \beta)$ 上取到其最大值和最小值.如果以 $\Gamma_{T}$ 表示 $R_{T}$ 的两侧边及底边所组成的边界曲线 (通称为抛物边界), 则
+    $$
+        \max _{0} u(x, t)=\max _{\Gamma} u(x, t), \quad \min _{R_{\alpha}} u(x, t)=\min _{I_{T}} u(x, t)
+    $$
+\end{theorem}
 
+\subsubsection{初边值问题解的唯一性和稳定性}
 
+\begin{theorem}
+    初边值问题 $ \left\{\begin{array}{l}
+            u_{t}=a^{2} u_{x x}+f(x, t) \\
+            u(x, 0)=\varphi(x)          \\
+            u(\alpha, t)=\mu_{1}(t), u(\beta, t)=\mu_{2}(t)
+        \end{array}\right.$ 在区域 $R_{T}$ 上的解是唯一的, 而且连续地依赖于边界 $\Gamma_{T}$ 上所给定的初始条件及边界条件.
+\end{theorem}
 
+\par 注意到上述定理还不能直接应用于第二或第三类边界条件的初边值问题, 因此进一步讨论问题 $\left\{\begin{array}{l}u,-a^{2} u_{x x}=0 \\ \left.u\right|_{x>0}=\mu_{1}(t),\left.\left(\frac{\partial u}{\partial x}+h u\right)\right|_{x-t}=\mu_{2}(t) \\ \left.u\right|_{t=0}=\varphi(x)\end{array}\right.$
 
+\begin{theorem}
+    对任意给定的 $T>0,$ 上述热传导方程的初边值问题在 $R_{T}$ 上的解是唯一的, 且连续地依赖于初值 $\varphi(x)$ 及边界函数 $\mu_{1}(t), \mu_{2}(t)_{\circ}$
+\end{theorem}
 
+\begin{theorem}
+    对任意给定的 $T>0,$ 热传导方程的初边值问题 $\left\{\begin{array}{ll}u_{t}-a^{2} u_{x x}=0, & 0<x<l, t>0 \\ \left.u\right|_{x=0}=\mu_{1}(t), & \left.u_{x}\right|_{x=l}=\mu_{2}(t) \\ u|_{t-0}=\varphi(x)\end{array}\right.$ 在 $R_{T}$ 上的解是唯一的, 而且连续地依赖于初值 $\varphi(x)$ 及边界函数 $\mu_{1}(t), \mu_{2}(t)$
+\end{theorem}
 
+\subsubsection{柯西问题的唯一性与稳定性}
 
+\par 考察热传导方程的柯西问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}}+f(x, t) \\ u(x, 0)=\varphi(x) \quad(-\infty<x<\infty)\end{array}\right.$
 
+\begin{theorem}
+    上述柯西问题在有界函数类中的解是唯一的, 而且连续依赖于所给的初始条件.
+\end{theorem}
 
+\subsection{解的渐进性态}
+\subsubsection*{初边值问题解的渐进性态}
 
+\begin{theorem}
+    假设初始函数 $\varphi(x)$ 满足 $\varphi \in C^{1}, \varphi(0)=0, \varphi^{\prime}(l)+h \varphi(l)=0$, 则当 $t$ 趋于无穷时, 问题 \ref{chubian} 的唯一的经典解指数衰减地趋于零, 当 $t \rightarrow+\infty$ 时, 对一切 $x \in[0, l]$ $$ |u(x, t)| \leqslant C e^{-u^{2} \lambda_{1} t} \rightarrow 0 $$ 其中 $C$ 为一个与解无关的正常数
+\end{theorem}
 
+\subsubsection*{柯西问题解的渐进性态}
+
+\begin{theorem}
+    设 $\varphi$ 是有界连续函数且 $\varphi \in L^{\prime}(\mathbf{R})$, 则柯西问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=a^{2} \frac{\partial^{2} u}{\partial x^{2}} \\ u(x, 0)=\varphi(x)\end{array}\right.$ 的唯一经典解具有如下的渐近性态: 对一切 $x \in \mathbf{R}, t>0,$ 当 $t \rightarrow+\infty$ 时一致地成立 $$|u(x, t)| \leqslant C t^{-\frac{1}{2}} \rightarrow 0 $$ 其中 $C$ 为一个仅与 $a$ 及 $\|\varphi\|_{L^{\prime}(\mathrm{k})}$ 有关的正常数.
+\end{theorem}
+
+\section{调和方程}
+
+\subsection{格林公式及应用}
+\subsubsection{Green 公式}
+
+\par 格林第一公式: $\iiint_{\Omega} u \Delta v d \Omega =\iint_{\varGamma } u \frac{\partial v}{\partial n} d S-\iint_{\Omega}\left(\frac{\partial u}{\partial x} \frac{\partial v}{\partial x}+\frac{\partial u}{\partial y} \frac{\partial v}{\partial y}+\frac{\partial u}{\partial z} \frac{\partial v}{\partial z}\right) d \Omega$
+
+\par 将其中的 $u$ 和 $v$ 互换位置并相减可以得到格林第二公式 $\iint_{\Omega}(u \Delta v-v \Delta u) d \Omega=\iint_{\Gamma}\left(u \frac{\partial v}{\partial n} d S-v \frac{d u}{\partial n}\right) d S$
+
+\begin{theorem}
+    设函数 $u$ 在以曲面 $\Gamma$ 为境界的区域 $\Omega$ 内调和,在 $\Omega \cup \Gamma$ 上有连续一阶偏导数则 $\iint_{\Gamma} \frac{\partial u}{\partial n} d S=0$
+\end{theorem}
+
+\subsubsection{平均值定理}
+
+\begin{theorem}
+    设函数 $u(M)$ 在某区域 $\Omega$ 内调和 $, M_{0}$ 是 $\Omega$ 中的任一点则对以 $M_{0}$ 为中心 $a$ 为半径完全落在区域 $\Omega$ 的内部的球面 $\Gamma_{a}$ 成立 $$ u\left(M_{0}\right)=\frac{1}{4 \pi a^{2}} \iint_{\Gamma} u d S $$
+\end{theorem}
+
+\subsubsection{极值原理}
+\begin{theorem}
+    对不桓等于常数的调和函数 $u(x, y, z)$,其在区域 $\Omega$ 的任何内点上的值不可能达到它在 $\Omega$ 上的上界或下界.
+\end{theorem}
+
+\subsubsection{第一边值问题解的唯一性与稳定性}
+\begin{theorem}
+    方程 $\Delta u =0$ 的狄利克雷内问题 $\left.u\right|_{\Gamma}=g$ 的解如果存在必唯一, 且连续地依赖于所给的边界条件 $f$.
+\end{theorem}
+
+\begin{theorem} 
+    方程 $\Delta u =0$ 的狄利克雷外问题的解如果存在, 则必是唯一的.
+\end{theorem}
+
+\subsection{格林函数}
+
+\subsubsection{格林函数及其性质}
+\par 已有等式 $u\left(M_{0}\right)=-\frac{1}{4 \pi} \iint_{\Gamma}\left[u(M) \frac{\partial}{\partial n}\left(\frac{1}{r_{M_{0} M}}\right)-\frac{1}{r_{M_{0} M}} \frac{\partial u(M)}{\partial n}\right] d S_{M}$, 作函数 $\left.g\left(M, M_{0}\right)\right|_{r}=\left.\frac{1}{4 \pi r_{M_{0} M}}\right|_{\Gamma}$, 由格林第二公式得 $\iint_{\Gamma}\left(g \frac{\partial u}{\partial n}-u \frac{\partial g}{\partial n}\right) d S=0$ 从而有 $$u\left(M_{0}\right)=\iint_{\Gamma}\left(G \frac{\partial u}{\partial n}-u \frac{\partial G}{\partial n}\right) d S_{M} $$ 其中 $G\left(M, M_{0}\right)=\frac{1}{4 \pi r_{M_{0} M}}-g\left(M, M_{0}\right)$ 称为\textbf{格林函数}. 若方程取边界条件 $\left.u\right|_{r}=f(M)$ 则 Dirichlet 问题的解可以表示为 $$u\left(M_{0}\right)=-\iint_{\Gamma} f \frac{\partial}{\partial} \frac{G}{n} d S_{M}$$
+
+\par 格林函数有如下重要性质:
+\begin{enumerate}
+    \item 格林函数 $G\left(M, M_{0}\right)$ 除 $M=M_{0}$ 一点外处处满足方程, 而当 $M \rightarrow M_{0}$ 时, $G\left(M, M_{0}\right)$ 趋于无穷大, 其阶数和 $\frac{1}{4 \pi r_{M_{0}} \text { м }}$ 相同
+    \item 在边界 $\Gamma$ 上格林函数 $G\left(M, M_{6}\right)$ 恒等于零
+    \item 在区域 $\Omega$ 中成立着不等式: $ 0<G\left(M, M_{0}\right)<\frac{1}{4 \pi r_{M_{0}} M}$
+    \item 格林函数 $G\left(M, M_{0}\right)$ 具有对称性即 $ G\left(M_{1}, M_{2}\right)=G\left(M_{2}, M_{1}\right)$
+    \item $\iint_{\Gamma} \frac{\partial\left(G\left(M, M_{0}\right)\right.}{\partial n} d S_{M}=-1$
+\end{enumerate}
+
+\subsubsection{调和函数的基本性质}
+
+\begin{theorem}[Harnack 第一定理(关于调和函数序列的一致收敘性定理)]
+      如果函数序列 $\left\{u_{k}\right\}$ 中的每个函数在某有限区域 $\Omega$ 中都是调和函数, 在闭区域 $\Omega \cup \Gamma(\Gamma$ 是 $\Omega$ 的边界)上连续, 而且这函数序列在 $\Gamma$ 上一致收敛, 则它在 $\Omega$ 中也一致收政,并且极限函数 $u$ 在区域 $\Omega$ 中也是调和函数.
+\end{theorem}
+
+\begin{theorem}[Harnack 第二定理]
+    设 $\left|u_{k}\right|$ 是 $\Omega$ 上的一个单调不石的调和函数序列若它在闭子区域上是一致的. 有 Harnack 不等式 $$\frac{R-\rho_{0}}{\left(R+\rho_{0}\right)^{2}} R \cdot u(P) \leqslant u(Q) \leqslant \frac{R+\rho_{0}}{\left(R-\rho_{0}\right)^{2}} R \cdot u(P)$$
+\end{theorem}
+
+\begin{theorem}
+    设 $u$ 为区域 $\Omega$ 中的非负调和函数, 则对 $\Omega$ 中的任一闭子区域 $\bar{\Omega}^{\prime},$ 存在仅与 $\Omega^{\prime}$ 有关的正常数 $C$ 使得 $\max _{\bar{a}} u \leqslant C \min _{\bar{a}} u$
+\end{theorem}
+
+\begin{theorem}[可去奇点定理]
+    设 $u(M)=u(x, y, z)$ 在点 $A$ 的邻域中除点 $A$ 外是调和函数, 在 $A$ 点附近成立 $\lim _{M \rightarrow A} r_{A M} \cdot u(M)=0$ 其中 $r_{A M}$ 表示 $A$ 点和 $M$ 点的距离, 则总可以重新定义函数 $u$ 在点 $A$ 的值, 使 $u(M)$ 在整个所考虑的点 $A$ 的邻域中(包括点 $A$ 本身在内)是调和函数.
+\end{theorem}
+
+\begin{theorem}[调和函数的解析性定理]
+    设 $u\left(M_{0}\right)$ 是区域 $\Omega$ 中的调和函数, 那么它在 $\Omega$ 中是关于自变量 $x_{0}, y_{0}, z_{0}$ 的解析函数, 也就是说在 $\Omega$ 中任一点 $M_{0}^{*}\left(x_{0}^{*}, y_{0}^{*}, z_{0}^{*}\right)$ 的附近都可以展开成 $x_{0}-x_{0}^{*}, y_{0}-y_{0}^{*}, z_{0}-z_{0}^{*}$ 的幂级数.
+\end{theorem}
+
+\subsection{强极值原理与第二边值问题解的唯一性}
+\subsubsection{强极值原理}
+
+\begin{theorem}[强极值原理]
+    设在半径为 $R$ 的某一球上(包括球面在内)给定一个连续函数 $u(x, y, z),$ 它在此球内是调和的,并且对此球的所有内点 $(x, y, z),$ 成立着 $u(x, y, z)$ $>u\left(x_{0}, y_{0}, z_{0}\right),$ 其中 $\left(x_{0}, y_{0}, z_{0}\right)$ 是球面上的某定点. 如果函数 $u(x, y, z)$ 在点 $(x_{0}, y_{0}, z_{0})$ 沿方向 $v$ 的方向导数存在, 而方向 $v$ 与球的内法线方向成锐角,则在点 $\left(x_{0}, y_{0}, z_{0}\right)$ 成立
+    $$
+    \frac{\partial u}{\partial \nu}>0
+    $$
+\end{theorem}
+
+\begin{theorem}\label{4.2}
+    设区域 $\Omega$ 具有下述性质:对 $\Omega$ 的边界 $\Gamma$ 上的任一点 $M$,都可作一个属于区 $u(x, y, z)$ 在 $\Omega \cup \Gamma$ 上连续, 在边界点 $M_{0}$ 处取最小(最大)值, 则只要它在点 $M_{0}$ 处关于 $\Omega$ 的外法向导数 $\frac{\partial u}{\partial n}$ 存在, 其值必是负(正)的.
+\end{theorem}
+
+\subsubsection{第二边值问题解的唯一性}
+
+\begin{theorem}
+    如果区域 $\Omega$ 的边界 $\Gamma$ 满足定理 \ref{4.2} 中的条件, 那么同一个诺伊曼内问题的解彼此间只能相差一个常数, 即诺伊曼内问题的解除去一常数外是唯一的.
+\end{theorem}
+
+\begin{theorem}
+    方程 $\Delta u =0$ 的诺伊曼外问题的解如果存在则必是唯一的
+\end{theorem}
+
+\section{二阶线性偏微分方程的分类与总结}
 
 
 
