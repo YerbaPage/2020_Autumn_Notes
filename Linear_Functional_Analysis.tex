@@ -764,6 +764,47 @@
 
 \subsection{Dual Spaces}
 
+\begin{theorem}
+    If $X$ is a finite dimensional normed linear space with basis $\left\{v_{1}, v_{2}, \ldots, v_{n}\right\}$ then $X^{\prime}$ has a basis $\left\{f_{1}, f_{2}, \ldots, f_{n}\right\}$ such that $f_{j}\left(v_{k}\right)=\delta_{j k},$ for $1 \leq j, k \leq n .$ In particular, $\operatorname{dim} X^{\prime}=\operatorname{dim} X$
+\end{theorem}
+
+\begin{theorem}{(Riesz–Frechet Theorem}
+    Let $\mathcal{H}$ be a Hilbert space and let $f \in \mathcal{H}^{\prime} .$ Then there is a unique $y \in \mathcal{H}$ such that $f(x)=f_{y}(x)=(x, y)$ for all $x \in \mathcal{H} .$ Moreover $\|f\|=\|y\|$
+\end{theorem}
+
+\begin{theorem}
+    Let $\mathcal{H}$ be a Hilbert space, and define $T_{\mathcal{H}}: \mathcal{H} \rightarrow \mathcal{H}^{\prime}$ by $T_{\mathcal{H}} y=f_{y}, y \in \mathcal{H} .$ Then
+    $T_{\mathcal{H}}$ is a bijection, and for all $\alpha, \beta \in \mathbb{F}, y, z \in \mathcal{H}:$
+    \begin{enumerate}
+        \item $T_{\mathcal{H}}(\alpha y+\beta z)=\bar{\alpha} T_{\mathcal{H}} y+\bar{\beta} T_{\mathcal{H}} z$
+        \item $\left\|T_{\mathcal{H}} y\right\|=\|y\|$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    For an arbitrary integer $k \geq 1,$ let $\mathcal{S}_{k} \subset \ell^{\infty}$ consist of sequences of the form $x=\left(x_{1}, \ldots, x_{k}, 0,0, \ldots\right),$ and let $\mathcal{S}=\bigcup_{k \geq 1} \mathcal{S}_{k} .$ The set $\mathcal{S}$ is dense in $\ell^{p}$ $1 \leq p<\infty,$ but not in $\ell^{\infty}$
+\end{lemma}
+
+\begin{theorem}
+    Suppose that $1 \leq p<\infty .$ If $p>1,$ let $q=p /(p-1),$ while if $p=1,$ let $q=\infty$
+    \begin{enumerate}
+        \item If $a=\left\{a_{n}\right\} \in \ell^{q}$ then, for any $x=\left\{x_{n}\right\} \in \ell^{p},$ the sequence $\left\{a_{n} x_{n}\right\} \in \ell^{1}$, and $f_{a}(x)=\sum_{n=1}^{\infty} a_{n} x_{n}, \quad x \in \ell^{p}$
+        defines a linear functional $f_{a} \in\left(\ell^{p}\right)^{\prime},$ with $\left\|f_{a}\right\|=\|a\|_{q}$
+        \item If $f \in\left(\ell^{p}\right)^{\prime}$ then there exists a unique $a \in \ell^{q}$ such that $f=f_{a}$.
+        \item By parts (a) and (b), the function $T_{p}: \ell^{q} \rightarrow\left(\ell^{p}\right)^{\prime}$ defined by $T_{p}(a)=f_{a}$ $a \in \ell^{q},$ is a linear isometric isomorphism.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Hahn–Banach Theorem}
+
+\begin{definition}
+    Let $X$ be a vector space, $W$ a linear subspace of $X,$ and $f_{W}$ a linear functional on $W$. A linear functional $f_{X}$ on $X$ is an \textbf{extension} of $f_{W}$ if $f_{X}(w)=f_{W}(w)$ for all $w \in W$.
+\end{definition}
+
+
+
+
+
 
 
 
