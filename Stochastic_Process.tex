@@ -3,35 +3,36 @@
 \date{}
 
 \begin{document}
-\author{}
+\author{Yuling Shi}
 \maketitle
-\tableofcontents
+% \tableofcontents
 \footnotesize
-\section{基本概念}
-\begin{definition}[矩母函数]
-    对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
-        1,$$ 正态分布的矩母函数为$M_{X}t=e^{\mu t+\frac{t^{2} \sigma^{2}}{2}}$
-\end{definition}
-\par 对于相互独立的随机变量有$M_{X+Y}(t)=M_{X}(t) \cdot M_{Y}(t)$.
 
-\begin{definition}[数列的母函数(痛苦回忆)]
-    设有一个实数列 $a=\left\{a_{0}, a_{1},\cdots, a_{n}, \cdots\right\},$ 如果幂级数
-    $$
-        G_{a}(z):=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{n} z^{n}+\cdots
-    $$
-    在$0$点的一个非空领域上收敛, 则称它为数列 a 的母函数.
-\end{definition}
+% \section{基本概念}
+% \begin{definition}[矩母函数]
+%     对千随机变量 $X \sim F$. 若下面的数学期望存在, 则称$$M_{X}(t):=\mathbb{E}\left[\mathrm{e}^{t X}\right]=\int_{\mathbb{R}} \mathrm{e}^{t x} \mathrm{d} F(x), \quad t \in \mathbb{R}$$为 $X$ 的矩母函数.矩母函数唯一确定$X$的分布,可以通过$M_{X}(t)$ 求出$X$的各阶矩$$\mathbb{E}\left[X^{n}\right]=M_{X}^{(n)}(0), \quad n \geq
+%         1,$$ 正态分布的矩母函数为$M_{X}t=e^{\mu t+\frac{t^{2} \sigma^{2}}{2}}$
+% \end{definition}
+% \par 对于相互独立的随机变量有$M_{X+Y}(t)=M_{X}(t) \cdot M_{Y}(t)$.
 
-\begin{definition}[随机变量的母函数]
-    设 $\xi$ 是 $\mathbb{Z}_{+-}$ 值随机变量,,则其概率分布律是一个有界数列, 定义$\xi$的母函数:$$
-        G_{\xi}(z):=\sum z^{n} \mathbb{P}(\xi=n)=\mathbb{E}\left[z^{\xi}\right]
-    $$
-\end{definition}
-\par 随机变量的母函数同样有$G_{\xi+\eta}(z)=G_{\xi}(z) G_{\eta}(z)$
+% \begin{definition}[数列的母函数(痛苦回忆)]
+%     设有一个实数列 $a=\left\{a_{0}, a_{1},\cdots, a_{n}, \cdots\right\},$ 如果幂级数
+%     $$
+%         G_{a}(z):=a_{0}+a_{1} z+a_{2} z^{2}+\cdots+a_{n} z^{n}+\cdots
+%     $$
+%     在$0$点的一个非空领域上收敛, 则称它为数列 a 的母函数.
+% \end{definition}
 
-\begin{definition}[随机过程]
-    $\forall t \in T, \quad X(t) \equiv X(t, \omega): \Omega \mapsto \mathbb{R}$为随机变量,程随机变量族$X=\{X(t), t \in T\}$为随机过程.$X$可能取到的值称为状态,全体状态$E$称为状态空间.
-\end{definition}
+% \begin{definition}[随机变量的母函数]
+%     设 $\xi$ 是 $\mathbb{Z}_{+-}$ 值随机变量,,则其概率分布律是一个有界数列, 定义$\xi$的母函数:$$
+%         G_{\xi}(z):=\sum z^{n} \mathbb{P}(\xi=n)=\mathbb{E}\left[z^{\xi}\right]
+%     $$
+% \end{definition}
+% \par 随机变量的母函数同样有$G_{\xi+\eta}(z)=G_{\xi}(z) G_{\eta}(z)$
+
+% \begin{definition}[随机过程]
+%     $\forall t \in T, \quad X(t) \equiv X(t, \omega): \Omega \mapsto \mathbb{R}$为随机变量,程随机变量族$X=\{X(t), t \in T\}$为随机过程.$X$可能取到的值称为状态,全体状态$E$称为状态空间.
+% \end{definition}
 
 \section{泊松过程}
 
@@ -81,12 +82,12 @@
 \end{lemma}
 
 \begin{theorem}[Poisson 过程完全随机性]
-    在已知 $N(t)=n$ 的条件下， $n$ 个顾客的来到时刻 $S_{1}, \cdots, S_{n}$ 与 $n$ 个 $[0, t]$ 上均匀分布的独立随机变量的顺序统计量有相同分布. 即 $f_{S_{1}, \cdots, S_{n} \mid N(t)=n}\left(s_{1}, \cdots, s_{n} \mid n\right)=\frac{n !}{t^{n}}, 0<s_{1}<\cdots<s_{n} \leq $
+    在已知 $N(t)=n$ 的条件下, $n$ 个顾客的来到时刻 $S_{1}, \cdots, S_{n}$ 与 $n$ 个 $[0, t]$ 上均匀分布的独立随机变量的顺序统计量有相同分布. 即 $f_{S_{1}, \cdots, S_{n} \mid N(t)=n}\left(s_{1}, \cdots, s_{n} \mid n\right)=\frac{n !}{t^{n}}, 0<s_{1}<\cdots<s_{n} \leq $
 \end{theorem}
 
 \begin{theorem}[Poisson 过程分流]
     设顾客按强度 $\lambda$ 的 Poisson 过程到达. $N_{i}(t)$ 为 $[0, t]$ 中到达的第新 $\mathrm{i}$ 类顾客数 $(i=1,2) .$ 假定时刻 $s$ 的到达者与其他的到达独立. 令
-$p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时刻到达者为第 2 类 $),$ 则 $N_{1}(t), N_{2}(t)$ 为独立的随机变量且 分别服从参数为 $\lambda t p, \lambda t(1-p)$ 的 Poisson 分布. 其中 $p=\frac{1}{t} \int_{0}^{t} p(s) \mathrm{d} s$
+    $p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时刻到达者为第 2 类 $),$ 则 $N_{1}(t), N_{2}(t)$ 为独立的随机变量且 分别服从参数为 $\lambda t p, \lambda t(1-p)$ 的 Poisson 分布. 其中 $p=\frac{1}{t} \int_{0}^{t} p(s) \mathrm{d} s$
 \end{theorem}
 
 \begin{lemma}
@@ -133,21 +134,17 @@ $p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时
     $\lim _{t \rightarrow \infty} \frac{1}{t} m(t)=\frac{1}{\mu} \quad\left(\right.$ 设 $\left.\frac{1}{\infty}=0\right)$
 \end{theorem}
 
-\begin{theorem}[更新过程的中心极限定理]
+\begin{theorem}[中心极限定理]
     假设 $\mu, \sigma^{2}$ 均有限, 则当 $t \rightarrow \infty$ 时, $N(t)$ 的近似分布是正态分布 $ N\left(t / \mu, t \sigma^{2} / \mu^{3}\right) $
 \end{theorem}
 
 \section{Markov 链}
 
 \begin{definition}[无后效性]
-    已知现在, 将来与过去无关.
+    已知现在, 将来与过去无关. $\mathbb{P}\left(X_{n+1}=j \mid X_{n}, \cdots, X_{1}\right)=\mathbb{P}\left(X_{n+1}=j \mid X_{n}\right)$ 称为离散时间 Markov 链, 进一步如果 $P_{i j}(n):=\mathbb{P}\left(X_{n+1}=j \mid X_{n}=i\right)$ 与 $n$ 无关称为\textbf{时齐 Markov 链}
 \end{definition}
 
-\begin{definition}
-    $\mathbb{P}\left(X_{n+1}=j \mid X_{n}, \cdots, X_{1}\right)=\mathbb{P}\left(X_{n+1}=j \mid X_{n}\right)$ 称为离散时间 Markov 链, 进一步如果 $P_{i j}(n):=\mathbb{P}\left(X_{n+1}=j \mid X_{n}=i\right)$ 与 $n$ 无关称为\textbf{时齐 Markov 链}
-\end{definition}
-
-\par 转移矩阵 $P_ij$ 满足非负性和正则性 $\forall i \in E, \sum_{j \in E} P_{i j}=1$ , 今后只讨论时齐 Markov 链故以下略去"时齐". 对于当前研究的 Markov 链利用时齐性质可以将有限维分布刻画为单步转移概率的乘积 $$\mathbb{P}\left(X_{n_{1}}=x_{1}, \cdots, X_{n_{k}}=x_{k}\right)=\mathbb{P}\left(X_{n_{1}}=x_{1}\right) \mathbb{P}\left(X_{n_{2}}=x_{2} \mid X_{n_{1}}=x_{1}\right) \cdots \mathbb{P}\left(X_{n_{k}}=x_{k} \mid X_{n_{k-1}}=x_{k-1}\right)$$.
+% \par 转移矩阵 $P_ij$ 满足非负性和正则性 $\forall i \in E, \sum_{j \in E} P_{i j}=1$ , 今后只讨论时齐 Markov 链故以下略去"时齐". 对于当前研究的 Markov 链利用时齐性质可以将有限维分布刻画为单步转移概率的乘积 $$\mathbb{P}\left(X_{n_{1}}=x_{1}, \cdots, X_{n_{k}}=x_{k}\right)=\mathbb{P}\left(X_{n_{1}}=x_{1}\right) \mathbb{P}\left(X_{n_{2}}=x_{2} \mid X_{n_{1}}=x_{1}\right) \cdots \mathbb{P}\left(X_{n_{k}}=x_{k} \mid X_{n_{k-1}}=x_{k-1}\right)$$.
 
 \begin{theorem}
     若以 $S$ 为状态空间的随机过程 $\left\{X_{n}, n \geq 0\right\}$ 满足如下两个条件:
@@ -155,94 +152,112 @@ $p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时
         \item $\left\{\xi_{n}, n \geq 1\right\}$ 是独立同分布的随机序列且 $X_{0}$ 与 $\left\{\xi_{n}, n \geq 1\right\}$ 也相互独立
         \item 存在函数 $f: S \times S \rightarrow S$ 使得 $X_{n}=f\left(X_{n-1}, \xi_{n}\right), n \geq 1 .$
     \end{enumerate}
-    那么 $\left\{X_{n}, n \geq 0\right\}$ 是马氏链, 其转移概率为
-    $$p_{i j}=\mathbb{P}\left(f\left(i, \xi_{1}\right)=j\right), i, j \in S$$
+    那么 $\left\{X_{n}, n \geq 0\right\}$ 是马氏链, 其转移概率为 $p_{i j}=\mathbb{P}\left(f\left(i, \xi_{1}\right)=j\right), i, j \in S$
 \end{theorem}
 
 \begin{theorem}[Chapman-Kolmogorov 方程]
-    $\mathbf{P}^{(n+m)}=\mathbf{P}^{(n)} \cdot \mathbf{P}^{(m)}$
+    $\mathbf{P}^{n+m}=\mathbf{P}^{n} \cdot \mathbf{P}^{m}$
 \end{theorem}
 
-\begin{definition}
-    若存在 $n \geq 0$ 使得 $P_{i j}^{n}>0,$ 则称 $i$ 到 $j$ \textbf{可达}(相反有 $P_{i j}^{n}=0, \forall n \geq 1$ 不可达 ), 记作 $i \rightarrow j .$ 若 $i \rightarrow j$ 且 $j \rightarrow i,$ 则为相通, 记作 $i \leftrightarrow j$. 相应衍生出自反性、对称性和传递性等性质.
+\begin{definition}[可达]
+    若存在 $n \geq 0$ 使得 $p_{i j}^{(n)}>0,$ 则称 $i$ 到 $j$ \textbf{可达}, 记作 $i \rightarrow j .$ 若 $i \rightarrow j$ 且 $j \rightarrow i,$ 则为相通, 记作 $i \leftrightarrow j$. 相应衍生出自反性、对称性和传递性等性质.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[可约]
     若某类中的任何状态均不可达其它类中任一状态, 则称此类是\textbf{闭}的. 若 Markov 链的状态空间只存在一个类, 即一切状态彼此相通, 则称该 Markov 链\textbf{不可约}.
 \end{definition}
 
 \begin{definition}[周期]
-    若集合 $\left\{n \geq 1: P_{i i}^{n}>0\right\}$ 非空, 则称该集合的最大公约数 $d(i):=G C D\left\{n \geq 1: P_{i i}^{n}>0\right\}$ 为 $i$ 的周期. $d(i)>1$ 称 $i$ 是周期的, $d(i)=1,$ 称 $i$ 是非周期的.
+    若集合 $\left\{n \geq 1: p_{i i}^{(n)}>0\right\}$ 非空, 则称该集合的最大公约数 $d(i):=G C D\left\{n \geq 1: p_{i i}^{(n)}>0\right\}$ 为 $i$ 的周期. 
+    \begin{enumerate}
+        \item $d(i)>1$ 称 $i$ 是周期的
+        \item $d(i)=1$ 称 $i$ 是非周期的
+    \end{enumerate}
 \end{definition}
 
 \begin{lemma}
-    若 $i \leftrightarrow j,$ 则 $d(i)=d(j) .$
+    若 $i \leftrightarrow j$ 则常返性与周期性都相同. 若 $i$ 常返且 $i \leftrightarrow j,$ 则 $f_{j i}=1 .$
 \end{lemma}
 
 \begin{definition}[首达时间]
-    定义第一次完成两个状态之间转移的时间 $T_{i j}=\min \left\{n: X_{0}=i, X_{n}=j, n \geq 0\right\}$ 称为\textbf{首达时间}, 若达不到则取 $T_ij=+\infty$
+    定义第一次完成两个状态之间转移的时间 $T_{i j}=\min \left\{n: X_{0}=i, X_{n}=j, n \geq 0\right\}$ 称为\textbf{首达时间} % , 若达不到则取 $T_{ij}=+\infty$
 \end{definition}
 
 \begin{definition}
-    对任意 $n,$ 记 $f_{i j}^{n}$ 为 $i$ 发经 $n$ 步首次到达 $j$ 的概率: $f_{i j}^{n}:=\mathbb{P}\left(X_{n}=j, X_{k} \neq j, k=1,2, \cdots, n-1 \mid X_{0}=i\right), f_{i j}^{0} \equiv 0 $, 从而有 $i$ 发经有限步最终到达 $j$ 的概率 $f_{i j}:=\sum_{n=1}^{\infty} f_{i j}^{n}=\mathbb{P}\left(T_{i j}<\infty\right)$, 若 $f_{i i}=1,$ 则称 $i$ 为\textbf{常返状态}, $f_{i i}<1,$ 则称 $i$ 为\textbf{暂留状态}.
+    对任意 $n,$ 记 $f_{i j}^{n}$ 为 $i$ 发经 $n$ 步首次到达 $j$ 的概率: $f_{i j}^{n}:=\mathbb{P}\left(X_{n}=j, X_{k} \neq j, k=1,2, \cdots, n-1 \mid X_{0}=i\right), f_{i j}^{0} \equiv 0 $, 从而有 $i$ 发经有限步\textbf{最终到达} $j$ 的概率 $f_{i j}:=\sum_{n=1}^{\infty} f_{i j}^{n}=\mathbb{P}\left(T_{i j}<\infty\right)$
+    \begin{enumerate}
+        \item 若 $f_{i i}=1$ 则称 $i$ 为\textbf{常返状态}
+        \item 若 $f_{i i}<1$ 则称 $i$ 为\textbf{暂留状态}
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[判定定理]
-    常返的充要条件为 $\sum_{n=0}^{\infty} P_{i i}^{n}=\infty$, 暂留的充要条件是 $\sum_{n=0}^{\infty} P_{i i}^{n}=1 /\left(1-f_{i i}\right)<\infty$
+    常返的充要条件为 $\sum_{n=0}^{\infty} p_{i i}^{(n)}=\infty$, 暂留的充要条件是 $\sum_{n=0}^{\infty} p_{i i}^{(n)}=1 /\left(1-f_{i i}\right)<\infty$
 \end{definition}
-
-\begin{corollary}
-    若 $i$ 常返且 $i \leftrightarrow j,$ 则 $j$ 常返且 $f_{j i}=1 .$
-\end{corollary}
 
 \begin{theorem}[Polya 定理]
     $d \geq 3$ 维空间中的对称随机游动是非常返的, $d=1,2$ 维空间中的对称随机游动都常返, 且都是零常返的.
 \end{theorem}
 
 \begin{definition}[正常返与零常返]
-    记平均回转时间 $\mu_{i i}:=\sum_{i=1}^{\infty} n f_{i i}^{n}$ 若 $\mu_{i i}<\infty,$ 则称 $i$ 为正(positive)常返若 $\mu_{i i}=\infty,$ 则称 $i$ 为零(null)常返, 只有在有无穷可列多个状态时, 才可能出现零常返态.
+    记平均回转时间 $\mu_{i i}:=\sum_{i=1}^{\infty} n f_{i i}^{n}$
+    \begin{enumerate}
+        \item 若 $\mu_{i i}<\infty$ 则称 $i$ 为\textbf{正常返}
+        \item 若 $\mu_{i i}=\infty$ 则称 $i$ 为\textbf{零常返} (无穷可列多个状态时才可能出现)
+    \end{enumerate}
+    非周期正常返的状态 $j$ 称为\textbf{遍历状态}.
 \end{definition}
 
-\begin{theorem}
-    对任意 $i, j \in E, n \geq 1$:
-    \begin{enumerate}
-        \item $P_{i j}^{n}=\sum_{l=1}^{n} f_{i j}^{\prime} P_{j j}^{n-l}$
-        \item $f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \cdot I_{\{n>1\}}+P_{i j} \cdot I_{\{n=1\}},$ 即 $\left\{\begin{array}{l}f_{i j}^{1}=P_{i j} \\ f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \quad(n=2,3, \cdots)\end{array}\right.$
-        \item $i \rightarrow j \Leftrightarrow f_{i j}>0$,
-              $i \leftrightarrow j \Leftrightarrow f_{i j}>0$ 且 $f_{j i}>0 .$
-    \end{enumerate}
-\end{theorem}
+% \begin{theorem}
+%     对任意 $i, j \in E, n \geq 1$:
+%     \begin{enumerate}
+%         \item $p_{i j}^{(n)}=\sum_{l=1}^{n} f_{i j}^{1} P_{j j}^{n-l}$
+%         \item $f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \cdot I_{\{n>1\}}+P_{i j} \cdot I_{\{n=1\}},$ 即 $\left\{\begin{array}{l}f_{i j}^{1}=P_{i j} \\ f_{i j}^{n}=\sum_{k \neq j} P_{i k} f_{k j}^{n-1} \quad(n=2,3, \cdots)\end{array}\right.$
+%         % \item $i \rightarrow j \Leftrightarrow f_{i j}>0$,
+%         %       $i \leftrightarrow j \Leftrightarrow f_{i j}>0$ 且 $f_{j i}>0 .$
+%     \end{enumerate}
+% \end{theorem}
 
-\begin{corollary}
-    若 $j$ 非常返, 则 $\sum_{n=1}^{\infty} P_{i j}^{n}<\infty, \lim _{n \rightarrow \infty} P_{i j}^{n}=0 .$
-\end{corollary}
+% \begin{corollary}
+%     若 $j$ 非常返, 则 $\sum_{n=1}^{\infty} p_{i j}^{(n)}<\infty, \lim _{n \rightarrow \infty} p_{i j}^{(n)}=0 $; 若 $j$ 常返则 $\lim _{n \rightarrow \infty} p_{i j}^{(n)}=0 $ 与零常返等价. 
+% \end{corollary}
 
 \begin{theorem}[基本极限定理]
+    \ 
     \begin{enumerate}
-        \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} P_{i i}^{n}=0 .$
-        \item 若 $i$ 为周期为 $d$ 的常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n d}=\frac{d}{\mu_{i i}}$.
-              其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0 .$
-        \item 若 $i$ 为非周期正常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{n}=\frac{1}{\mu_{i i}}$.
+        \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} p_{i j}^{(n)}=0 .$
+        \item 若 $i$ 为周期为 $d$ 的常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{(n d)}=\frac{d}{\mu_{i i}}$.
+              其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0.$
+        \item 若 $i$ 为非周期正常返态, 则有 $\lim _{n \rightarrow \infty} p_{i i}^{(n)}=\frac{1}{\mu_{i i}}$.
     \end{enumerate}
 \end{theorem}
 
 \begin{definition}[平稳分布]
-    若非负数列 $\left\{\pi_{j}\right\}$ 满足
-    \begin{enumerate}
-        \item $\sum_{j \in E} \pi_{j}=1$
-        \item $\pi_{j}=\sum_{i \in E} \pi_{i} P_{i j}, \forall j \in E$.
-    \end{enumerate}
-    则称 $\left\{\pi_{j}\right\}$ 为 $X$ 的\textbf{平稳分布}. 如果 Markov 链 $\left\{X_{n}, n \geq 0\right\}$ 的初始分布是个平稳分布, 则该过
-    程为平稳过程.
+    若非负数列 $\left\{\pi_{j}\right\}$ 满足 $\sum_{j \in E} \pi_{j}=1$ 且 $\pi = \pi P$
+    % \begin{enumerate}
+    %     \item 
+    %     % \item $\pi_{j}=\sum_{i \in E} \pi_{i} P_{i j}, \forall j \in E$.
+    %     \item 
+    % \end{enumerate}
+    则称 $\left\{\pi_{j}\right\}$ 为 $X$ 的\textbf{平稳分布}. 初始分布是平稳分布则称为\textbf{平稳过程}.
 \end{definition}
 
 \begin{lemma}
-    如果 Markov 链是不可约的, $j$ 是非周期的，则 $\lim _{n \rightarrow \infty} P_{i j}^{n}=\frac{1}{\mu_{j j}}>0$ 称 $\left\{\frac{1}{\mu_{i j}}\right\}$ 为\textbf{极限分布}.
+    如果 Markov 链是不可约的, $j$ 是非周期的, 则 $\lim _{n \rightarrow \infty} p_{i j}^{(n)}=\frac{1}{\mu_{j j}} = \pi _{j}>0$ 称 $\left\{\frac{1}{\mu_{i j}}\right\}$ 为\textbf{极限分布}.
 \end{lemma}
 
 \begin{theorem}
-    非周期不可约链是正常返的充要条件是该链存在平稳分布, 此平稳分布就是它的极限分布.
+    非周期不可约链是正常返的充要条件是该链存在平稳分布, 此平稳分布就是它的极限分布. 有限状态的马尔可夫链总存在平稳分布.
 \end{theorem}
+
+\par 综上所述有:
+\begin{enumerate}
+    \item $i$ 是零常返 ($\mu_{i i}=\infty$) $\Leftrightarrow \sum_{n} p_{i i}^{(n)}=\infty$ 且 $\lim _{n \rightarrow \infty} p_{i i}^{(n)}=0$
+    \item $i$ 是正常返 ($\mu_{i i}<\infty$) $\Leftrightarrow \sum_{n} p_{i i}^{(n)}=\infty$ 且 $\varlimsup_{n \rightarrow \infty} p_{i i}^{(n)}>0$
+    % \item $i$ 是遍历 (非周期正常返) $\Leftrightarrow \sum_{n} p_{i i}^{(n)}=\infty$ 且 $\lim _{n \rightarrow \infty} p_{i i}^{(n)}=\frac{1}{\mu_{i i}}>0$
+    \item $i$ 是遍历 (非周期正常返) $\Leftrightarrow \lim _{n \rightarrow \infty} p_{i i}^{(n)}=\frac{1}{\mu_{i i}}>0$
+    \item $i$ 是非常返 $\Leftrightarrow \sum_{n} p_{i i}^{(n)}<\infty $
+\end{enumerate}
 
 \section{离散鞅论}
 % \subsection{基本概念}
@@ -269,6 +284,7 @@ $p(s):=\mathbb{P}(s$ 时刻到达者为第 1 类 $)$, $1-p(s):=\mathbb{P}(s$ 时
 \end{definition}
 
 \begin{theorem}[有界停止定理]
+    \
     \begin{enumerate}
         \item 如果 $\left\{X_{n}: n \in I\right\}$ 是鞅, $T$ 是停时, 那么鞅的停止序列 $\left\{X_{n}^{T}: n \in I\right\}$ 也是鞅. 进一步, 如果 $T$ 是有界的, 那么 $\mathbb{E} X_{T}=\mathbb{E} X_{0}$.
         \item 设 $X$ 是下鞅, $S, T$ 是停时且 $S \leq T,$ 则 $\left\{X_{n}^{T}-X_{n}^{S}: n \in I\right\}$ 是下鞅. 因此 $\mathbb{E} X_{n}^{S} \leq \mathbb{E} X_{n}^{T}$
