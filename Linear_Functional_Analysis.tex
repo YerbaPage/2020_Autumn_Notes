@@ -789,7 +789,7 @@
     Suppose that $1 \leq p<\infty .$ If $p>1,$ let $q=p /(p-1),$ while if $p=1,$ let $q=\infty$
     \begin{enumerate}
         \item If $a=\left\{a_{n}\right\} \in \ell^{q}$ then, for any $x=\left\{x_{n}\right\} \in \ell^{p},$ the sequence $\left\{a_{n} x_{n}\right\} \in \ell^{1}$, and $f_{a}(x)=\sum_{n=1}^{\infty} a_{n} x_{n}, \quad x \in \ell^{p}$
-        defines a linear functional $f_{a} \in\left(\ell^{p}\right)^{\prime},$ with $\left\|f_{a}\right\|=\|a\|_{q}$
+              defines a linear functional $f_{a} \in\left(\ell^{p}\right)^{\prime},$ with $\left\|f_{a}\right\|=\|a\|_{q}$
         \item If $f \in\left(\ell^{p}\right)^{\prime}$ then there exists a unique $a \in \ell^{q}$ such that $f=f_{a}$.
         \item By parts (a) and (b), the function $T_{p}: \ell^{q} \rightarrow\left(\ell^{p}\right)^{\prime}$ defined by $T_{p}(a)=f_{a}$ $a \in \ell^{q},$ is a linear isometric isomorphism.
     \end{enumerate}
@@ -797,9 +797,85 @@
 
 \subsection{Hahn–Banach Theorem}
 
-\begin{definition}
+\begin{definition}[extension]
     Let $X$ be a vector space, $W$ a linear subspace of $X,$ and $f_{W}$ a linear functional on $W$. A linear functional $f_{X}$ on $X$ is an \textbf{extension} of $f_{W}$ if $f_{X}(w)=f_{W}(w)$ for all $w \in W$.
 \end{definition}
+
+\begin{definition}[sublinear functional]
+    Let $X$ be a real vector space. A sublinear functional on $X$ is a function $p: X \rightarrow$ $\mathbb{R}$ such that:
+    \begin{enumerate}
+        \item $p(x+y) \leq p(x)+p(y), \quad x, y \in X$
+        \item $p(\alpha x)=\alpha p(x), \quad x \in X, \alpha \geq 0$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[seminorm]
+    Let $X$ be a real or complex vector space. A seminorm on $X$ is a real-valued function $p: X \rightarrow \mathbb{R}$ such that:
+    \begin{enumerate}
+        \item $p(x+y) \leq p(x)+p(y), x, y \in X$
+        \item $p(\alpha x)=|\alpha| p(x), x \in X, \alpha \in \mathbb{F}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Hahn-Banach Theorem]
+    Let $X$ be a real vector space, with a sublinear functional $p$ defined on $X$. Suppose that $W$ is a linear subspace of $X$ and $f_{W}$ is a linear functional on $W$ satisfying
+    $$
+        f_{W}(w) \leq p(w), \quad w \in W
+    $$
+    Then $f_{W}$ has an extension $f_{X}$ on $X$ such that
+    $$
+        f_{X}(x) \leq p(x), \quad x \in X
+    $$
+\end{theorem}
+
+\begin{lemma}\label{lf}
+    If $g$ is a linear functional on $V$ then there exists a unique, real-valued, linear functional $g_{R}$ on $V_{R}$ such that $g(v)=g_{R}(v)-i g_{R}(i v), \quad v \in V$
+\end{lemma}
+
+\begin{lemma}
+    Let $X$ be a complex vector space and let $p$ be a seminorm on $X .$ Suppose that $W$ is a linear subspace of $X$ and $f_{W}$ is a linear functional on $W$ satisfying
+    $$
+        \left|f_{W}(w)\right| \leq p(w), \quad w \in W
+    $$
+    Suppose that $f_{W, R},$ the real functional on $W_{R}$ obtained by applying \ref{lf} to $f_{W},$ has an extension $f_{X, R}$ on $X_{R},$ satisfying
+    $$
+        \left|f_{X, R}(x)\right| \leq p(x), \quad x \in X_{R}
+    $$
+    Then $f_{W}$ has an extension $f_{X}$ on $X$ such that
+    $$
+        \left|f_{X}(x)\right| \leq p(x), \quad x \in X
+    $$
+\end{lemma}
+
+\begin{theorem}[Hahn-Banach Theorem]
+    Let $X$ be a real or complex vector space and let $p$ be a seminorm on $X .$ Suppose that $W$ is a linear subspace of $X$ and $f_{W}$ is a linear functional on $W$ satisfying
+    $$
+        \left|f_{W}(w)\right| \leq p(w), \quad w \in W
+    $$
+    Then $f_{W}$ has an extension $f_{X}$ on $X$ such that
+    $$
+        \left|f_{X}(x)\right| \leq p(x), \quad x \in X
+    $$
+\end{theorem}
+
+\subsection{The Hahn–Banach Theorem in Normed Spaces}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
