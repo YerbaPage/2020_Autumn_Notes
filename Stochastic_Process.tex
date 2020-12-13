@@ -37,11 +37,7 @@
 \section{泊松过程}
 
 \begin{theorem}
-    设 $N \sim P(\lambda), N$ 个事件独立地(也独立于个数 $N$) 以概率 $p_{i}$ 为 第 $i$ 个类型, $i=1,2, \cdots, n,$ 其 $\mathbf{p} p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第$i$类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立。
-\end{theorem}
-
-\begin{theorem}
-    设 $N \sim P(\lambda), N$ 个事件独立地为第 $i$ 个类型, $i=1,2, \cdots, n,$ 其中 $p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第 $i$ 类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立.
+    设 $N \sim P(\lambda), N$ 个事件独立地为第 $i$ 个类型, 其 $p_{1}+p_{2}+\cdots p_{n}=1 .$ 记 $N_{i}$ 为 第 $i$ 类事件发生的次数, 则 $N_{i} \sim P\left(\lambda p_{i}\right),$ 且 $N_{1}, N_{2}, \cdots, N_{n}$ 相互独立.
 \end{theorem}
 
 \begin{definition}[点过程]
@@ -156,7 +152,7 @@
 \end{theorem}
 
 \begin{theorem}[Chapman-Kolmogorov 方程]
-    $\mathbf{P}^{n+m}=\mathbf{P}^{n} \cdot \mathbf{P}^{m}$
+    $\mathbf{P}^{(n+m)}=\mathbf{P}^{(n)} \cdot \mathbf{P}^{(m)}$
 \end{theorem}
 
 \begin{definition}[可达]
@@ -225,7 +221,7 @@
 \begin{theorem}[基本极限定理]
     \ 
     \begin{enumerate}
-        \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} p_{i j}^{(n)}=0 .$
+        \item 若 $i$ 为非常返或零常返态, 则 $\lim _{n \rightarrow \infty} p_{i i}^{(n)}=0 .$
         \item 若 $i$ 为周期为 $d$ 的常返态, 则有 $\lim _{n \rightarrow \infty} P_{i i}^{(n d)}=\frac{d}{\mu_{i i}}$.
               其中当 $\mu_{i i}=\infty$ 时, 右式设为 $0.$
         \item 若 $i$ 为非周期正常返态, 则有 $\lim _{n \rightarrow \infty} p_{i i}^{(n)}=\frac{1}{\mu_{i i}}$.
@@ -262,16 +258,15 @@
 \section{离散鞅论}
 % \subsection{基本概念}
 
-\begin{definition}
+\begin{definition}[鞅]
     定义$\mathcal{F}_{n}^{0}:=\sigma\left(Z_{k}, k \leq n\right)$, 若 $\mathbb{E}\left|Z_{n}\right|<\infty$, 且满足 $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}^{0}\right]=Z_{n}$ 则称 $Z$ 为鞅. $\mathbb{E}\left[Z_{n+1} \mid \mathcal{F}_{n}\right] \geq(\leq) Z_{n}, n \geq 0$ 则 $Z$ 称为下 $($ 上)鞅.
 \end{definition}
 
-\par 条件期望性质有 $\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}) \mid \mathcal{B})=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{B}) \mid \mathcal{A})=\mathbb{E}(\xi \mid \mathcal{A})$, $\mathbb{E}[\mathbb{E}[\tilde{x} \mid \mathcal{A}]]=\mathbb{E}\left[{ }^{z}\right]$
-
+\par 迭代期望公式: 若 $\mathcal{A} \in \mathcal{B}$ 有 $\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{A}) \mid \mathcal{B})=\mathbb{E}(\mathbb{E}(\xi \mid \mathcal{B}) \mid \mathcal{A})=\mathbb{E}(\xi \mid \mathcal{A})$ , 双期望公式: $\mathbb{E}[\mathbb{E}[X \mid Y]]=\mathbb{E}\left[{X}\right]$
 
 % \subsection{鞅基本定理}
 
-\begin{definition}
+\begin{definition}[停时]
     如果值域为 $I$ 的随机变量 $T$ 满足 $\{T=n\} \in \mathcal{F}_{n}, n \in I$, 则称为停时.
 \end{definition}
 
@@ -283,7 +278,7 @@
     定义 $T-$ 停止序列 $X_{n}^{T}(\omega):=X_{n \wedge T}(\omega), n \geq 0$ 称之为停止过程.
 \end{definition}
 
-\begin{theorem}[有界停止定理]
+\begin{theorem}[Doob 有界停止定理]
     \
     \begin{enumerate}
         \item 如果 $\left\{X_{n}: n \in I\right\}$ 是鞅, $T$ 是停时, 那么鞅的停止序列 $\left\{X_{n}^{T}: n \in I\right\}$ 也是鞅. 进一步, 如果 $T$ 是有界的, 那么 $\mathbb{E} X_{T}=\mathbb{E} X_{0}$.
@@ -307,7 +302,7 @@
 
 \section{Brown 运动}
 
-\begin{definition}
+\begin{definition}[Brown 运动]
     若 $\{X(t), t \geq 0\}$ 满足
     \begin{enumerate}
         \item $X(0)=0,$ a.s.
@@ -315,15 +310,11 @@
         \item 对任意 $s, t>0, X(s+t)-X(s) \sim N\left(0, c^{2} t\right)$
         \item $X(t)$ 是关于 $t$ 的连续函数. 则称 $\{X(t), t \geq 0\}$ 为 Brown 运动
     \end{enumerate}
-    当 $c=1$ 时, 称 $\{X(t), t \geq 0\}$ 为\textbf{标准 Brown 运动}.
+    当 $c=1$ 时, 称 $\{X(t), t \geq 0\}$ 为\textbf{标准 Brown 运动}, Brown 运动是一个 Markov 过程.
 \end{definition}
 
 \begin{theorem}
     对任意 $0 \leq a<s, t<\infty$, 有$\mathbb{E}[(X(s)-X(a))(X(t)-X(a))]=(s-a) \wedge(t-a)$, 进一步 $\mathbb{E}[X(s) X(t)]=s \wedge t$.
-\end{theorem}
-
-\begin{theorem}
-    Brown 运动是一个 Markov 过程.
 \end{theorem}
 
 \begin{theorem}[有限维分布]
@@ -347,17 +338,17 @@
     \end{itemize}
 \end{theorem}
 
-\begin{theorem}
-    $\tilde{X}(t):=\left\{\begin{array}{ll}t X(1 / t), & t>0 \\ 0, & t=0\end{array}\right.$ 是 Brown 运动.
-\end{theorem}
+% \begin{theorem}
+%     $\tilde{X}(t):=\left\{\begin{array}{ll}t X(1 / t), & t>0 \\ 0, & t=0\end{array}\right.$ 是 Brown 运动.
+% \end{theorem}
 
 \begin{theorem}
     $\mathbb{P}\left(\sup _{t \geq 0} X(t)=\infty\right)=1$, $\mathbb{P}\left(\lim \sup _{t \geq 0} X(t)=\infty, \liminf _{t \geq 0} X(t)=-\infty\right)=1$
 \end{theorem}
 
-\begin{lemma}
-    一维 Brown 运动是常返的, 以概率 $1$ 可达任何点.
-\end{lemma}
+% \begin{lemma}
+%     一维 Brown 运动是常返的, 以概率 $1$ 可达任何点.
+% \end{lemma}
 
 
 
