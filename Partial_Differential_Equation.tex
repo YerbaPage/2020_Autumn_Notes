@@ -4,11 +4,11 @@
 
 \begin{document}
 \author{}
-\maketitle
-\tableofcontents
+% \maketitle
+% \tableofcontents
 \footnotesize
 
-\newpage
+% \newpage
 \section{波动方程}
 
 \subsection{达朗贝尔公式和波的传播}
@@ -81,24 +81,24 @@ $$
 
 \subsection{高维波动方程的柯西问题}
 
-\par 柯西问题=初值问题, 有初始条件但没有边界.
+% \par 柯西问题=初值问题, 有初始条件但没有边界.
 
-\subsubsection{球平均法}
-\par 对于问题 $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}=a^{2}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}+\frac{\partial^{2} u}{\partial z^{2}}\right) \\ \left.u\right|_{t=0}=\varphi(x, y, z),\left.\frac{\partial u}{\partial t}\right|_{t=0}=\psi(x, y, z)\end{array}\right.$ 设法构造对称性, 选择 $u$ 在球面上的积分均值 $M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)=\frac{1}{4 \pi r^{2}} \iint_{S_{r}} h ds$ 来唯一确定 $u$, 从而构建对称形式与原始解的桥梁.
+% \subsubsection{球平均法}
+% \par 对于问题 $\left\{\begin{array}{l}\frac{\partial^{2} u}{\partial t^{2}}=a^{2}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}+\frac{\partial^{2} u}{\partial z^{2}}\right) \\ \left.u\right|_{t=0}=\varphi(x, y, z),\left.\frac{\partial u}{\partial t}\right|_{t=0}=\psi(x, y, z)\end{array}\right.$ 设法构造对称性, 选择 $u$ 在球面上的积分均值 $M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)=\frac{1}{4 \pi r^{2}} \iint_{S_{r}} h ds$ 来唯一确定 $u$, 从而构建对称形式与原始解的桥梁.
 
-\begin{lemma}
-    初始条件 $\left.M_{h}\right|_{r=0}=h\left(x_{1}, x_{2}, x_{3}\right),\left.\quad \frac{\partial M_{h}}{\partial r}\right|_{r=0}=0$, 若 $h \in C^2$ 则 $M \in C^2$ 且有 $\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{2}{r} \frac{\partial}{\partial r}\right) M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)=\Delta M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)$
-\end{lemma}
+% \begin{lemma}
+%     初始条件 $\left.M_{h}\right|_{r=0}=h\left(x_{1}, x_{2}, x_{3}\right),\left.\quad \frac{\partial M_{h}}{\partial r}\right|_{r=0}=0$, 若 $h \in C^2$ 则 $M \in C^2$ 且有 $\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{2}{r} \frac{\partial}{\partial r}\right) M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)=\Delta M_{h}\left(x_{1}, x_{2}, x_{3}, r\right)$
+% \end{lemma}
 
-\begin{lemma}
-    $M_{u}\left(x_{1}, x_{2}, x_{3}, r, t\right)=\frac{1}{4 \pi} \iint_{S_{1}} u\left(x_{1}+r \alpha_{1}, x_{2}+r \alpha_{2}, x_{3}+r \alpha_{3}, t\right) d \omega$ 满足 $\frac{\partial^{2} M_{u}}{\partial t^{2}}-a^{2}\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{2}{r} \frac{\partial}{\partial r}\right) M_{u}=0$
-    $\left.M_{u}\right|_{t=0}=M_{\varphi}\left(x_{1}, x_{2}, x_{3}, r\right)$
-    $\left.\frac{\partial M_{u}}{\partial t}\right|_{t=0}=M_{\psi}\left(x_{1}, x_{2}, x_{3}, r\right)$
-\end{lemma}
+% \begin{lemma}
+%     $M_{u}\left(x_{1}, x_{2}, x_{3}, r, t\right)=\frac{1}{4 \pi} \iint_{S_{1}} u\left(x_{1}+r \alpha_{1}, x_{2}+r \alpha_{2}, x_{3}+r \alpha_{3}, t\right) d \omega$ 满足 $\frac{\partial^{2} M_{u}}{\partial t^{2}}-a^{2}\left(\frac{\partial^{2}}{\partial r^{2}}+\frac{2}{r} \frac{\partial}{\partial r}\right) M_{u}=0$
+%     $\left.M_{u}\right|_{t=0}=M_{\varphi}\left(x_{1}, x_{2}, x_{3}, r\right)$
+%     $\left.\frac{\partial M_{u}}{\partial t}\right|_{t=0}=M_{\psi}\left(x_{1}, x_{2}, x_{3}, r\right)$
+% \end{lemma}
 
-\begin{theorem}[Poisson 公式]
-    $\varphi \in C^{3}, \psi \in C^{2}$ 则存在唯一解 $u(x, y, z, t)=\frac{\partial}{\partial t}\left[\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \varphi d S\right]+\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \psi d S,$
-\end{theorem}
+% \begin{theorem}[Poisson 公式]
+%     $\varphi \in C^{3}, \psi \in C^{2}$ 则存在唯一解 $u(x, y, z, t)=\frac{\partial}{\partial t}\left[\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \varphi d S\right]+\frac{1}{4 \pi a^{2} t} \iint_{S_{a t}^{M}} \psi d S,$
+% \end{theorem}
 
 \subsubsection{降维法}
 \par 对于二维问题 $u_{t t}=a^{2}\left(u_{x x}+u_{y y}\right)$
@@ -117,7 +117,7 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{figure/domain.jpg}
+    \includegraphics[width=0.4\textwidth]{figure/domain.jpg}
     \caption{决定区域和影响区域 \label{fig:scatter}}
 \end{figure}
 
@@ -188,14 +188,14 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
 
 \section{热传导方程}
 
-\subsection{初边值问题的分离变量法}
-% \subsubsection*{一个空间变量}
+% \subsection{初边值问题的分离变量法}
+% % \subsubsection*{一个空间变量}
 
-\par 对于问题 $\label{chubian} \left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 根据 $X(x)=A \cos \sqrt{\lambda} x+B \sin \sqrt{\lambda} x$ 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 带入 $T_{k}(t)=C_{k} e^{-a^{2} \lambda_{k} t}$ 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
+% \par 对于问题 $\label{chubian} \left\{\begin{array}{l}u_{t}-a^{2} u_{x x}=0 \quad(t>0,0<x<l) \\ t=0: u=\varphi(x) \\ x=0: u=0 \\ x=l: u_{x}+h u=0\end{array}\right.$ 分离变量后得到 $\frac{T^{\prime}}{a^{2} T}=\frac{X^{\prime \prime}}{X}$. 根据 $X(x)=A \cos \sqrt{\lambda} x+B \sin \sqrt{\lambda} x$ 确定 $\lambda$ 应满足超越方程 $\tan \sqrt{\lambda} l=-\frac{\sqrt{\lambda}}{h}$, 从而有无穷多个固有值 $\lambda_{k}=\left(\frac{v_{k}}{l}\right)^{2} \quad(k=1,2, \cdots)$, 带入 $T_{k}(t)=C_{k} e^{-a^{2} \lambda_{k} t}$ 最终得到 $u(x, t)=\sum_{k=1}^{\infty} A_{k} e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$.
 
-\par 进一步对于初值问题应满足 $\varphi(x)=\sum_{k=1}^{\infty} A_{k} \sin \sqrt{\lambda_{k}} x$, 两边乘上 $\sin \sqrt{\lambda_{k}} x$ 再进行积分, 利用固有函数正交性 $$\int_{0}^{l} X_{n} X_{m} d x=\int_{0}^{l} \sin \sqrt{\lambda_{n}} x \sin \sqrt{\lambda_{m}} x d x=0, m \neq n$$ 得到 $A_{k}=\frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda}_{k} \xi d \xi$.
+% \par 进一步对于初值问题应满足 $\varphi(x)=\sum_{k=1}^{\infty} A_{k} \sin \sqrt{\lambda_{k}} x$, 两边乘上 $\sin \sqrt{\lambda_{k}} x$ 再进行积分, 利用固有函数正交性 $$\int_{0}^{l} X_{n} X_{m} d x=\int_{0}^{l} \sin \sqrt{\lambda_{n}} x \sin \sqrt{\lambda_{m}} x d x=0, m \neq n$$ 得到 $A_{k}=\frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda}_{k} \xi d \xi$.
 
-\par 最终整合得到形式解为 $u(x, t)=\sum_{k=1}^{\infty} \frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda_{k}} \xi d \xi \cdot e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$
+% \par 最终整合得到形式解为 $u(x, t)=\sum_{k=1}^{\infty} \frac{1}{M_{k}} \int_{0}^{l} \varphi(\xi) \sin \sqrt{\lambda_{k}} \xi d \xi \cdot e^{-a^{2} \lambda_{k} t} \sin \sqrt{\lambda_{k}} x$
 
 % \subsubsection{圆形区域}
 % \par 现研究问题 $\left\{\begin{array}{l}\frac{\partial u}{\partial t}=\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}} \\ u(x, y, 0)=\varphi(x, y) \\ \left.u\right|_{x^{2}+y^{2}+k^{2}}=0\end{array}\right.$ 这个问题很有意思.
@@ -316,27 +316,27 @@ $\left.u_{t}\right|_{t=0}=\psi(x, y)$ 不能直接用球平均法('其深刻的�
     \item $\iint_{\Gamma} \frac{\partial G\left(M, M_{0}\right)}{\partial n} d S_{M}=-1$
 \end{enumerate}
 
-\subsubsection{调和函数的基本性质}
+% \subsubsection{调和函数的基本性质}
 
-\begin{theorem}[Harnack 第一定理(关于调和函数序列的一致收敛性定理)]
-      如果函数序列 $\left\{u_{k}\right\}$ 中的每个函数在某有限区域 $\Omega$ 中都是调和函数, 在闭区域 $\Omega \cup \Gamma$ ( $\Gamma$ 是 $\Omega$ 的边界)上连续, 而且这函数序列在 $\Gamma$ 上一致收敛, 则它在 $\Omega$ 中也一致收敛, 并且极限函数 $u$ 在区域 $\Omega$ 中也是调和函数.
-\end{theorem}
+% \begin{theorem}[Harnack 第一定理(关于调和函数序列的一致收敛性定理)]
+%       如果函数序列 $\left\{u_{k}\right\}$ 中的每个函数在某有限区域 $\Omega$ 中都是调和函数, 在闭区域 $\Omega \cup \Gamma$ ( $\Gamma$ 是 $\Omega$ 的边界)上连续, 而且这函数序列在 $\Gamma$ 上一致收敛, 则它在 $\Omega$ 中也一致收敛, 并且极限函数 $u$ 在区域 $\Omega$ 中也是调和函数.
+% \end{theorem}
 
-\begin{theorem}[Harnack 第二定理]
-    设 $\left\{u_{k}\right\}$ 是 $\Omega$ 上的一个单调不减的调和函数序列, 若它在闭子区域上是一致的. 有 Harnack 不等式 $$\frac{R-\rho_{0}}{\left(R+\rho_{0}\right)^{2}} R \cdot u(P) \leqslant u(Q) \leqslant \frac{R+\rho_{0}}{\left(R-\rho_{0}\right)^{2}} R \cdot u(P)$$
-\end{theorem}
+% \begin{theorem}[Harnack 第二定理]
+%     设 $\left\{u_{k}\right\}$ 是 $\Omega$ 上的一个单调不减的调和函数序列, 若它在闭子区域上是一致的. 有 Harnack 不等式 $$\frac{R-\rho_{0}}{\left(R+\rho_{0}\right)^{2}} R \cdot u(P) \leqslant u(Q) \leqslant \frac{R+\rho_{0}}{\left(R-\rho_{0}\right)^{2}} R \cdot u(P)$$
+% \end{theorem}
 
-\begin{theorem}
-    设 $u$ 为区域 $\Omega$ 中的非负调和函数, 则对 $\Omega$ 中的任一闭子区域 $\bar{\Omega}^{\prime},$ 存在仅与 $\Omega^{\prime}$ 有关的正常数 $C$ 使得 $\max _{\bar{a}} u \leqslant C \min _{\bar{a}} u$
-\end{theorem}
+% \begin{theorem}
+%     设 $u$ 为区域 $\Omega$ 中的非负调和函数, 则对 $\Omega$ 中的任一闭子区域 $\bar{\Omega}^{\prime},$ 存在仅与 $\Omega^{\prime}$ 有关的正常数 $C$ 使得 $\max _{\bar{a}} u \leqslant C \min _{\bar{a}} u$
+% \end{theorem}
 
-\begin{theorem}[可去奇点定理]
-    设 $u(M)=u(x, y, z)$ 在点 $A$ 的邻域中除点 $A$ 外是调和函数, 在 $A$ 点附近成立 $\lim _{M \rightarrow A} r_{A M} \cdot u(M)=0$ 其中 $r_{A M}$ 表示 $A$ 点和 $M$ 点的距离, 则总可以重新定义函数 $u$ 在点 $A$ 的值, 使 $u(M)$ 在整个所考虑的点 $A$ 的邻域中(包括点 $A$ 本身在内)是调和函数.
-\end{theorem}
+% \begin{theorem}[可去奇点定理]
+%     设 $u(M)=u(x, y, z)$ 在点 $A$ 的邻域中除点 $A$ 外是调和函数, 在 $A$ 点附近成立 $\lim _{M \rightarrow A} r_{A M} \cdot u(M)=0$ 其中 $r_{A M}$ 表示 $A$ 点和 $M$ 点的距离, 则总可以重新定义函数 $u$ 在点 $A$ 的值, 使 $u(M)$ 在整个所考虑的点 $A$ 的邻域中(包括点 $A$ 本身在内)是调和函数.
+% \end{theorem}
 
-\begin{theorem}[调和函数的解析性定理]
-    设 $u\left(M_{0}\right)$ 是区域 $\Omega$ 中的调和函数, 那么它在 $\Omega$ 中是关于自变量 $x_{0}, y_{0}, z_{0}$ 的解析函数, 也就是说在 $\Omega$ 中任一点 $M_{0}^{*}\left(x_{0}^{*}, y_{0}^{*}, z_{0}^{*}\right)$ 的附近都可以展开成 $x_{0}-x_{0}^{*}, y_{0}-y_{0}^{*}, z_{0}-z_{0}^{*}$ 的幂级数.
-\end{theorem}
+% \begin{theorem}[调和函数的解析性定理]
+%     设 $u\left(M_{0}\right)$ 是区域 $\Omega$ 中的调和函数, 那么它在 $\Omega$ 中是关于自变量 $x_{0}, y_{0}, z_{0}$ 的解析函数, 也就是说在 $\Omega$ 中任一点 $M_{0}^{*}\left(x_{0}^{*}, y_{0}^{*}, z_{0}^{*}\right)$ 的附近都可以展开成 $x_{0}-x_{0}^{*}, y_{0}-y_{0}^{*}, z_{0}-z_{0}^{*}$ 的幂级数.
+% \end{theorem}
 
 \subsection{强极值原理与第二边值问题解的唯一性}
 \subsubsection{强极值原理}
