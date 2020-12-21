@@ -32,193 +32,188 @@
 \maketitle
 \tableofcontents
 \footnotesize
+
 \section{Preliminaries}
 
-\begin{itemize}
-    \item Galerkin
-    \item the norm exercise in class
-    \item orthogonalization 
-\end{itemize}
+% \subsection{Linear Algebra}
 
-\subsection{Linear Algebra}
+% \begin{definition}[Linear Subspace]
+%     A non-empty set $U \subset V$ is a \textbf{linear subspace} of $V$ if $\alpha x+\beta y \in U $ for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in U$
+% \end{definition}
 
-\begin{definition}[Linear Subspace]
-    A non-empty set $U \subset V$ is a \textbf{linear subspace} of $V$ if $\alpha x+\beta y \in U $ for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in U$
-\end{definition}
+% \begin{definition}[Standard basis]
+%     $\widehat{e}_{1}=(1,0,0, \ldots, 0), \widehat{e}_{2}=(0,1,0, \ldots, 0), \ldots, \widehat{e}_{k}=(0,0,0, \ldots, 1)$ will be called the \textbf{standard basis} for $\mathbb{F}^{k}$
+% \end{definition}
 
-\begin{definition}[Standard basis]
-    $\widehat{e}_{1}=(1,0,0, \ldots, 0), \widehat{e}_{2}=(0,1,0, \ldots, 0), \ldots, \widehat{e}_{k}=(0,0,0, \ldots, 1)$ will be called the \textbf{standard basis} for $\mathbb{F}^{k}$
-\end{definition}
+% \begin{definition}[Linear transformation]
+%     If for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in V$: $T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)$
+% \end{definition}
 
-\begin{definition}[Linear transformation]
-    If for all $\alpha, \beta \in \mathbb{F}$ and $x, y \in V$: $T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)$
-\end{definition}
+% \subsection{Metric Spaces}
 
-\subsection{Metric Spaces}
+% \begin{definition}[Metric]
+%     A metric on a set $M$ is a function for all $x, y, z \in M$
+%     \begin{itemize}
+%         \item $d(x, y) \geq 0$
+%         \item $d(x, y)=0 \Longleftrightarrow x=y$
+%         \item $d(x, y)=d(y, x)$
+%         \item $d(x, z) \leq d(x, y)+d(y, z) \quad$ (the triangle inequality)
+%     \end{itemize}
+%     If $d$ is a metric on $M,$ then the pair $(M, d)$ is called a \textbf{metric space}.
+% \end{definition}
 
-\begin{definition}[Metric]
-    A metric on a set $M$ is a function for all $x, y, z \in M$
-    \begin{itemize}
-        \item $d(x, y) \geq 0$
-        \item $d(x, y)=0 \Longleftrightarrow x=y$
-        \item $d(x, y)=d(y, x)$
-        \item $d(x, z) \leq d(x, y)+d(y, z) \quad$ (the triangle inequality)
-    \end{itemize}
-    If $d$ is a metric on $M,$ then the pair $(M, d)$ is called a \textbf{metric space}.
-\end{definition}
+% \begin{definition}[Induce]
+%     Let $(M, d)$ be a metric space and let $N$ be a subset of $M .$ Define $d_{N}: N \times N \rightarrow \mathbb{R}$ by $d_{N}(x, y)=d(x, y)$ for all $x, y \in N$ (that is, $d_{N}$ is the restriction of $d$ to the subset $N$ ). Then $d_{N}$ is a metric on $N,$ called the metric induced on $N$ by $d$.
+% \end{definition}
 
-\begin{definition}[Induce]
-    Let $(M, d)$ be a metric space and let $N$ be a subset of $M .$ Define $d_{N}: N \times N \rightarrow \mathbb{R}$ by $d_{N}(x, y)=d(x, y)$ for all $x, y \in N$ (that is, $d_{N}$ is the restriction of $d$ to the subset $N$ ). Then $d_{N}$ is a metric on $N,$ called the metric induced on $N$ by $d$.
-\end{definition}
+% \begin{theorem}
+%     Suppose that $\left\{x_{n}\right\}$ is a convergent in a metric space $(M, d)$ Then $\left\{x_{n}\right\}$ is also a Cauchy sequence.
+% \end{theorem}
 
-\begin{theorem}
-    Suppose that $\left\{x_{n}\right\}$ is a convergent in a metric space $(M, d)$ Then $\left\{x_{n}\right\}$ is also a Cauchy sequence.
-\end{theorem}
+% \begin{definition}[Open ball]
+%     $B_{x}(r)=\{y \in M: d(x, y)<r\}$ will be called the open ball with centre $x$ and radius $r$
+% \end{definition}
 
-\begin{definition}[Open ball]
-    $B_{x}(r)=\{y \in M: d(x, y)<r\}$ will be called the open ball with centre $x$ and radius $r$
-\end{definition}
+% \begin{definition}
+%     Let $(M, d)$ be a metric space and let $A \subset M$
+%     \begin{enumerate}
+%         \item $A$ is \textbf{bounded} if there is a number $b>0$ such that $d(x, y)<b$ for all $x, y \in A$
+%         \item $A$ is \textbf{open} if, for each point $x \in A,$ there is an $\epsilon>0$ such that $B_{x}(c) \subset A$
+%         \item $A$ is \textbf{closed} if the set $M \backslash A$ is open.
+%         \item  A point $x \in M$ is a \textbf{closure point} of $A$ if, for every $\epsilon>0,$ there is a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, if there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $y_{n} \rightarrow x$ ).
+%         \item  The \textbf{closure} of $A,$ denoted by $\bar{A}$ or $A^{-},$ is the set of all closure points of $A$.
+%         \item  $A$ is \textbf{dense} $($ in $M)$ if $\bar{A}=M$.
+%     \end{enumerate}
+% \end{definition}
 
-\begin{definition}
-    Let $(M, d)$ be a metric space and let $A \subset M$
-    \begin{enumerate}
-        \item $A$ is \textbf{bounded} if there is a number $b>0$ such that $d(x, y)<b$ for all $x, y \in A$
-        \item $A$ is \textbf{open} if, for each point $x \in A,$ there is an $\epsilon>0$ such that $B_{x}(c) \subset A$
-        \item $A$ is \textbf{closed} if the set $M \backslash A$ is open.
-        \item  A point $x \in M$ is a \textbf{closure point} of $A$ if, for every $\epsilon>0,$ there is a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, if there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $y_{n} \rightarrow x$ ).
-        \item  The \textbf{closure} of $A,$ denoted by $\bar{A}$ or $A^{-},$ is the set of all closure points of $A$.
-        \item  $A$ is \textbf{dense} $($ in $M)$ if $\bar{A}=M$.
-    \end{enumerate}
-\end{definition}
+% \begin{theorem}
+%     Let $(M, d)$ be a metric space and let $A \subset M$.
+%     \begin{enumerate}
+%         \item $\bar{A}$ is closed and is equal to the intersection of the collection of all closed subsets of $M$ which contain $A$ (so $\bar{A}$ is the smallest closed set containing
+%               $A)$
+%         \item $A$ is closed if and only if $A=\bar{A}$.
+%         \item $A$ is closed if and only if, whenever $\left\{x_{n}\right\}$ is a sequence in $A$ which converges to an element $x \in M,$ then $x \in A$
+%         \item $x \in \bar{A}$ if and only if $\inf \{d(x, y): y \in A\}=0$
+%         \item $A$ is dense if and only if, for any element $x \in M$ and any number $\epsilon>0$, there exists a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, for any element $x \in M$ there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $\left.y_{n} \rightarrow x\right)$
+%     \end{enumerate}
+% \end{theorem}
 
-\begin{theorem}
-    Let $(M, d)$ be a metric space and let $A \subset M$.
-    \begin{enumerate}
-        \item $\bar{A}$ is closed and is equal to the intersection of the collection of all closed subsets of $M$ which contain $A$ (so $\bar{A}$ is the smallest closed set containing
-              $A)$
-        \item $A$ is closed if and only if $A=\bar{A}$.
-        \item $A$ is closed if and only if, whenever $\left\{x_{n}\right\}$ is a sequence in $A$ which converges to an element $x \in M,$ then $x \in A$
-        \item $x \in \bar{A}$ if and only if $\inf \{d(x, y): y \in A\}=0$
-        \item $A$ is dense if and only if, for any element $x \in M$ and any number $\epsilon>0$, there exists a point $y \in A$ with $d(x, y)<\epsilon$ (equivalently, for any element $x \in M$ there exists a sequence $\left\{y_{n}\right\} \subset A$ such that $\left.y_{n} \rightarrow x\right)$
-    \end{enumerate}
-\end{theorem}
-
-\begin{definition}
-    $f$ is \textbf{uniformly continuous} (on $M$ ) if, for every $\epsilon>0,$ there exists $\delta>0$ such that, for all $x, y \in M$ $d_{M}(x, y)<\delta \Rightarrow d_{N}(f(x), f(y))<\epsilon$.
-\end{definition}
+% \begin{definition}
+%     $f$ is \textbf{uniformly continuous} (on $M$ ) if, for every $\epsilon>0,$ there exists $\delta>0$ such that, for all $x, y \in M$ $d_{M}(x, y)<\delta \Rightarrow d_{N}(f(x), f(y))<\epsilon$.
+% \end{definition}
 
 
 
-\begin{theorem}
-    Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
-    \begin{enumerate}
-        \item if $A$ is complete then it is closed;
-        \item if $M$ is complete then $A$ is complete if and only if it is closed;
-        \item if $A$ is compact then it is closed and bounded;
-        \item (Bolzano-Weierstrass theorem) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
-    \end{enumerate}
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
+%     \begin{enumerate}
+%         \item if $A$ is complete then it is closed;
+%         \item if $M$ is complete then $A$ is complete if and only if it is closed;
+%         \item if $A$ is compact then it is closed and bounded;
+%         \item (Bolzano-Weierstrass theorem) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
+%     \end{enumerate}
+% \end{theorem}
 
-\begin{theorem}
-    $f$ is continuous at $x \in M$ if and only if $x_{n} \rightarrow x,$ satisfies $f\left(x_{n}\right) \rightarrow f(x)$, $f$ is continuous on $M$ if and only if either any open set $A \subset N,$ the set $f^{-1}(A) \subset M$ is open or for any closed set $A \subset N,$ the set $f^{-1}(A) \subset M$ is closed.
-\end{theorem}
+% \begin{theorem}
+%     $f$ is continuous at $x \in M$ if and only if $x_{n} \rightarrow x,$ satisfies $f\left(x_{n}\right) \rightarrow f(x)$, $f$ is continuous on $M$ if and only if either any open set $A \subset N,$ the set $f^{-1}(A) \subset M$ is open or for any closed set $A \subset N,$ the set $f^{-1}(A) \subset M$ is closed.
+% \end{theorem}
 
-\begin{definition}[complete]
-    A metric space $(M, d)$ is \textbf{complete} if every Cauchy sequence in it is convergent. A set $A \subset M$ is \textbf{complete} (in $(M, d))$ if every Cauchy sequence in $A$ converges to an element of $A$. The space $\mathbb{F}^{k}$ with the standard metric is complete.
-\end{definition}
+% \begin{definition}[complete]
+%     A metric space $(M, d)$ is \textbf{complete} if every Cauchy sequence in it is convergent. A set $A \subset M$ is \textbf{complete} (in $(M, d))$ if every Cauchy sequence in $A$ converges to an element of $A$. The space $\mathbb{F}^{k}$ with the standard metric is complete.
+% \end{definition}
 
-\begin{theorem}[Baire's Category Theorem]
-    If $(M, d)$ is a complete metric space and $M=\bigcup_{j=1}^{\infty} A_{j},$ where each $A_{j} \subset M$ $j=1,2, \ldots,$ is closed, then at least one of the sets $A_{j}$ contains an open ball.
-\end{theorem}
+% \begin{theorem}[Baire's Category Theorem]
+%     If $(M, d)$ is a complete metric space and $M=\bigcup_{j=1}^{\infty} A_{j},$ where each $A_{j} \subset M$ $j=1,2, \ldots,$ is closed, then at least one of the sets $A_{j}$ contains an open ball.
+% \end{theorem}
 
-\begin{definition}[Compact]
-    Let $(M, d)$ be a metric space. A set $A \subset M$ is \textbf{compact} if every sequence $\left\{x_{n}\right\}$ in $A$ contains a subsequence that converges to an element of $A .$ A set $A \subset M$ is \textbf{relatively compact} if the closure $\bar{A}$ is compact. If the set $M$ itself is compact then we say that $(M, d)$ is a \textbf{compact metric space}.
-\end{definition}
+% \begin{definition}[Compact]
+%     Let $(M, d)$ be a metric space. A set $A \subset M$ is \textbf{compact} if every sequence $\left\{x_{n}\right\}$ in $A$ contains a subsequence that converges to an element of $A .$ A set $A \subset M$ is \textbf{relatively compact} if the closure $\bar{A}$ is compact. If the set $M$ itself is compact then we say that $(M, d)$ is a \textbf{compact metric space}.
+% \end{definition}
 
-\begin{theorem}
-    Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
-    \begin{enumerate}
-        \item if $A$ is complete then it is closed;
-        \item if $M$ is complete then $A$ is complete if and only if it is closed;
-        \item if $A$ is compact then it is closed and bounded;
-        \item (Bolzano-Weierstrass) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
-    \end{enumerate}
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $(M, d)$ is a metric space and $A \subset M .$ Then:
+%     \begin{enumerate}
+%         \item if $A$ is complete then it is closed;
+%         \item if $M$ is complete then $A$ is complete if and only if it is closed;
+%         \item if $A$ is compact then it is closed and bounded;
+%         \item (Bolzano-Weierstrass) every closed, bounded subset of $\mathbb{F}^{k}$ is compact.
+%     \end{enumerate}
+% \end{theorem}
 
-\begin{theorem}
-    Suppose that $(M, d)$ is a compact metric space and $f: M \rightarrow \mathbb{F}$ is continuous. Then there exists a constant $b>0$ such that $|f(x)| \leq b$ for all $x \in M$ (we say that $f$ is \textbf{bounded}). In particular, if $\mathbb{F}=\mathbb{R}$ then the numbers $\sup \{f(x): x \in M\}$ and $\inf \{f(x): x \in M\},$ exist and are finite. Furthermore, there exist points $x_{s}, x_{i} \in M$ such that $f\left(x_{s}\right)=\sup \{f(x): x \in M\}, f\left(x_{i}\right)=\inf \{f(x): x \in M\}$
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $(M, d)$ is a compact metric space and $f: M \rightarrow \mathbb{F}$ is continuous. Then there exists a constant $b>0$ such that $|f(x)| \leq b$ for all $x \in M$ (we say that $f$ is \textbf{bounded}). In particular, if $\mathbb{F}=\mathbb{R}$ then the numbers $\sup \{f(x): x \in M\}$ and $\inf \{f(x): x \in M\},$ exist and are finite. Furthermore, there exist points $x_{s}, x_{i} \in M$ such that $f\left(x_{s}\right)=\sup \{f(x): x \in M\}, f\left(x_{i}\right)=\inf \{f(x): x \in M\}$
+% \end{theorem}
 
-\begin{definition}
-    Let $(M, d)$ be a compact metric space. Set of continuous functions $f: M \rightarrow$ $\mathbb{F}$ will be denoted by $C_{\mathbb{F}}(M) .$ We define \textbf{uniform metric} on $C_{\mathrm{F}}(M)$ by
-    $$
-        d(f, g)=\sup \{|f(x)-g(x)|: x \in M\}
-    $$
-\end{definition}
+% \begin{definition}
+%     Let $(M, d)$ be a compact metric space. Set of continuous functions $f: M \rightarrow$ $\mathbb{F}$ will be denoted by $C_{\mathbb{F}}(M) .$ We define \textbf{uniform metric} on $C_{\mathrm{F}}(M)$ by
+%     $$
+%         d(f, g)=\sup \{|f(x)-g(x)|: x \in M\}
+%     $$
+% \end{definition}
 
-\begin{definition}
-    $(M, d)$ is a compact metric space and $\left\{f_{n}\right\}$ is a sequence in $C(M)$
-    \begin{enumerate}
-        \item $\left\{f_{n}\right\}$ converges pointwise to $f$ if $\left|f_{n}(x)-f(x)\right| \rightarrow 0$ for all $x \in M$
-        \item $\left\{f_{n}\right\}$ converges uniformly to $f$ if $\sup \left\{\left|f_{n}(x)-f(x)\right|: x \in M\right\} \rightarrow 0$.
-    \end{enumerate}
-\end{definition}
+% \begin{definition}
+%     $(M, d)$ is a compact metric space and $\left\{f_{n}\right\}$ is a sequence in $C(M)$
+%     \begin{enumerate}
+%         \item $\left\{f_{n}\right\}$ converges pointwise to $f$ if $\left|f_{n}(x)-f(x)\right| \rightarrow 0$ for all $x \in M$
+%         \item $\left\{f_{n}\right\}$ converges uniformly to $f$ if $\sup \left\{\left|f_{n}(x)-f(x)\right|: x \in M\right\} \rightarrow 0$.
+%     \end{enumerate}
+% \end{definition}
 
-\begin{theorem}
-    The metric space $C_{\mathbb{F}}(M)$ (also written as $C(M)$) is complete. For any compact set $M \subset \mathbb{R},$ the set $\mathcal{P}_{\mathrm{R}}$ (polynomial) is dense in $C_{\mathbb{R}}(M)$.
-\end{theorem}
+% \begin{theorem}
+%     The metric space $C_{\mathbb{F}}(M)$ (also written as $C(M)$) is complete. For any compact set $M \subset \mathbb{R},$ the set $\mathcal{P}_{\mathrm{R}}$ (polynomial) is dense in $C_{\mathbb{R}}(M)$.
+% \end{theorem}
 
-\begin{definition}[Separable]
-    A metric space $(M, d)$ is \textbf{separable} if it contains a countable, dense subset. The empty set is regarded as separable.
-\end{definition}
+% \begin{definition}[Separable]
+%     A metric space $(M, d)$ is \textbf{separable} if it contains a countable, dense subset. The empty set is regarded as separable.
+% \end{definition}
 
-\begin{theorem}
-    Suppose that $(M, d)$ is a metric space and $A \subset M$, then:
-    \begin{enumerate}
-        \item If $A$ is compact then it is separable.
-        \item If $A$ is separable and $B \subset A$ then $B$ is separable.
-    \end{enumerate}
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $(M, d)$ is a metric space and $A \subset M$, then:
+%     \begin{enumerate}
+%         \item If $A$ is compact then it is separable.
+%         \item If $A$ is separable and $B \subset A$ then $B$ is separable.
+%     \end{enumerate}
+% \end{theorem}
 
-\subsection{Lebesgue Integration}
+% \subsection{Lebesgue Integration}
 
-\begin{definition}[counting measure]
-    We define counting measure
-    $$\mu(A)=\left\{\begin{array}{ll}
-            n      & \text{if A has exactly } n \text { elements } \\
-            \infty & \text { otherwise }
-        \end{array}\right.$$
-\end{definition}
+% \begin{definition}[counting measure]
+%     We define counting measure
+%     $$\mu(A)=\left\{\begin{array}{ll}
+%             n      & \text{if A has exactly } n \text { elements } \\
+%             \infty & \text { otherwise }
+%         \end{array}\right.$$
+% \end{definition}
 
-\begin{definition}[Essential supremum]
-    Suppose that $f$ is a measurable function and there exists a number $b$ such that $f(x) \leq b a.e.$ Then we can define the \textbf{essential supremum} of $f$ to be $$ess \ sup \  f=\inf \{b: f(x) \leq b \  a.e. \}$$
-\end{definition}
+% \begin{definition}[Essential supremum]
+%     Suppose that $f$ is a measurable function and there exists a number $b$ such that $f(x) \leq b a.e.$ Then we can define the \textbf{essential supremum} of $f$ to be $$ess \ sup \  f=\inf \{b: f(x) \leq b \  a.e. \}$$
+% \end{definition}
 
-\begin{definition}
-    We define an equivalence relation $\equiv$ on $\mathcal{L}^{1}(X)$ by $$f \equiv g \Longleftrightarrow f(x)=g(x) \text { for a.e. } x \in X$$ This relation partitions the set $\mathcal{L}^{1}(X)$ into a space of equivalence classes, which we will denote by $L^{1}(X)$.
-\end{definition}
+% \begin{definition}
+%     We define an equivalence relation $\equiv$ on $\mathcal{L}^{1}(X)$ by $$f \equiv g \Longleftrightarrow f(x)=g(x) \text { for a.e. } x \in X$$ This relation partitions the set $\mathcal{L}^{1}(X)$ into a space of equivalence classes, which we will denote by $L^{1}(X)$.
+% \end{definition}
 
-\begin{definition}
-    Suppose that $1 \leq p \leq \infty .$ In the special case where $(X, \Sigma, \mu)=\left(\mathbb{N}, \Sigma_{c}, \mu_{c}\right),$ the space $L^{p}(\mathbb{N})$ consists of the set of sequences $\left\{a_{n}\right\}$ in $\mathbb{F}$ with the property that
-    $$
-        \begin{array}{l}
-            \left(\sum_{n=1}^{\infty}\left|a_{n}\right|^{p}\right)^{1 / p}<\infty, \quad \text { for } 1 \leq p<\infty \\
-            \sup \left\{\left|a_{n}\right|: n \in \mathbb{N}\right\}<\infty, \quad \text { for } p=\infty
-        \end{array}
-    $$
-    These spaces will be denoted by $\ell^{p}$ (or $\ell_{k}^{p}$ )
-\end{definition}
+% \begin{definition}
+%     Suppose that $1 \leq p \leq \infty .$ In the special case where $(X, \Sigma, \mu)=\left(\mathbb{N}, \Sigma_{c}, \mu_{c}\right),$ the space $L^{p}(\mathbb{N})$ consists of the set of sequences $\left\{a_{n}\right\}$ in $\mathbb{F}$ with the property that
+%     $$
+%         \begin{array}{l}
+%             \left(\sum_{n=1}^{\infty}\left|a_{n}\right|^{p}\right)^{1 / p}<\infty, \quad \text { for } 1 \leq p<\infty \\
+%             \sup \left\{\left|a_{n}\right|: n \in \mathbb{N}\right\}<\infty, \quad \text { for } p=\infty
+%         \end{array}
+%     $$
+%     These spaces will be denoted by $\ell^{p}$ (or $\ell_{k}^{p}$ )
+% \end{definition}
 
-\begin{definition}
-    Define the spaces
-    $$
-        \begin{array}{l}
-            \mathcal{L}^{p}(X)=\left\{f: f \text { is measurable and }\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}<\infty\right\}, \quad 1 \leq p<\infty \\
-            \mathcal{L}^{\infty}(X)=\{f: f \text { is measurable and ess sup }|f|<\infty\}
-        \end{array}
-    $$
-    We also define the corresponding sets $L^{P}(X)$ by identifying functions in $\mathcal{L}^{p}(X)$ which are $a.e.$ equal. In practice, we simply refer to such $\mathcal{L}$ rather than classes themselves.
-\end{definition}
+% \begin{definition}
+%     Define the spaces
+%     $$
+%         \begin{array}{l}
+%             \mathcal{L}^{p}(X)=\left\{f: f \text { is measurable and }\left(\int_{X}|f|^{p} d \mu\right)^{1 / p}<\infty\right\}, \quad 1 \leq p<\infty \\
+%             \mathcal{L}^{\infty}(X)=\{f: f \text { is measurable and ess sup }|f|<\infty\}
+%         \end{array}
+%     $$
+%     We also define the corresponding sets $L^{P}(X)$ by identifying functions in $\mathcal{L}^{p}(X)$ which are $a.e.$ equal. In practice, we simply refer to such $\mathcal{L}$ rather than classes themselves.
+% \end{definition}
 
 \begin{theorem}[Two useful inequalities]
     Minkowski's inequality $($ for $1 \leq p<\infty)$
@@ -238,13 +233,13 @@
 \end{theorem}
 
 
-\begin{theorem}
-    Suppose that $1 \leq p \leq \infty .$ Then the metric space $L^{P}(X)$ is complete. In particular, the sequence space $\ell^{P}$ is complete.
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $1 \leq p \leq \infty .$ Then the metric space $L^{P}(X)$ is complete. In particular, the sequence space $\ell^{P}$ is complete.
+% \end{theorem}
 
-\begin{theorem}
-    Suppose that $[a, b]$ is a bounded interval and $1 \leq p<\infty .$ Then the set $C[a, b]$ is dense in $L^{p}[a, b]$
-\end{theorem}
+% \begin{theorem}
+%     Suppose that $[a, b]$ is a bounded interval and $1 \leq p<\infty .$ Then the set $C[a, b]$ is dense in $L^{p}[a, b]$
+% \end{theorem}
 
 
 
@@ -254,12 +249,21 @@
     Let $X$ be a vector space over $\mathbb{F}$. A norm on $X$ is a function $\|\cdot\|: X \rightarrow \mathbb{R}$ such that for all $x, y, \in X$ and $\alpha \in \mathbb{F}$
     \begin{enumerate}
         \item $\|x\| \geq 0$
-        \item $\|x\|=0$ if and only if $x=0$
-        \item $\|\alpha x\|=\|\alpha\|\|x\|$
-        \item $\|x+y\| \leq\|x\|+\|y\|$
+        \item $\|\alpha x\|=\|\alpha\|\|x\|$ (different from metric)
+        \item $\|x+y\| \leq\|x\|+\|y\|$ 
+        \item item $\|x\|=0$ if and only if $x=0$ (seminorm if without this)
     \end{enumerate}
     A vector space X on which there is a norm is called a normed vector space or just a normed space. If $X$ is a normed space, a unit vector in $X$ is a vector $x$ such that $\|x\|=1$
 \end{definition}
+
+% \begin{definition}[seminorm]
+%     Let $X$ be a real or complex vector space. A seminorm on $X$ is a real-valued function $p: X \rightarrow \mathbb{R}$ such that:
+%     \begin{enumerate}
+%         \item $p(x) \geq 0$
+%         \item $p(x+y) \leq p(x)+p(y), x, y \in X$
+%         \item $p(\alpha x)=|\alpha| p(x), x \in X, \alpha \in \mathbb{F}$.
+%     \end{enumerate}
+% \end{definition}
 
 \begin{lemma}
     Let $X$ be a vector space with norm $\|\cdot\| .$ If $d: X \times X \rightarrow \mathbb{R}$ is defined by $d(x, y)=\|x-y\|$ then $(X, d)$ is a metric space.
@@ -372,8 +376,7 @@
 \end{theorem}
 
 \begin{definition}[Banach Space]
-    A Banach space is a normed vector space which is complete under the metric
-    associated with the norm.
+    A \textbf{Banach space} is a normed vector space which is complete (Cauchy sequences converges to a point in itself) under the metric associated with the norm.
 
     \begin{itemize}
         \item Any finite-dimensional normed vector space is a Banach space.
@@ -816,13 +819,6 @@
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[seminorm]
-    Let $X$ be a real or complex vector space. A seminorm on $X$ is a real-valued function $p: X \rightarrow \mathbb{R}$ such that:
-    \begin{enumerate}
-        \item $p(x+y) \leq p(x)+p(y), x, y \in X$
-        \item $p(\alpha x)=|\alpha| p(x), x \in X, \alpha \in \mathbb{F}$.
-    \end{enumerate}
-\end{definition}
 
 \begin{theorem}[Hahn-Banach Theorem]
     Let $X$ be a real vector space, with a sublinear functional $p$ defined on $X$. Suppose that $W$ is a linear subspace of $X$ and $f_{W}$ is a linear functional on $W$ satisfying
