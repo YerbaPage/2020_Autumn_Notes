@@ -1,0 +1,162 @@
+\documentclass[10pt, twocolumn]{yerbaformat}
+
+
+\begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
+\author{}
+\title{泛函分析中的一些反例}
+\date{\today}
+\maketitle
+\end{@twocolumnfalse}]
+% \tableofcontents
+\footnotesize
+
+% \section{Preliminaries}
+
+\begin{example}
+    不完备的度量空间
+\end{example}
+
+$(Q, d)$ 其中 $Q$ 为有理数集, $d(x, y)=|x-y|$
+
+%%
+\begin{example}
+    不完备的赋范空间
+\end{example}
+
+$C[a, b]$ 上定义范数 $\|x \|_{1}=\int_{a}^{b}|x(t)| d t$
+
+\begin{example}
+    不完备的内积空间
+\end{example}
+
+$C[a, b]$ 上定义内积 $(x, y)=\int_{0}^{b} x(t) \overline{y(t)} dt$
+
+\begin{example}
+    是度量空间但不是赋范空间
+\end{example}
+
+取度量 $d(x, y)=\sum^{\infty} \frac{1}{2^{n}} \cdot \frac{\left|x_{n}-y_{n}\right|}{1+\left|x_{n}-y_{n}\right|}$ 但不满足 $\|a x\|=\|a\|\|x\|$
+
+\begin{example}
+    弱收敛可以推强收敛的空间
+\end{example}
+    
+有限维赋范空间, $l_{1}$ 空间
+
+\begin{example}
+    $\sum_{n=1}^{\infty} \| x_{n} \|<\infty \nRightarrow \sum_{n=1}^{\infty} x_{n}$ 收敛
+\end{example}
+
+$x_{n}=\left(0,0, \cdots 0, \frac{1}{n^{2}}, 0, \cdots\right) \in l^{\infty}$
+
+\begin{example}
+    有界闭集但不是紧集
+\end{example}
+
+$B=\left\{x \in l^{2}, \quad d(0, x) \leqslant 1\right\}$ 中的序列 $\left\{e_{n}\right\}=\{0,0, \cdots, 1,0, \cdots\}$ 不存在收敛子列
+
+\begin{example}
+    Banach 空间但不是 Hilbert 空间
+\end{example}
+
+$l^{\infty}$ 
+
+\begin{example}
+    非自反空间
+\end{example}
+
+$c_{0}, C[a, b], l^{1}, L^{1} L^{\infty}, l^{\infty}$
+
+% \begin{example}
+%     不可分空间
+% \end{example}
+
+% $L^{\infty}, l^{\infty}$ 
+
+\begin{example}
+    完备但不可分
+\end{example}
+
+$l^{\infty}$ 
+
+\begin{example}
+    可分但不完备
+\end{example}
+
+$x=\left\{\left(x_{i}\right) \mid \text{有限个 } x_{i} \neq 0\right\}$ 定义 $\|x\|=\max \left|x_{i}\right|$
+
+\begin{example}
+    等价但不相等的范数
+\end{example}
+
+$\|(x, y)\|_{1}=\sqrt{x^{2}+y^{2}}$ 与 $\|(x, y)\|_{2} = |x|+|y|$
+
+
+\begin{example}
+    $\lim \left\|x_{n}\right\|=\|x\| \nRightarrow \lim \left\|x_{n}-x\right\|=0$
+\end{example}
+
+$x_{n}=\frac{1}{n}-1$, 令 $\left\|x \right\|=|x|$
+
+\begin{example}
+    等距算子但不是满射
+\end{example}
+
+$s\left(x_{1}, x_{2}, x_{3}, \ldots\right)=\left(0, x_{1}, x_{2}, x_{3}, \ldots\right)$
+
+\begin{example}
+    $\|T\|=1$ 但不为等距算子
+\end{example}
+
+$h=[0.1] \rightarrow F$ 有 $\left.h(x)=x \quad x \in [0,1] \quad T(h)=h(0)\right)$
+
+\begin{example}
+    点点意义下定义的积分
+\end{example}
+
+$x \in L^{1} \quad \int_{x}|f-g| d x=0 \quad \nRightarrow f=g$
+
+\begin{example}
+    不是由内积导出的范数
+\end{example}
+
+$C[0, 1]$ 上的标准范数, $f, g \in C[0,1] \quad f(x)=1, \quad g(x)=x$
+
+\begin{example}
+    不连续(无界)的算子 
+\end{example}
+
+$C[0, 1]$ 算子 $T(f)=f^{\prime}$ 不连续. $\left\|\frac{d}{d x} \sin n \pi x\right\|=n \pi \rightarrow \infty$
+
+\begin{example}
+    不可逆算子
+\end{example}
+
+$T_{f} \in B\left(L^{2}[0,1]\right)$, $T_{f}(\mu)=f(t) \mu(t)$, 取 $f(t)=t$
+
+\begin{example}
+    保范算子但不是酉算子(要加上满射才行)
+\end{example}
+
+$T\left(\xi_{1}, \xi_{2}, \ldots\right)=\left(0, \xi_{1},\xi_{2}, \cdots\right)$
+
+\begin{example}
+    值域有限维但不连续
+\end{example}
+
+$P[0, 1] \rightarrow C[0, 1]$ 上 $T(\eta)=\eta(1)$
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
